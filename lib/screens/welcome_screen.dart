@@ -10,7 +10,7 @@ class WelcomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return CustomScaffold(
-      needAppBar: false,
+      displayAppBar: false,
     child: Column(
      children: [
        Flexible(

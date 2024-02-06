@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:vipr_watch_mobile_application/screens/home_screen.dart';
 import 'package:vipr_watch_mobile_application/screens/onboarding_screen.dart';
 import 'package:vipr_watch_mobile_application/screens/splash_screen.dart';
 
