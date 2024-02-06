@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
 
 class CustomScaffold extends StatelessWidget {
-  const CustomScaffold({super.key, this.child});
+  const CustomScaffold({super.key, this.child, this.needAppBar,});
   final Widget? child;
+  final bool? needAppBar;
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return needAppBar! ? Scaffold(
       appBar: AppBar(
         iconTheme: const IconThemeData(color: Colors.green),
         backgroundColor: Colors.transparent,
@@ -16,7 +17,7 @@ class CustomScaffold extends StatelessWidget {
       body: Stack(
           children: [
             Image.asset(
-              'assets/images/Hlogin3.jpg',
+              'assets/images/login/login3.jpg',
               fit: BoxFit.cover,
               width: double.infinity,
               height: double.infinity,
@@ -24,8 +25,25 @@ class CustomScaffold extends StatelessWidget {
             SafeArea(
               child: child!,
             ),
-          ]
+          ],
       ),
+      backgroundColor: Colors.black,
+    )
+    : Scaffold(
+      body: Stack(
+        children: [
+          Image.asset(
+            'assets/images/login/login3.jpg',
+            fit: BoxFit.cover,
+            width: double.infinity,
+            height: double.infinity,
+          ),
+          SafeArea(
+            child: child!,
+          ),
+        ],
+      ),
+      backgroundColor: Colors.black,
     );
   }
 }

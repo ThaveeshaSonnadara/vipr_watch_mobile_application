@@ -17,6 +17,7 @@ class _SignInScreenState extends State<SignInScreen> {
   @override
   Widget build(BuildContext context) {
     return CustomScaffold(
+      needAppBar: true,
       child: Column(
         children: [
           const Expanded(
