@@ -1,6 +1,7 @@
 import 'dart:async';
 import 'package:animated_splash_screen/animated_splash_screen.dart';
 import 'package:flutter/material.dart';
+import 'package:vipr_watch_mobile_application/screens/onboarding_screen.dart';
 import 'package:vipr_watch_mobile_application/screens/welcome_screen.dart';
 
 class SplashScreen extends StatefulWidget {
@@ -11,15 +12,35 @@ class SplashScreen extends StatefulWidget {
 }
 
 class _SplashScreenState extends State<SplashScreen> {
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      home: AnimatedSplashScreen(
+        splash: Image.asset(
+          'assets/images/logo/logo.png',
+          gaplessPlayback: true,
+        ),
+        splashIconSize: 800,
+        splashTransition: SplashTransition.fadeTransition,
+        backgroundColor: Colors.black,
+        nextScreen: Container(),
+      ),
+    );
+  }
+
 // slow splash screen
-  // @override
-  // void initState() {
-  //   super.initState();
-  //   // Simulate some loading time (e.g., fetching data, initializing resources)
-  //   Timer(const Duration(seconds: 2), () {
-  //     Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (context) => const WelcomeScreen()), (route) => false);
-  //   });
-  //   }
+  @override
+  void initState() {
+    super.initState();
+    Timer(const Duration(seconds: 2), () {
+      precacheImage(const AssetImage('assets/images/login/login3.jpg'), context);
+      Navigator.pushAndRemoveUntil(context,
+          MaterialPageRoute(builder: (context) => const OnboardingScreen()), (route) => false);
+    });
+  }
+}
 
   // @override
   // Widget build(BuildContext context) {
@@ -37,24 +58,6 @@ class _SplashScreenState extends State<SplashScreen> {
   //         backgroundColor: Colors.black,
   //     );
   // }
-
-  @override
-  Widget build(BuildContext context) {
-    return  MaterialApp(
-      debugShowCheckedModeBanner: false,
-      home: AnimatedSplashScreen(
-        splash: Image.asset(
-          'assets/images/logo.png',
-        ),
-        nextScreen: const WelcomeScreen(),
-        splashIconSize: 800,
-        splashTransition: SplashTransition.fadeTransition,
-        backgroundColor: Colors.black,
-        duration: 2000,
-      ),
-    );
-  }
-}
 
 // import 'package:vipr_watch_mobile_application/screens/welcome_screen.dart';
 //
