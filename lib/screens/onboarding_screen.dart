@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:vipr_watch_mobile_application/screens/welcome_screen.dart';
 
+import 'home_screen.dart';
+
 class OnboardingScreen extends StatefulWidget {
 
   const OnboardingScreen({Key? key}) : super(key: key);
@@ -74,43 +76,37 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                   const Spacer(),
                   const Spacer(),
                   SizedBox(
-                    child: onLastPage ?
+                    child:
                     ElevatedButton(
-                      onPressed: () {
+                      onPressed: onLastPage ? () {
                         Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) {
-                                  return const WelcomeScreen();
-                                }
-                            ),
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) {
+                                return const HomeScreen();
+                              }
+                          ),
                         );
+                      }
+                          : () {
+                        _pageController.nextPage(
+                            duration: const Duration(milliseconds: 300),
+                            curve: Curves.ease);
                       },
                       style: ElevatedButton.styleFrom(
                         backgroundColor: Colors.green,
                         shape: const CircleBorder(),
                       ),
-                      child: SvgPicture.asset(
+                      child: onLastPage ? SvgPicture.asset(
                         'assets/images/logo/home.svg',
                         width: 60,
                         height: 60,
+                        fit: BoxFit.scaleDown,)
+                          : SvgPicture.asset(
+                        'assets/images/logo/right_arrow.svg',
+                        width: 60,
+                        height: 60,
                         fit: BoxFit.scaleDown,),
-                    )
-                            : ElevatedButton(
-                                onPressed: () {
-                                  _pageController.nextPage(
-                                      duration: const Duration(milliseconds: 300),
-                                      curve: Curves.ease);
-                                },
-                                style: ElevatedButton.styleFrom(
-                                  backgroundColor: Colors.green,
-                                  shape: const CircleBorder(),
-                                ),
-                                child: SvgPicture.asset(
-                                  'assets/images/logo/right_arrow.svg',
-                                  width: 60,
-                                  height: 60,
-                                  fit: BoxFit.scaleDown,),
                     ),
                   ),
                 ],

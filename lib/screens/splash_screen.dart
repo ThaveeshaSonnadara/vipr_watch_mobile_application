@@ -37,7 +37,7 @@ class _SplashScreenState extends State<SplashScreen> {
     Timer(const Duration(seconds: 2), () {
       precacheImage(const AssetImage('assets/images/login/login3.jpg'), context);
       Navigator.pushAndRemoveUntil(context,
-          MaterialPageRoute(builder: (context) => const OnboardingScreen()), (route) => false);
+          MaterialPageRoute(builder: (context) => const WelcomeScreen()), (route) => false);
     });
   }
 }
