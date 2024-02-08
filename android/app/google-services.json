@@ -1,27 +1,87 @@
 {
   "project_info": {
-    "project_number": "881193216465",
-    "firebase_url": "https://viprwatch-default-rtdb.asia-southeast1.firebasedatabase.app",
-    "project_id": "viprwatch",
-    "storage_bucket": "viprwatch.appspot.com"
+    "project_number": "450752793665",
+    "project_id": "viprwatch-project",
+    "storage_bucket": "viprwatch-project.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:881193216465:android:b13450b53b73d1af68d8f0",
+        "mobilesdk_app_id": "1:450752793665:android:c02c5f70740d94fcaa4ac0",
         "android_client_info": {
           "package_name": "com.example.vipr_watch_mobile_application"
         }
       },
-      "oauth_client": [],
+      "oauth_client": [
+        {
+          "client_id": "450752793665-7nuolk33kv81t9p23doreukmkm34bqqm.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.vipr_watch_mobile_application",
+            "certificate_hash": "c47d0ef0cda3cf227993081bf9d43216d49dcdee"
+          }
+        },
+        {
+          "client_id": "450752793665-ltohmcuh090ulujv724lm4chu2h7636e.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
       "api_key": [
         {
-          "current_key": "AIzaSyA8RMtKBWtMWbTCvnIhL1ZQYlIk5N8Ec1U"
+          "current_key": "AIzaSyCs11yuQkMllTHDwNms25UOMz6PEFAVXrs"
         }
       ],
       "services": {
         "appinvite_service": {
-          "other_platform_oauth_client": []
+          "other_platform_oauth_client": [
+            {
+              "client_id": "450752793665-ltohmcuh090ulujv724lm4chu2h7636e.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "450752793665-2lneqousnhcr83q20s1i92upjoe2g3h3.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.viprWatchMobileApplication"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:450752793665:android:d0ea0115b275af5daa4ac0",
+        "android_client_info": {
+          "package_name": "com.example.vipr_watch_project"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "450752793665-ltohmcuh090ulujv724lm4chu2h7636e.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCs11yuQkMllTHDwNms25UOMz6PEFAVXrs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "450752793665-ltohmcuh090ulujv724lm4chu2h7636e.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "450752793665-2lneqousnhcr83q20s1i92upjoe2g3h3.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.viprWatchMobileApplication"
+              }
+            }
+          ]
         }
       }
     }
