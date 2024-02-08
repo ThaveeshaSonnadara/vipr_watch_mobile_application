@@ -1,14 +1,13 @@
 {
   "project_info": {
-    "project_number": "881193216465",
-    "firebase_url": "https://viprwatch-default-rtdb.asia-southeast1.firebasedatabase.app",
-    "project_id": "viprwatch",
-    "storage_bucket": "viprwatch.appspot.com"
+    "project_number": "754985842400",
+    "project_id": "viprwatch-firebase-project",
+    "storage_bucket": "viprwatch-firebase-project.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:881193216465:android:b13450b53b73d1af68d8f0",
+        "mobilesdk_app_id": "1:754985842400:android:c4d77a54f1416a1bd5c285",
         "android_client_info": {
           "package_name": "com.example.vipr_watch_mobile_application"
         }
@@ -16,7 +15,7 @@
       "oauth_client": [],
       "api_key": [
         {
-          "current_key": "AIzaSyA8RMtKBWtMWbTCvnIhL1ZQYlIk5N8Ec1U"
+          "current_key": "AIzaSyCrMpE0W5pDKjb_I3BOwON_NQAShJN34oY"
         }
       ],
       "services": {

@@ -5,7 +5,7 @@ import 'package:vipr_watch_mobile_application/widgets/welcome_button.dart';
 import '../widgets/custom_scaffold.dart';
 
 class WelcomeScreen extends StatelessWidget {
-  const WelcomeScreen({Key? key}) : super(key: key);
+  const WelcomeScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -50,7 +50,7 @@ class WelcomeScreen extends StatelessWidget {
                children: [
                  Expanded(
                    child: WelcomeButton(
-                     buttonText: 'Sign in',
+                     buttonText: "Sign in",
                      onTap: SignInScreen(),
                      color: Colors.transparent,
                      textColor: Colors.green,
@@ -58,10 +58,10 @@ class WelcomeScreen extends StatelessWidget {
                  ),
                  Expanded(
                    child: WelcomeButton(
-                     buttonText: 'Sign up',
+                     buttonText: "Sign up",
                      onTap: SignUpScreen(),
                      color: Colors.green,
-                     textColor: Colors.black87,
+                     textColor: Colors.black,
                    ),
                  ),
                ],

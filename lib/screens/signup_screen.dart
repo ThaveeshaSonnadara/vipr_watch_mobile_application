@@ -61,17 +61,17 @@ class _SignUpScreenState extends State<SignUpScreen> {
                           return null;
                         },
                         decoration: InputDecoration(
-                            label: const Text('Full Name'),
-                            hintText: 'Enter Full Name',
-                            hintStyle: const TextStyle(
-                              color: Colors.black26,
+                          label: const Text('Full Name'),
+                          hintText: 'Enter Full Name',
+                          hintStyle: const TextStyle(
+                            color: Colors.black26,
+                          ),
+                          border: OutlineInputBorder(
+                            borderSide: const BorderSide(
+                              color: Colors.black12,
                             ),
-                            border: OutlineInputBorder(
-                              borderSide: const BorderSide(
-                                color: Colors.black12,
-                              ),
-                              borderRadius: BorderRadius.circular(10),
-                            ),
+                            borderRadius: BorderRadius.circular(10),
+                          ),
                           enabledBorder: OutlineInputBorder(
                             borderSide: const BorderSide(
                               color: Colors.black12,
@@ -145,37 +145,36 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                 color: Colors.black12,
                               ),
                               borderRadius: BorderRadius.circular(10),
-                            )
-                        ),
+                            )),
                       ),
                       const SizedBox(
                         height: 5.0,
                       ),
-                          Row(
-                            children: [
-                              Checkbox(
-                                value: agreePersonalData,
-                                onChanged: (bool? value) {
-                                  setState(() {
-                                    agreePersonalData = value!;
-                                  });
-                                },
-                                activeColor: Colors.green,
-                              ),
-                              const Text(
-                                'I agree to processing of ',
-                                style: TextStyle(
-                                  color: Colors.black45,
-                                ),
-                              ),
-                              const Text(
-                                  'Personal data.',
-                                  style: TextStyle(
-                                  color: Colors.green,
-                                ),
-                              ),
-                            ],
+                      Row(
+                        children: [
+                          Checkbox(
+                            value: agreePersonalData,
+                            onChanged: (bool? value) {
+                              setState(() {
+                                agreePersonalData = value!;
+                              });
+                            },
+                            activeColor: Colors.green,
                           ),
+                          const Text(
+                            'I agree to processing of ',
+                            style: TextStyle(
+                              color: Colors.black45,
+                            ),
+                          ),
+                          const Text(
+                            'Personal data.',
+                            style: TextStyle(
+                              color: Colors.green,
+                            ),
+                          ),
+                        ],
+                      ),
                       const SizedBox(
                         height: 25.0,
                       ),
@@ -186,17 +185,15 @@ class _SignUpScreenState extends State<SignUpScreen> {
                             if (_formSignUpKey.currentState!.validate() &&
                                 agreePersonalData) {
                               ScaffoldMessenger.of(context).showSnackBar(
-                                const SnackBar (
+                                const SnackBar(
                                   content: Text('Processing Date'),
                                 ),
                               );
                             } else if (!agreePersonalData) {
                               ScaffoldMessenger.of(context).showSnackBar(
-                                  const SnackBar (
-                                      content: Text(
-                                          'Please agree to the processing of personal data'
-                                      )
-                                  ),
+                                const SnackBar(
+                                    content: Text(
+                                        'Please agree to the processing of personal data')),
                               );
                             }
                           },
@@ -205,7 +202,8 @@ class _SignUpScreenState extends State<SignUpScreen> {
                             style: TextStyle(
                               fontWeight: FontWeight.bold,
                               color: Colors.black,
-                            ),),
+                            ),
+                          ),
                         ),
                       ),
                       const SizedBox(
@@ -229,7 +227,8 @@ class _SignUpScreenState extends State<SignUpScreen> {
                               'Sign up with',
                               style: TextStyle(
                                 color: Colors.black45,
-                              ),),
+                              ),
+                            ),
                           ),
                           Expanded(
                             child: Divider(
@@ -242,13 +241,13 @@ class _SignUpScreenState extends State<SignUpScreen> {
                       const SizedBox(
                         height: 30.0,
                       ),
-                      Row(
+                      const Row(
                         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                         children: [
-                          Logo(Logos.facebook_f),
-                          Logo(Logos.twitter),
-                          Logo(Logos.google),
-                          Logo(Logos.apple),
+                          Icon(Bootstrap.facebook),
+                          Icon(Bootstrap.twitter_x),
+                          Icon(Bootstrap.google),
+                          Icon(Bootstrap.apple),
                         ],
                       ),
                       const SizedBox(

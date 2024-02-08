@@ -13,20 +13,17 @@ class CustomScaffold extends StatelessWidget {
         elevation: 0,
       ),
       extendBodyBehindAppBar: true,
-      body: Stack(
-          children: [
-            Image.asset(
-              'assets/images/Hlogin3.jpg',
-              fit: BoxFit.cover,
-              width: double.infinity,
-              height: double.infinity,
-            ),
-            SafeArea(
-              child: child!,
-            ),
-          ]
-      ),
+      body: Stack(children: [
+        Image.asset(
+          'assets/images/Hlogin3.jpg',
+          fit: BoxFit.cover,
+          width: double.infinity,
+          height: double.infinity,
+        ),
+        SafeArea(
+          child: child!,
+        ),
+      ]),
     );
   }
 }
-
