@@ -41,6 +41,8 @@ dependencies:
   video_player: ^2.2.18
   flutter_svg: ^2.0.9
 
+  #firebase
+  firebase_core: ^2.25.4
 
 
 dev_dependencies:

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>450752793665-2lneqousnhcr83q20s1i92upjoe2g3h3.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.450752793665-2lneqousnhcr83q20s1i92upjoe2g3h3</string>
+	<key>ANDROID_CLIENT_ID</key>
+	<string>450752793665-7nuolk33kv81t9p23doreukmkm34bqqm.apps.googleusercontent.com</string>
+	<key>API_KEY</key>
+	<string>AIzaSyDLDPqKQT-Lz65Si5IrIWzF6e8l55NKyUA</string>
+	<key>GCM_SENDER_ID</key>
+	<string>450752793665</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.example.viprWatchMobileApplication</string>
+	<key>PROJECT_ID</key>
+	<string>viprwatch-project</string>
+	<key>STORAGE_BUCKET</key>
+	<string>viprwatch-project.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:450752793665:ios:c76a6265aee04e61aa4ac0</string>
+</dict>
+</plist>
