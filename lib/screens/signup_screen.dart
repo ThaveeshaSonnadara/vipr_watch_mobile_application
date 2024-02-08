@@ -246,7 +246,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                         children: [
                           Icon(Bootstrap.facebook),
-                          Icon(Bootstrap.twitter_x),
+                          Icon(Bootstrap.twitter),
                           Icon(Bootstrap.google),
                           Icon(Bootstrap.apple),
                         ],
