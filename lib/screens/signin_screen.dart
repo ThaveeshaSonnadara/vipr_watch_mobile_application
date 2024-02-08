@@ -156,49 +156,34 @@ class _SignInScreenState extends State<SignInScreen> {
                         width: double.infinity,
                         child: ElevatedButton(
                           onPressed: () {
-<<<<<<< HEAD
-                            const HomeScreen();
-                          },
-                          style: const ButtonStyle(
-                              mouseCursor: MaterialStateMouseCursor.clickable),
-=======
                             if (_formSignInKey.currentState!.validate() &&
                                 rememberPassword) {
                               ScaffoldMessenger.of(context).showSnackBar(
-                                const SnackBar (
+                                const SnackBar(
                                   content: Text('Processing Date'),
                                 ),
                               );
-                              Navigator.push(  // temporary go to onboarding screen
+                              Navigator.push(
+                                // temporary go to onboarding screen
                                 context,
-                                MaterialPageRoute(
-                                    builder: (context) {
-                                      return const OnboardingScreen();
-                                    }
-                                ),
+                                MaterialPageRoute(builder: (context) {
+                                  return const OnboardingScreen();
+                                }),
                               );
                             } else if (!rememberPassword) {
                               ScaffoldMessenger.of(context).showSnackBar(
-                                  const SnackBar (
+                                  const SnackBar(
                                       content: Text(
-                                          'Please agree to the processing of personal data'
-                                      )
-                                  )
-                              );
+                                          'Please agree to the processing of personal data')));
                             }
                           },
->>>>>>> main
                           child: const Text(
                             'Sign in',
                             style: TextStyle(
                               fontWeight: FontWeight.bold,
                               color: Colors.black,
-<<<<<<< HEAD
                             ),
                           ),
-=======
-                            ),),
->>>>>>> main
                         ),
                       ),
                       const SizedBox(
@@ -217,17 +202,13 @@ class _SignInScreenState extends State<SignInScreen> {
                             padding: EdgeInsets.symmetric(
                               vertical: 0,
                               horizontal: 10,
-<<<<<<< HEAD
-                            ),
-                            child: Text(
-                              'Sign up with',
-=======
                             ),
                             child: Text(
                               'Sign up with',
                               style: TextStyle(
                                 color: Colors.black45,
-                              ),),
+                              ),
+                            ),
                           ),
                           Expanded(
                             child: Divider(
@@ -272,64 +253,11 @@ class _SignInScreenState extends State<SignInScreen> {
                             },
                             child: const Text(
                               ' Sign up',
->>>>>>> main
                               style: TextStyle(
                                 fontWeight: FontWeight.bold,
                                 color: Colors.green,
                               ),
                             ),
-<<<<<<< HEAD
-                          ),
-                          Expanded(
-                            child: Divider(
-                              thickness: 0.7,
-                              color: Colors.grey.withOpacity(0.5),
-                            ),
-                          ),
-                        ],
-                      ),
-                      const SizedBox(
-                        height: 25.0,
-                      ),
-                      const Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                        children: [
-                          Icon(Bootstrap.facebook),
-                          Icon(Bootstrap.twitter_x),
-                          Icon(Bootstrap.google),
-                          Icon(Bootstrap.apple),
-                        ],
-                      ),
-                      const SizedBox(
-                        height: 25.0,
-                      ),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          const Text(
-                            'Don\'t have an account?',
-                            style: TextStyle(
-                              color: Colors.black45,
-                            ),
-                          ),
-                          GestureDetector(
-                            onTap: () {
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                  builder: (e) => const SignUpScreen(),
-                                ),
-                              );
-                            },
-                            child: const Text(
-                              ' Sign up',
-                              style: TextStyle(
-                                fontWeight: FontWeight.bold,
-                                color: Colors.green,
-                              ),
-                            ),
-=======
->>>>>>> main
                           )
                         ],
                       ),
