@@ -1,7 +1,7 @@
 {
   "file_generated_by": "FlutterFire CLI",
   "purpose": "FirebaseAppID & ProjectID for this Firebase app in this directory",
-  "GOOGLE_APP_ID": "1:754985842400:ios:b16221c8e350afe1d5c285",
-  "FIREBASE_PROJECT_ID": "viprwatch-firebase-project",
-  "GCM_SENDER_ID": "754985842400"
+  "GOOGLE_APP_ID": "1:450752793665:ios:c76a6265aee04e61aa4ac0",
+  "FIREBASE_PROJECT_ID": "viprwatch-project",
+  "GCM_SENDER_ID": "450752793665"
 }

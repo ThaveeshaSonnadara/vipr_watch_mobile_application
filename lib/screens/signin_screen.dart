@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:icons_plus/icons_plus.dart';
-import 'package:vipr_watch_mobile_application/screens/home_screen.dart';
+import 'package:vipr_watch_mobile_application/screens/onboarding_screen.dart';
 import 'package:vipr_watch_mobile_application/screens/signup_screen.dart';
 import '../widgets/custom_scaffold.dart';
 
@@ -18,6 +18,7 @@ class _SignInScreenState extends State<SignInScreen> {
   @override
   Widget build(BuildContext context) {
     return CustomScaffold(
+      displayAppBar: true,
       child: Column(
         children: [
           const Expanded(
@@ -155,17 +156,49 @@ class _SignInScreenState extends State<SignInScreen> {
                         width: double.infinity,
                         child: ElevatedButton(
                           onPressed: () {
+<<<<<<< HEAD
                             const HomeScreen();
                           },
                           style: const ButtonStyle(
                               mouseCursor: MaterialStateMouseCursor.clickable),
+=======
+                            if (_formSignInKey.currentState!.validate() &&
+                                rememberPassword) {
+                              ScaffoldMessenger.of(context).showSnackBar(
+                                const SnackBar (
+                                  content: Text('Processing Date'),
+                                ),
+                              );
+                              Navigator.push(  // temporary go to onboarding screen
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) {
+                                      return const OnboardingScreen();
+                                    }
+                                ),
+                              );
+                            } else if (!rememberPassword) {
+                              ScaffoldMessenger.of(context).showSnackBar(
+                                  const SnackBar (
+                                      content: Text(
+                                          'Please agree to the processing of personal data'
+                                      )
+                                  )
+                              );
+                            }
+                          },
+>>>>>>> main
                           child: const Text(
                             'Sign in',
                             style: TextStyle(
                               fontWeight: FontWeight.bold,
                               color: Colors.black,
+<<<<<<< HEAD
                             ),
                           ),
+=======
+                            ),),
+>>>>>>> main
                         ),
                       ),
                       const SizedBox(
@@ -184,13 +217,68 @@ class _SignInScreenState extends State<SignInScreen> {
                             padding: EdgeInsets.symmetric(
                               vertical: 0,
                               horizontal: 10,
+<<<<<<< HEAD
+                            ),
+                            child: Text(
+                              'Sign up with',
+=======
                             ),
                             child: Text(
                               'Sign up with',
                               style: TextStyle(
                                 color: Colors.black45,
+                              ),),
+                          ),
+                          Expanded(
+                            child: Divider(
+                              thickness: 0.7,
+                              color: Colors.grey.withOpacity(0.5),
+                            ),
+                          ),
+                        ],
+                      ),
+                      const SizedBox(
+                        height: 25.0,
+                      ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        children: [
+                          Logo(Logos.facebook_f),
+                          Logo(Logos.twitter),
+                          Logo(Logos.google),
+                          Logo(Logos.apple),
+                        ],
+                      ),
+                      const SizedBox(
+                        height: 25.0,
+                      ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          const Text(
+                            'Don\'t have an account?',
+                            style: TextStyle(
+                              color: Colors.black45,
+                            ),
+                          ),
+                          GestureDetector(
+                            onTap: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (e) => const SignUpScreen(),
+                                ),
+                              );
+                            },
+                            child: const Text(
+                              ' Sign up',
+>>>>>>> main
+                              style: TextStyle(
+                                fontWeight: FontWeight.bold,
+                                color: Colors.green,
                               ),
                             ),
+<<<<<<< HEAD
                           ),
                           Expanded(
                             child: Divider(
@@ -240,6 +328,8 @@ class _SignInScreenState extends State<SignInScreen> {
                                 color: Colors.green,
                               ),
                             ),
+=======
+>>>>>>> main
                           )
                         ],
                       ),

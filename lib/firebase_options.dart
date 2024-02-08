@@ -25,7 +25,10 @@ class DefaultFirebaseOptions {
       case TargetPlatform.iOS:
         return ios;
       case TargetPlatform.macOS:
-        return macos;
+        throw UnsupportedError(
+          'DefaultFirebaseOptions have not been configured for macos - '
+          'you can reconfigure this by running the FlutterFire CLI again.',
+        );
       case TargetPlatform.windows:
         throw UnsupportedError(
           'DefaultFirebaseOptions have not been configured for windows - '
@@ -44,37 +47,31 @@ class DefaultFirebaseOptions {
   }
 
   static const FirebaseOptions web = FirebaseOptions(
-    apiKey: 'AIzaSyANjXKbEE4t8UtUKzRGhW_nSzXKmkZaAY0',
-    appId: '1:754985842400:web:547ffa8589b199a9d5c285',
-    messagingSenderId: '754985842400',
-    projectId: 'viprwatch-firebase-project',
-    authDomain: 'viprwatch-firebase-project.firebaseapp.com',
-    storageBucket: 'viprwatch-firebase-project.appspot.com',
+    apiKey: 'AIzaSyDDzFZj60AVlQ2cGYfxOH7sm-_mwQ9KHJE',
+    appId: '1:450752793665:web:23da49acc35cdecdaa4ac0',
+    messagingSenderId: '450752793665',
+    projectId: 'viprwatch-project',
+    authDomain: 'viprwatch-project.firebaseapp.com',
+    storageBucket: 'viprwatch-project.appspot.com',
+    measurementId: 'G-KCC04QSSFX',
   );
 
   static const FirebaseOptions android = FirebaseOptions(
-    apiKey: 'AIzaSyCrMpE0W5pDKjb_I3BOwON_NQAShJN34oY',
-    appId: '1:754985842400:android:c4d77a54f1416a1bd5c285',
-    messagingSenderId: '754985842400',
-    projectId: 'viprwatch-firebase-project',
-    storageBucket: 'viprwatch-firebase-project.appspot.com',
+    apiKey: 'AIzaSyCs11yuQkMllTHDwNms25UOMz6PEFAVXrs',
+    appId: '1:450752793665:android:c02c5f70740d94fcaa4ac0',
+    messagingSenderId: '450752793665',
+    projectId: 'viprwatch-project',
+    storageBucket: 'viprwatch-project.appspot.com',
   );
 
   static const FirebaseOptions ios = FirebaseOptions(
-    apiKey: 'AIzaSyBafQFix91GIJGjk9ds_q5aGsCuoux02MI',
-    appId: '1:754985842400:ios:b16221c8e350afe1d5c285',
-    messagingSenderId: '754985842400',
-    projectId: 'viprwatch-firebase-project',
-    storageBucket: 'viprwatch-firebase-project.appspot.com',
+    apiKey: 'AIzaSyDLDPqKQT-Lz65Si5IrIWzF6e8l55NKyUA',
+    appId: '1:450752793665:ios:c76a6265aee04e61aa4ac0',
+    messagingSenderId: '450752793665',
+    projectId: 'viprwatch-project',
+    storageBucket: 'viprwatch-project.appspot.com',
+    androidClientId: '450752793665-7nuolk33kv81t9p23doreukmkm34bqqm.apps.googleusercontent.com',
+    iosClientId: '450752793665-2lneqousnhcr83q20s1i92upjoe2g3h3.apps.googleusercontent.com',
     iosBundleId: 'com.example.viprWatchMobileApplication',
-  );
-
-  static const FirebaseOptions macos = FirebaseOptions(
-    apiKey: 'AIzaSyBafQFix91GIJGjk9ds_q5aGsCuoux02MI',
-    appId: '1:754985842400:ios:ed747a7e3102b107d5c285',
-    messagingSenderId: '754985842400',
-    projectId: 'viprwatch-firebase-project',
-    storageBucket: 'viprwatch-firebase-project.appspot.com',
-    iosBundleId: 'com.example.viprWatchMobileApplication.RunnerTests',
   );
 }
