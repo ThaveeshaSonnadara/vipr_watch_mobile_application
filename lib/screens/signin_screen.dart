@@ -163,14 +163,14 @@ class _SignInScreenState extends State<SignInScreen> {
                                   content: Text('Processing Date'),
                                 ),
                               );
-                              Navigator.push(  // temporary go to onboarding screen
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) {
-                                      return const OnboardingScreen();
-                                    }
-                                ),
-                              );
+                              // Navigator.push(  // temporary go to onboarding screen
+                              //   context,
+                              //   // MaterialPageRoute(
+                              //   //     builder: (context) {
+                              //   //       return const OnboardingScreen();
+                              //   //     }
+                              //   // ),
+                              // );
                             } else if (!rememberPassword) {
                               ScaffoldMessenger.of(context).showSnackBar(
                                   const SnackBar (

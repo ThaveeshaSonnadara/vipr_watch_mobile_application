@@ -43,6 +43,14 @@ dependencies:
   get: ^4.3.8  # Use the latest version
 
 
+  #utility packages
+  flutter_native_splash: ^2.3.10
+  smooth_page_indicator: ^1.1.0
+
+  #stste management
+  get: ^4.6.6
+  get_storage: ^2.1.1
+
   #firebase
   firebase_core: ^2.25.4
 
@@ -71,13 +79,10 @@ flutter:
 
   # To add assets to your application, add an assets section, like this:
   assets:
-    - assets/images/logo/logo.png
-    - assets/images/logo/vipericon.png
+    - assets/images/logo/
     - assets/images/login/
     - assets/images/onboarding/
     - assets/videos/
-    - assets/images/logo/googleicon-removebg.png
-    - assets/images/logo/FacebookLogo.png
   #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see
