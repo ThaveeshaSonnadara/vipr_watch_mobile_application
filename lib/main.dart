@@ -1,6 +1,9 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'package:vipr_watch_mobile_application/Login_Page/login.dart';
+import 'package:get/get.dart';
+import 'package:vipr_watch_mobile_application/Login_and_Signup_pages/SignUp.dart';
+import 'package:vipr_watch_mobile_application/Login_and_Signup_pages/Verify_Email.dart';
+import 'package:vipr_watch_mobile_application/Login_and_Signup_pages/login.dart';
 import 'package:vipr_watch_mobile_application/firebase_options.dart';
 import 'package:vipr_watch_mobile_application/screens/home_screen.dart';
 import 'package:vipr_watch_mobile_application/screens/onboarding_screen.dart';
@@ -33,9 +36,9 @@ class MyApp extends StatelessWidget {
   //     ),
   //   );
   Widget build(BuildContext context) {
-    return const MaterialApp(
+    return const GetMaterialApp(
       debugShowCheckedModeBanner: false,
-      home: LoginScreen(),
+      home: VerifyEmailPage(),
     );
   }
 }
