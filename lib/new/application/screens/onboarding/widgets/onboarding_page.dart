@@ -16,7 +16,7 @@ class OnBoardingPage extends StatelessWidget {
       padding: const EdgeInsets.all(24.0),
       child: Column(
         children: [
-          const SizedBox(height: 120.0),
+          const SizedBox(height: 80.0),
           ClipRRect(
             borderRadius: BorderRadius.circular(10.0),
             child: Image(

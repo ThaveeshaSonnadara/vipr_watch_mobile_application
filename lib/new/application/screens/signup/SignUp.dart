@@ -1,17 +1,22 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:icons_plus/icons_plus.dart';
-import 'package:vipr_watch_mobile_application/Login_and_Signup_pages/Fb_Google_Icon.dart';
-import 'package:vipr_watch_mobile_application/Login_and_Signup_pages/Or_signin_with.dart';
-import 'package:vipr_watch_mobile_application/Login_and_Signup_pages/Verify_Email.dart';
-import 'package:vipr_watch_mobile_application/Login_and_Signup_pages/login.dart';
+import 'package:vipr_watch_mobile_application/new/application/controllers/Signup_Controller.dart';
+import 'package:vipr_watch_mobile_application/new/application/screens/signup/Verify_Email.dart';
+import 'package:vipr_watch_mobile_application/new/application/screens/login/new/login.dart';
+import 'package:vipr_watch_mobile_application/new/application/validators/validation.dart';
+
+import 'Fb_Google_Icon.dart';
+import 'Or_signin_with.dart';
 
 class SignupPage extends StatelessWidget {
   const SignupPage({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final controller = Get.put(SignupController());
     return Scaffold(
+      key: controller.signupformKey,
       appBar: AppBar(
         backgroundColor: Colors.black,
         iconTheme: const IconThemeData(color: Colors.green),
@@ -42,6 +47,8 @@ class SignupPage extends StatelessWidget {
                     children: [
                       Expanded(
                         child: TextFormField(
+                          controller: controller.firstName,
+                          validator: (value)=> Validation.validateEmpty('First Name',value),
                           expands: false,
                           decoration: const InputDecoration(
                             labelText: 'First Name',
@@ -53,6 +60,8 @@ class SignupPage extends StatelessWidget {
                       const SizedBox(width: 16.0),
                       Expanded(
                         child: TextFormField(
+                          controller: controller.lastName,
+                          validator: (value)=> Validation.validateEmpty('Last Name',value),
                           expands: false,
                           decoration: const InputDecoration(
                             labelText: 'Last Name',
@@ -67,6 +76,9 @@ class SignupPage extends StatelessWidget {
 
                   ///Username
                   TextFormField(
+                    validator: (value)=> Validation.validateEmpty('User Name',value),
+                    controller: controller.userName,
+                    expands: false,
                     decoration: const InputDecoration(
                       labelText: 'Username',
                       prefixIcon: Icon(Iconsax.user_edit),
@@ -77,6 +89,8 @@ class SignupPage extends StatelessWidget {
 
                   ///Email
                   TextFormField(
+                    validator: (value)=> Validation.validateEmail(value),
+                    controller: controller.email,
                     decoration: const InputDecoration(
                       labelText: 'Email',
                       prefixIcon: Icon(Iconsax.direct),
@@ -87,6 +101,8 @@ class SignupPage extends StatelessWidget {
 
                   ///Phone number
                   TextFormField(
+                    validator: (value)=> Validation.validatePhoneNumber(value),
+                    controller: controller.phoneNumber,
                     decoration: const InputDecoration(
                       labelText: 'Phone Number',
                       prefixIcon: Icon(Iconsax.call),
@@ -97,6 +113,8 @@ class SignupPage extends StatelessWidget {
 
                   ///Password
                   TextFormField(
+                    validator: (value)=> Validation.validatePassword(value),
+                    controller: controller.password,
                     decoration: const InputDecoration(
                       labelText: 'Password',
                       prefixIcon: Icon(Iconsax.password_check),
@@ -131,7 +149,7 @@ class SignupPage extends StatelessWidget {
                   SizedBox(
                     width: double.infinity,
                     child: ElevatedButton(
-                      onPressed: () => Get.to(()=>const VerifyEmailPage()),
+                      onPressed: () => controller.signUp(),
                       child: const Text('Create Account'),
                     ),
                   ),

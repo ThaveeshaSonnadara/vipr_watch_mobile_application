@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:icons_plus/icons_plus.dart';
-import 'package:vipr_watch_mobile_application/Login_and_Signup_pages/Fb_Google_Icon.dart';
-import 'package:vipr_watch_mobile_application/Login_and_Signup_pages/Or_signin_with.dart';
-import 'package:vipr_watch_mobile_application/Login_and_Signup_pages/SignUp.dart';
 import 'package:vipr_watch_mobile_application/screens/signup_screen.dart';
+
+import '../../signup/Fb_Google_Icon.dart';
+import '../../signup/Or_signin_with.dart';
+import '../../signup/SignUp.dart';
 
 class LoginScreen extends StatelessWidget {
   const LoginScreen({super.key});
@@ -102,14 +103,13 @@ class LoginScreen extends StatelessWidget {
                         SizedBox(
                           width: double.infinity,
                           child: OutlinedButton(
-                            onPressed: () => Get.to(() => SignupPage()),
+                            onPressed: () => Get.to(() => const SignupPage()),
                             child: const Text('Create Account'),
                           ),
                         ),
                       ],
                     )),
               ),
-
               ///Divider
               Or_signin_with(),
 

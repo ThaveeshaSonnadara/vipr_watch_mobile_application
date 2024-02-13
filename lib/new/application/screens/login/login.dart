@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
 import 'package:icons_plus/icons_plus.dart';
+import '../signup/SignUp.dart';
 
 class LoginScreen extends StatelessWidget {
   const LoginScreen({super.key});
@@ -98,7 +101,7 @@ class LoginScreen extends StatelessWidget {
                         SizedBox(
                           width: double.infinity,
                           child: OutlinedButton(
-                            onPressed: () {},
+                            onPressed: () => Get.to(() => const SignupPage()),
                             child: const Text('Create Account', style: TextStyle(
                                 color: Colors.green)),
                           ),
