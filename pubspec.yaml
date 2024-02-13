@@ -41,9 +41,13 @@ dependencies:
   video_player: ^2.2.18
   flutter_svg: ^2.0.9
 
+
+
   #utility packages
   flutter_native_splash: ^2.3.10
   smooth_page_indicator: ^1.1.0
+  lottie: ^3.0.0
+  connectivity_plus: ^5.0.1
 
   #stste management
   get: ^4.6.6

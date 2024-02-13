@@ -45,9 +45,7 @@ class OnBoardingScreen extends StatelessWidget {
             ],
           ),
           const OnBoardingSkip(),
-
           const OnBoardingDotNavigation(),
-
           const OnBoardingNextButton(),
         ],
       ),
@@ -55,5 +53,3 @@ class OnBoardingScreen extends StatelessWidget {
     );
   }
 }
-
-
