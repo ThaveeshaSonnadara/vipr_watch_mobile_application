@@ -1,6 +1,7 @@
+
 class Validation {
   ///empty text validation
-  static String? validateEmpty(String? value, String? fieldName) {
+  static String? validateEmpty(String? fieldName, String? value ) {
     if (value == null || value.isEmpty) {
       return '$fieldName is required';
     }
@@ -63,3 +64,6 @@ class Validation {
     return null;
   }
 }
+
+
+
