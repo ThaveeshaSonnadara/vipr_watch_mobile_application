@@ -15,7 +15,7 @@ class SuccessScreen extends StatelessWidget {
           child: Column(
             children: [
               ///Image
-              Image(
+              const Image(
                 image: AssetImage('assets/images/logo/account succes.png'),
                 height: 320,
                 width: 320,

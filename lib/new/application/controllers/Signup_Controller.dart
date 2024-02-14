@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:icons_plus/icons_plus.dart';
+import 'package:vipr_watch_mobile_application/new/application/repositories/authentication_repository.dart';
+import 'package:vipr_watch_mobile_application/new/application/repositories/user_repository.dart';
+import 'package:vipr_watch_mobile_application/new/application/screens/signup/Verify_Email.dart';
 import 'package:vipr_watch_mobile_application/new/application/screens/signup/loaders.dart';
 import 'package:vipr_watch_mobile_application/utills/popups/full_screen_loader.dart';
+import '../screens/signup/User_Model.dart';
 import '../screens/signup/network_manager.dart';
 
 class SignupController extends GetxController {
@@ -21,7 +24,7 @@ class SignupController extends GetxController {
   GlobalKey<FormState> signupformKey = GlobalKey<FormState>(); //form key for form validation
 
   ///SIGNUP
-  Future<void> signUp() async {
+  void signUp() async {
     try {
       //Start loading
       FullScrrenLoader.openLoadingDialog(
@@ -30,26 +33,57 @@ class SignupController extends GetxController {
 
       //check internet connectivity
       final isConnected = await NetworkManager.instance.isConnected();
-      if (!isConnected)
+      if (!isConnected) {
+        FullScrrenLoader.stopLoading();
         return;
-
+      }
 
       //form validation
-      if (!signupformKey.currentState!.validate())
+      if (!signupformKey.currentState!.validate()) {
+        FullScrrenLoader.stopLoading();
         return;
-
+      }
 
       //privacy policy check
+      if (!privacyPolicy.value) {
+        Loaders.warningSnackBar(
+            title: 'Accept Privacy Policy',
+            message: 'In order to cretae account you must accept the privacy policy'
+        );
+        return;
+      }
       //register user in the firebase authentication and save user data in the firebase
-      //save authenticaion user data in the firebase firestore
+
+      final userCredential=await AuthenticationRepository.instance.registeringUsingEmailAndPassword(email.text.trim(), password.text.trim());
+
+      //save authentication user data in the firebase firestore
+      final user = UserModel(
+        id: userCredential.user!.uid,
+        firstname: firstName.text.trim(),
+        lastname: lastName.text.trim(),
+        username: userName.text.trim(),
+        email: email.text.trim(),
+        phonenumber: phoneNumber.text.trim() // Provide the actual phone number here
+      );
+
+
+      final userRepo = Get.put(UserRepository());
+      await userRepo.saveDataToFirestore(user);
+
+      //remove loader
+      FullScrrenLoader.stopLoading();
+
       //show success message
+      Loaders.successsnackbar(
+          title: 'Success',
+          message: 'Account created successfully'
+      );
       //move to verify email screen
+      Get.to(() => const VerifyEmailPage());
     } catch (e) {
+      FullScrrenLoader.stopLoading();
       //show some generic error to the user
       Loaders.errorsSnackBar(title: 'Error', message: e.toString());
-    } finally {
-      //remove loaders
-      FullScrrenLoader.stopLoading();
     }
   }
 }

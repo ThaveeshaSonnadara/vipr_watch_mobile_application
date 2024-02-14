@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:icons_plus/icons_plus.dart';
-import 'package:vipr_watch_mobile_application/screens/onboarding_screen.dart';
 import 'package:vipr_watch_mobile_application/screens/signup_screen.dart';
 import '../widgets/custom_scaffold.dart';
 

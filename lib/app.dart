@@ -1,9 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get_navigation/src/root/get_material_app.dart';
-import 'package:get_storage/get_storage.dart';
 import 'package:vipr_watch_mobile_application/bindings/general_bindings.dart';
-import 'new/application/screens/login/login.dart';
-import 'new/application/screens/onboarding/onboarding.dart';
 
 class App extends StatelessWidget {
   const App({super.key});
@@ -27,7 +24,7 @@ class App extends StatelessWidget {
   Widget build(BuildContext context) {
     return  GetMaterialApp(
       initialBinding: GeneralBindings(),
-      home: Scaffold(
+      home: const Scaffold(
         backgroundColor: Colors.black,
         body: Center(
           child: CircularProgressIndicator(

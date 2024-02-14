@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:icons_plus/icons_plus.dart';
@@ -95,7 +94,7 @@ class SignUpForm extends StatelessWidget {
             obscureText: controller.hidePassword.value,
             decoration:  InputDecoration(
               labelText: 'Password',
-              prefixIcon: Icon(Iconsax.password_check),
+              prefixIcon: const Icon(Iconsax.password_check),
               suffixIcon: IconButton(
                 onPressed: () => controller.hidePassword.value = !controller.hidePassword.value,
               icon:  Icon(controller.hidePassword.value? Iconsax.eye_slash:Iconsax.eye)
@@ -108,7 +107,7 @@ class SignUpForm extends StatelessWidget {
           const SizedBox(height: 16.0),
 
           ///Terms and condition checkbox
-          TermsandConditions(),
+          const TermsandConditions(),
           const SizedBox(height: 16.0),
 
           ///Create account button
