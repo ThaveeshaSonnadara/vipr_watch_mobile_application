@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:icons_plus/icons_plus.dart';
 import 'package:vipr_watch_mobile_application/new/application/controllers/Signup_Controller.dart';
-import 'package:vipr_watch_mobile_application/new/application/screens/signup/Verify_Email.dart';
 import 'package:vipr_watch_mobile_application/new/application/screens/login/new/login.dart';
 import 'package:vipr_watch_mobile_application/new/application/validators/validation.dart';
 

@@ -3,12 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
-import 'package:vipr_watch_mobile_application/new/application/screens/login/login.dart';
 import 'package:vipr_watch_mobile_application/firebase_options.dart';
-import 'package:vipr_watch_mobile_application/screens/home_screen.dart';
-import 'package:vipr_watch_mobile_application/screens/onboarding_screen.dart';
-import 'package:vipr_watch_mobile_application/screens/splash_screen.dart';
-import 'package:vipr_watch_mobile_application/screens/welcome_screen.dart';
 
 import 'app.dart';
 import 'new/application/repositories/authentication_repository.dart';
