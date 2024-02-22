@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:get/get_navigation/src/root/get_material_app.dart';
-import 'package:vipr_watch_mobile_application/bindings/general_bindings.dart';
 
 class App extends StatelessWidget {
   const App({super.key});
@@ -22,9 +21,8 @@ class App extends StatelessWidget {
   //     ),
   //   );
   Widget build(BuildContext context) {
-    return  GetMaterialApp(
-      initialBinding: GeneralBindings(),
-      home: const Scaffold(
+    return const GetMaterialApp(
+      home: Scaffold(
         backgroundColor: Colors.black,
         body: Center(
           child: CircularProgressIndicator(

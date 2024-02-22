@@ -1,8 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:vipr_watch_mobile_application/new/application/screens/signup/SuccessScreen.dart';
-import 'package:vipr_watch_mobile_application/new/application/screens/login/new/login.dart';
+
+import '../login/login.dart';
+import 'SuccessScreen.dart';
 
 class VerifyEmailPage extends StatelessWidget {
   const VerifyEmailPage({super.key});
