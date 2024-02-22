@@ -13,32 +13,34 @@ class SignUpForm extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final controller = Get.put(SignupController());
+    final SignUpController = Get.put(SignupController());
     return Form(
-      key: controller.signupformKey,
+      key: SignUpController.signupformKey,
       child: Column(
         children: [
           Row(
             children: [
               Expanded(
                 child: TextFormField(
-                  controller: controller.firstName,
-                  validator: (value)=> Validation.validateEmpty('First Name',value),
-                  expands: false,
-                  decoration:  const InputDecoration(
+                  decoration: const InputDecoration(
                     labelText: 'First Name',
                     prefixIcon: Icon(Iconsax.user),
                   ),
+                  controller: SignUpController.firstName,
+                  validator: (value) =>
+                      Validation.validateEmpty('First Name', value),
+                  expands: false,
                   style: const TextStyle(color: Colors.white70),
                 ),
               ),
               const SizedBox(width: 16.0),
               Expanded(
                 child: TextFormField(
-                  controller: controller.lastName,
-                  validator: (value)=> Validation.validateEmpty('Last Name',value),
+                  controller: SignUpController.lastName,
+                  validator: (value) =>
+                      Validation.validateEmpty('Last Name', value),
                   expands: false,
-                  decoration:  const InputDecoration(
+                  decoration: const InputDecoration(
                     labelText: 'Last Name',
                     prefixIcon: Icon(Iconsax.user),
                   ),
@@ -51,10 +53,10 @@ class SignUpForm extends StatelessWidget {
 
           ///Username
           TextFormField(
-            validator: (value)=> Validation.validateEmpty('User Name',value),
-            controller: controller.userName,
+            validator: (value) => Validation.validateEmpty('User Name', value),
+            controller: SignUpController.userName,
             expands: false,
-            decoration:  const InputDecoration(
+            decoration: const InputDecoration(
               labelText: 'Username',
               prefixIcon: Icon(Iconsax.user_edit),
             ),
@@ -64,9 +66,9 @@ class SignUpForm extends StatelessWidget {
 
           ///Email
           TextFormField(
-            validator: (value)=> Validation.validateEmail(value),
-            controller: controller.email,
-            decoration:  const InputDecoration(
+            validator: (value) => Validation.validateEmail(value),
+            controller: SignUpController.email,
+            decoration: const InputDecoration(
               labelText: 'Email',
               prefixIcon: Icon(Iconsax.direct),
             ),
@@ -76,9 +78,9 @@ class SignUpForm extends StatelessWidget {
 
           ///Phone number
           TextFormField(
-            validator: (value)=> Validation.validatePhoneNumber(value),
-            controller: controller.phoneNumber,
-            decoration:  const InputDecoration(
+            validator: (value) => Validation.validatePhoneNumber(value),
+            controller: SignUpController.phoneNumber,
+            decoration: const InputDecoration(
               labelText: 'Phone Number',
               prefixIcon: Icon(Iconsax.call),
             ),
@@ -87,22 +89,23 @@ class SignUpForm extends StatelessWidget {
           const SizedBox(height: 16.0),
 
           ///Password
-          Obx(() =>
-          TextFormField(
-            validator: (value)=> Validation.validatePassword(value),
-            controller: controller.password,
-            obscureText: controller.hidePassword.value,
-            decoration:  InputDecoration(
-              labelText: 'Password',
-              prefixIcon: const Icon(Iconsax.password_check),
-              suffixIcon: IconButton(
-                onPressed: () => controller.hidePassword.value = !controller.hidePassword.value,
-              icon:  Icon(controller.hidePassword.value? Iconsax.eye_slash:Iconsax.eye)
+          Obx(
+            () => TextFormField(
+              validator: (value) => Validation.validatePassword(value),
+              controller: SignUpController.password,
+              obscureText: SignUpController.hidePassword.value,
+              decoration: InputDecoration(
+                labelText: 'Password',
+                prefixIcon: const Icon(Iconsax.password_check),
+                suffixIcon: IconButton(
+                    onPressed: () => SignUpController.hidePassword.value =
+                        !SignUpController.hidePassword.value,
+                    icon: Icon(SignUpController.hidePassword.value
+                        ? Iconsax.eye_slash
+                        : Iconsax.eye)),
               ),
+              style: const TextStyle(color: Colors.white70),
             ),
-
-            style: const TextStyle(color: Colors.white70),
-          ),
           ),
           const SizedBox(height: 16.0),
 
@@ -114,7 +117,7 @@ class SignUpForm extends StatelessWidget {
           SizedBox(
             width: double.infinity,
             child: ElevatedButton(
-              onPressed: () => controller.signUp(),
+              onPressed: () => SignUpController.signUp(),
               child: const Text('Create Account'),
             ),
           ),
@@ -123,5 +126,3 @@ class SignUpForm extends StatelessWidget {
     );
   }
 }
-
-

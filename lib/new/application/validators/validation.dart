@@ -6,6 +6,7 @@ class Validation {
       return '$fieldName is required';
     }
     return null;
+
   }
 
   static String? validateEmail(String? value) {
@@ -18,8 +19,9 @@ class Validation {
     if (!emailRegExp.hasMatch(value)) {
       return 'Invalid email address';
     }
-
     return null;
+
+
   }
 
   static String? validatePassword(String? value) {
