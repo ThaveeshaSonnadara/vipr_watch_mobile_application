@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:vipr_watch_mobile_application/utills/popups/full_screen_loader.dart';
+
+import '../utills/popups/full_screen_loader.dart';
 
 class SignupController extends GetxController{
   static SignupController get instance => Get.find();
@@ -20,14 +21,7 @@ class SignupController extends GetxController{
     try{
       //Start loading
       FullScrrenLoader.openLoadingDialog('we are processing your information...', 'assets/animations/loading.json');
-
-
-
     }finally{
-
-
-
-
     }
   }
 

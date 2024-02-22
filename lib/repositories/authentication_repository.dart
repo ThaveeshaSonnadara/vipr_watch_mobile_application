@@ -1,9 +1,9 @@
 import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
-import 'package:vipr_watch_mobile_application/new/application/screens/onboarding/onboarding.dart';
 
 import '../screens/login/login.dart';
+import '../screens/onboarding/onboarding.dart';
 
 class AuthenticationRepository extends GetxController {
   static AuthenticationRepository get instance => Get.find();
