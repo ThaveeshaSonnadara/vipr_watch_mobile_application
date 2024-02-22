@@ -142,29 +142,30 @@ class LoginScreen extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Container(
-                    decoration: BoxDecoration(
-                      border: Border.all(color: Colors.grey),
-                      borderRadius: BorderRadius.circular(100),
+                    decoration: const BoxDecoration(
+                      // border: Border.all(color: Colors.green,),
+                      // borderRadius: BorderRadius.circular(100),
                     ),
-                    child: const Image(
-                      width: 24,
-                      height: 24,
-                      image: AssetImage(
-                          'assets/images/logo/googleicon-removebg.png'),
+                    child: Logo(Logos.google),
+                    // child: const Image(
+                    //   width: 35,
+                    //   height: 35,
+                    //   image: AssetImage(
+                    //       'assets/images/logo/googleicon-removebg.png'),
                     ),
-                  ),
                   const SizedBox(width: 16.0),
                   Container(
-                    decoration: BoxDecoration(
-                      border: Border.all(color: Colors.grey),
-                      borderRadius: BorderRadius.circular(100),
+                    decoration: const BoxDecoration(
+                      // border: Border.all(color: Colors.green),
+                      // borderRadius: BorderRadius.circular(100),
                     ),
-                    child: const Image(
-                      width: 24,
-                      height: 24,
-                      image: AssetImage('assets/images/logo/FacebookLogo.png'),
+                    child: Logo(Logos.facebook_f,),
+                    // child: const Image(
+                    //   width: 35,
+                    //   height: 35,
+                    //   image: AssetImage('assets/images/logo/FacebookLogo.png'),
                     ),
-                  ),
+                  // ),
                 ],
               ),
             ],

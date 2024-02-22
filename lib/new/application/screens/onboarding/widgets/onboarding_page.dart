@@ -16,17 +16,17 @@ class OnBoardingPage extends StatelessWidget {
       padding: const EdgeInsets.all(24.0),
       child: Column(
         children: [
-          const SizedBox(height: 120.0),
+          const SizedBox(height: 140.0),
           ClipRRect(
             borderRadius: BorderRadius.circular(10.0),
             child: Image(
               image: AssetImage(image),
-              height: 350,
-              width: 350,
+              height: 320,
+              width: 320,
               fit: BoxFit.cover,
             ),
           ),
-          const SizedBox(height: 30.0),
+          const SizedBox(height: 40.0),
           Text(
             title,
             textAlign: TextAlign.center,
