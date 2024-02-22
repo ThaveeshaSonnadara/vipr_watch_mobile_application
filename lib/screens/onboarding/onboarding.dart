@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:vipr_watch_mobile_application/new/application/controllers/onboarding_controller.dart';
-import 'package:vipr_watch_mobile_application/new/application/screens/onboarding/image_strings.dart';
-import 'package:vipr_watch_mobile_application/new/application/screens/onboarding/text_strings.dart';
-import 'package:vipr_watch_mobile_application/new/application/screens/onboarding/widgets/onboarding_dot_navigation.dart';
-import 'package:vipr_watch_mobile_application/new/application/screens/onboarding/widgets/onboarding_next.dart';
-import 'package:vipr_watch_mobile_application/new/application/screens/onboarding/widgets/onboarding_page.dart';
-import 'package:vipr_watch_mobile_application/new/application/screens/onboarding/widgets/onboarding_skip.dart';
+import 'package:vipr_watch_mobile_application/screens/onboarding/image_strings.dart';
+import 'package:vipr_watch_mobile_application/screens/onboarding/text_strings.dart';
+
+import '../../controllers/onboarding_controller.dart';
+import '../../widgets/onboarding_dot_navigation.dart';
+import '../../widgets/onboarding_next.dart';
+import '../../widgets/onboarding_page.dart';
+import '../../widgets/onboarding_skip.dart';
 
 class OnBoardingScreen extends StatelessWidget {
   const OnBoardingScreen({super.key});

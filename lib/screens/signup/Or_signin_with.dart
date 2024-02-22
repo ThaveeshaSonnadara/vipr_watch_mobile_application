@@ -11,7 +11,7 @@ class Or_signin_with extends StatelessWidget {
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        Flexible(child: Divider(
+        const Flexible(child: Divider(
           color: Colors.grey,
           thickness: 0.5,
           indent: 60,
@@ -21,7 +21,7 @@ class Or_signin_with extends StatelessWidget {
         Text('or Sign in with', style: Theme.of(context).textTheme.labelMedium!.copyWith(
           color: Colors.grey,),),
 
-        Flexible(child: Divider(
+        const Flexible(child: Divider(
           color: Colors.grey,
           thickness: 0.5,
           indent: 5,
