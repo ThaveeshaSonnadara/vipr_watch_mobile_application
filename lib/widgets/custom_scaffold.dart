@@ -32,4 +32,3 @@ class CustomScaffold extends StatelessWidget {
     );
   }
 }
-
