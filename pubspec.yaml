@@ -42,8 +42,6 @@ dependencies:
   flutter_svg: ^2.0.9
   auto_size_text: ^3.0.0
 
-
-
   #utility packages
   flutter_native_splash: ^2.3.10
   smooth_page_indicator: ^1.1.0
@@ -52,6 +50,16 @@ dependencies:
 
   #image input
   image_picker: ^1.0.7
+  image_cropper: ^5.0.1
+
+  #floating button
+  flutter_speed_dial: ^7.0.0
+
+  #lunch phone number indirectly
+  url_launcher: ^6.2.5
+
+  #lunch phone number directly
+  flutter_phone_direct_caller: ^2.1.1
 
   #stste management
   get: ^4.6.6
