@@ -34,7 +34,7 @@ class FullScrrenLoader {
 
   ///stop the currently open loading dialog
   ///this method doesn't return anything
-  static stopLoading(){
-    Navigator.of(Get.overlayContext!).pop();   //close the dialog using the navigator
+  static stopLoading() {
+    Navigator.of(Get.overlayContext!).pop(); //close the dialog using the navigator
   }
 }

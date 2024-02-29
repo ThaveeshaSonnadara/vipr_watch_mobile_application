@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:icons_plus/icons_plus.dart';
-import 'package:vipr_watch_mobile_application/screens/signup_screen.dart';
 
 import '../../signup/Fb_Google_Icon.dart';
 import '../../signup/Or_signin_with.dart';
@@ -15,7 +14,7 @@ class LoginScreen extends StatelessWidget {
     return Scaffold(
       body: SingleChildScrollView(
         child: Padding(
-          padding: EdgeInsets.only(
+          padding: const EdgeInsets.only(
             top: 56.0,
             left: 24.0,
             bottom: 24.0,
@@ -25,7 +24,7 @@ class LoginScreen extends StatelessWidget {
             children: [
               /// Logo, Title, and Subtitle
               Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-                Image(
+                const Image(
                   image: AssetImage('assets/images/logo/vipericon.png'),
                   height: 200,
                 ),
@@ -111,12 +110,12 @@ class LoginScreen extends StatelessWidget {
                     )),
               ),
               ///Divider
-              Or_signin_with(),
+              const Or_signin_with(),
 
               const SizedBox(height: 32.0),
 
               ///Footer
-              Fb_Google_icon(),
+              const Fb_Google_icon(),
             ],
           ),
         ),

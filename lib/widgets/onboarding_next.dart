@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:vipr_watch_mobile_application/new/application/controllers/onboarding_controller.dart';
+import 'package:vipr_watch_mobile_application/controllers/onboarding_controller.dart';
 
 class OnBoardingNextButton extends StatelessWidget {
   const OnBoardingNextButton({

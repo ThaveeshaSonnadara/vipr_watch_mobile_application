@@ -1,8 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:vipr_watch_mobile_application/new/application/screens/signup/SuccessScreen.dart';
-import 'package:vipr_watch_mobile_application/new/application/screens/login/new/login.dart';
+
+import '../login/login.dart';
+import 'SuccessScreen.dart';
 
 class VerifyEmailPage extends StatelessWidget {
   const VerifyEmailPage({super.key});
@@ -23,11 +24,11 @@ class VerifyEmailPage extends StatelessWidget {
       body: SingleChildScrollView(
         //padding to give default equal space on all sides in all screnns
         child: Padding(
-          padding: EdgeInsets.all(24),
+          padding: const EdgeInsets.all(24),
           child: Column(
             children: [
               ///Image
-              Image(
+              const Image(
                 image: AssetImage('assets/images/logo/ConfirmMail.png'),
                 height: 320,
                 width: 320,
