@@ -42,6 +42,10 @@ dependencies:
   flutter_svg: ^2.0.9
   auto_size_text: ^3.0.0
 
+  #launch phone number indirect
+  url_launcher: ^6.0.6
+
+
 
 
   #utility packages
@@ -56,7 +60,8 @@ dependencies:
 
   #firebase
   firebase_core: ^2.25.4
-
+  firebase_auth: ^4.17.4
+  cloud_firestore: ^4.15.5
 
 dev_dependencies:
   flutter_test:

@@ -3,8 +3,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
-
-import '../screens/login/login.dart';
+import 'package:vipr_watch_mobile_application/screens/login/Login_page.dart';
 import '../screens/onboarding/onboarding.dart';
 
 class AuthenticationRepository extends GetxController {
@@ -23,7 +22,7 @@ class AuthenticationRepository extends GetxController {
     deviceStorage.erase();
     deviceStorage.writeIfNull('isFirstTime', true);
     deviceStorage.read('isFirstTime') != true
-        ? Get.offAll(() => const LoginScreen())
+        ? Get.offAll(() => Login_page(onTap: () {  },))
         : Get.offAll(const OnBoardingScreen());
   }
 
