@@ -45,7 +45,7 @@ dependencies:
   #utility packages
   flutter_native_splash: ^2.3.10
   smooth_page_indicator: ^1.1.0
-  lottie: ^3.0.0
+  lottie: ^2.7.0
   connectivity_plus: ^5.0.1
 
   #image input
@@ -68,6 +68,12 @@ dependencies:
   #firebase
   firebase_core: ^2.25.4
 
+  #API
+  http: ^1.2.0
+
+  #popup dialogs
+  material_dialogs: ^1.1.4
+  animated_snack_bar: ^0.4.0
 
 dev_dependencies:
   flutter_test:
@@ -97,6 +103,7 @@ flutter:
     - assets/images/login/
     - assets/images/onboarding/
     - assets/images/input_image/
+    - assets/images/image_process/
     - assets/videos/
   #   - images/a_dot_ham.jpeg
 

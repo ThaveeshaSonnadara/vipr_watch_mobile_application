@@ -4,9 +4,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/services.dart';
 import 'package:image_cropper/image_cropper.dart';
 import 'package:image_picker/image_picker.dart';
-
-import '../../widgets/emergency_menu.dart';
-import '../signup/SignUp.dart';
+import 'image_process.dart';
 
 class ImageInputScreen extends StatefulWidget {
   const ImageInputScreen({super.key});
@@ -27,6 +25,7 @@ class _ImageInputScreenState extends State<ImageInputScreen> {
       imageTemporary = await cropImage(imageFile: imageTemporary);
       setState(() {
         _image = imageTemporary;
+
       });
     } on PlatformException catch (e) {
       if (kDebugMode) {
@@ -41,6 +40,37 @@ class _ImageInputScreenState extends State<ImageInputScreen> {
     if (croppedImage == null) return null;
     return File(croppedImage.path);
   }
+
+  // void _showDialog() {
+  //   showDialog(
+  //       context: context,
+  //       builder: (contaxt) {
+  //         return CupertinoAlertDialog(
+  //
+  //           title: const Text('Cobra'),
+  //           content: const Text('Accuracy: 91%'),
+  //           actions: [
+  //             MaterialButton(
+  //               onPressed: () {
+  //                 Navigator.pop(context);
+  //               },
+  //               child: const Text('Back'),
+  //             ),
+  //             MaterialButton(
+  //               onPressed: () {
+  //                 Navigator.push(
+  //                   context,
+  //                   MaterialPageRoute(
+  //                     builder: (e) => const SignupPage(),
+  //                   ),
+  //                 );
+  //               },
+  //               child: const Text('Details'),
+  //             )
+  //           ],
+  //         );
+  //       });
+  // }
 
   @override
   Widget build(BuildContext context) {
@@ -123,13 +153,14 @@ class _ImageInputScreenState extends State<ImageInputScreen> {
               const SizedBox(height: 30),
               _image != null
                   ? OutlinedButton(
-                      onPressed: () {
+                      onPressed: () async {
                         Navigator.push(
                           context,
                           MaterialPageRoute(
-                            builder: (e) => const SignupPage(),
+                            builder: (e) => ImageProcessScreen(path: _image!.path),
                           ),
                         );
+                        print(_image!.path);
                       },
                       style: ElevatedButton.styleFrom(
                         side: const BorderSide(

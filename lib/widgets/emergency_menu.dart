@@ -3,7 +3,7 @@ import 'package:flutter_phone_direct_caller/flutter_phone_direct_caller.dart';
 import 'package:flutter_speed_dial/flutter_speed_dial.dart';
 import 'package:url_launcher/url_launcher.dart';
 import '../screens/emergency_contact/contact_animalcontrol.dart';
-import '../screens/signup/SignUp.dart';
+import 'navigation_menu.dart';
 
 class EmergencyMenu extends StatefulWidget {
   const EmergencyMenu({super.key, this.body});
@@ -98,7 +98,7 @@ class _EmergencyMenuState extends State<EmergencyMenu> {
                 Navigator.push(
                   context,
                   MaterialPageRoute(
-                    builder: (e) => const SignupPage(),
+                    builder: (e) => const NavigationMenu(), //map page
                   ),
                 );
               },

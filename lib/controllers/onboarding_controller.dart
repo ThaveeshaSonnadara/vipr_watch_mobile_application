@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
-
-import '../screens/login/login.dart';
+import '../widgets/navigation_menu.dart';
 
 class OnBoardingController extends GetxController {
   static OnBoardingController get instance => Get.find();
@@ -27,7 +26,7 @@ class OnBoardingController extends GetxController {
     if (currentPageIndex.value == 3) {
       final storage = GetStorage();
       storage.write('isFirstTime', false);
-      Get.offAll(const LoginScreen());
+      Get.offAll(const NavigationMenu()); //LoginScreen
     } else {
       int page = currentPageIndex.value + 1;
       pageController.animateToPage(page,
