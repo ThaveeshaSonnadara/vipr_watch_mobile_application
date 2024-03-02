@@ -3,37 +3,24 @@ import 'package:http/http.dart' as http;
 
 class IdentifySnake {
   final snakeSpeciesList = [
-    "Ahaetulla nasuta",
-    "Ahaetulla prasina",
-    "Albino cobra",
-    "Arani",
-    "Buff-striped keel back",
-    "CGR",
-    "Checkered keel back",
-    "Chrysopelea ornata",
-    "Cobra",
-    "Common krait",
-    "Daboia russelii",
-    "Flowery wolf snake",
-    "Forsten's cat snake",
-    "Green pit viper",
+    "Common Krait",
+    "Green Pit Viper",
     "Green vine snake",
     "Hump-nosed viper",
-    "Pipe snake",
-    "Python",
-    "Rat snake",
-    "Russell's viper",
-    "Sri Lanka cat snake",
-    "Trinket snake",
-    "Wolf snake"
+    "Indian Cobra",
+    "Indian Rock Python",
+    "Rat Snake",
+    "Russell's Viper",
+    "Saw-Scaled Viper",
+    "Sri Lanka Cat Snake",
   ];
 
   Future sendImage(String imageFile) async {
     var result = null;
     // Pass the image path to the api endpoint Url
-    var request = http.MultipartRequest('POST', Uri.parse('http://13.50.238.163:8501/predict'));
+    var request = http.MultipartRequest('POST', Uri.parse('http://13.53.168.135:8080/predict'));
 
-    var picture = await http.MultipartFile.fromPath('image', imageFile);
+    var picture = await http.MultipartFile.fromPath('file', imageFile);
 
     request.files.add(picture);
 
@@ -45,7 +32,7 @@ class IdentifySnake {
     } else {
       print(response.reasonPhrase);
     }
-    return result;
+    // return result;
   }
 
   List<Object> getSnakeDetailList(result) {

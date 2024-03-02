@@ -68,6 +68,8 @@ class NavigationController extends GetxController {
     Container(
       color: Colors.blue,
     ),
-    const EmergencyMenu(),
+    Container(
+      color: Colors.green,
+    ),
   ];
 }
