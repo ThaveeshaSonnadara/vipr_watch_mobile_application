@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:vipr_watch_mobile_application/HomeScreen/my_drawer.dart';
+import 'package:vipr_watch_mobile_application/screens/HomeScreen/my_drawer.dart';
 
 class WelcomeScreen extends StatefulWidget {
   const WelcomeScreen({super.key});
@@ -7,13 +7,10 @@ class WelcomeScreen extends StatefulWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-          // backgroundColor: Colors.green,
-          title: const Text("ViprWatch"),
-
-          ),
+        backgroundColor: Colors.green,
+      ),
       body: Container(
         child: const Center(
-          child: Text("ViprWatch"),
         ),
       ),
       drawer: Drawer(
@@ -21,7 +18,7 @@ class WelcomeScreen extends StatefulWidget {
           child: Container(
             child: Column(
               children: [
-                MyHeaderDrawer(),
+                const MyHeaderDrawer(),
                 MyDrawerList(),
               ],
             ),

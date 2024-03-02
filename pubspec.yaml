@@ -41,6 +41,7 @@ dependencies:
   video_player: ^2.2.18
   flutter_svg: ^2.0.9
   auto_size_text: ^3.0.0
+  google_fonts: ^6.1.0
 
 
 
@@ -85,6 +86,12 @@ flutter:
     - assets/images/logo/logo.png
     - assets/images/login/
     - assets/images/onboarding/
+    - assets/images/logo/search.png
+    - assets/pics/thaveesha.jpg
+    - assets/pics/ronath.jpg
+    - assets/pics/isanka.jpg
+    - assets/pics/dinuka.jpg
+    - assets/pics/durangi.jpg
   #   - images/
 
   # An image asset can refer to one or more resolution-specific "variants", see
