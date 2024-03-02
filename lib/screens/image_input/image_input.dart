@@ -86,7 +86,8 @@ class _ImageInputScreenState extends State<ImageInputScreen> {
                       borderRadius: BorderRadius.circular(10.0),
                       child: Image.file(
                         _image!,
-                        width: 250,
+                        // width: 250,
+                        height: 300,
                       ),
                     )
                   : Image.asset(

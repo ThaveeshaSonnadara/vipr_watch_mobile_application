@@ -34,11 +34,110 @@ class _SnakeDetailsTabState extends State<SnakeDetailsTab> {
                   // bottomRight: Radius.circular(20.0)
                 ),
               ),
-              child: const SingleChildScrollView(
-                child: Center(child: Text('tab 1')),
+              child: SingleChildScrollView(
+                child: SizedBox(
+                  width: double.infinity,
+                  child: Column(
+                    mainAxisSize: MainAxisSize.max,
+                    children: [
+                      Padding(
+                        padding: const EdgeInsetsDirectional.fromSTEB(
+                            0.0, 10.0, 0.0, 0.0),
+                        child: Align(
+                          alignment: Alignment.center,
+                          child: Text(
+                            widget.identifiedSnakeDetails[0],
+                            textAlign: TextAlign.justify,
+                            style: Theme.of(context).textTheme.titleLarge!.copyWith(
+                                fontWeight: FontWeight.bold,
+                                decoration: TextDecoration.underline,
+                                fontFamily: 'Poppins',
+                                color: Colors.black,
+                                fontSize: 25),
+                          ),
+                        ),
+                      ),
+                      Padding(
+                        padding: const EdgeInsetsDirectional.fromSTEB(
+                            0.0, 20.0, 0.0, 0.0),
+                        child: Align(
+                          alignment: Alignment.centerLeft,
+                          child: Text('Snake Scientific Name : \n' +
+                                widget.identifiedSnakeDetails[1],
+                            style: Theme.of(context).textTheme.bodyLarge!.copyWith(
+                                fontWeight: FontWeight.w500,
+                                fontFamily: 'Poppins',
+                                color: Colors.black,
+                                fontSize: 18),
+                          ),
+                        ),
+                      ),
+                      Padding(
+                        padding: const EdgeInsetsDirectional.fromSTEB(
+                            0.0, 20.0, 0.0, 0.0),
+                        child: Align(
+                          alignment: Alignment.centerLeft,
+                          child: Text('Snake Sinhala Name : \n' +
+                              widget.identifiedSnakeDetails[2],
+                            style: Theme.of(context).textTheme.bodyLarge!.copyWith(
+                                fontWeight: FontWeight.w500,
+                                fontFamily: 'Poppins',
+                                color: Colors.black,
+                                fontSize: 18),
+                          ),
+                        ),
+                      ),
+                      Padding(
+                        padding: const EdgeInsetsDirectional.fromSTEB(
+                            0.0, 20.0, 0.0, 0.0),
+                        child: Align(
+                          alignment: Alignment.centerLeft,
+                          child: Text('Venomous Type : ' +
+                              widget.identifiedSnakeDetails[3],
+                            style: Theme.of(context).textTheme.bodyLarge!.copyWith(
+                                fontWeight: FontWeight.w500,
+                                fontFamily: 'Poppins',
+                                color: Colors.black,
+                                fontSize: 18),
+                          ),
+                        ),
+                      ),
+                      Padding(
+                        padding: const EdgeInsetsDirectional.fromSTEB(
+                            0.0, 40.0, 0.0, 5.0),
+                        child: Align(
+                          alignment: Alignment.center,
+                          child: Text(
+                            'Snake Details',
+                            style: Theme.of(context).textTheme.titleLarge!.copyWith(
+                                fontWeight: FontWeight.w500,
+                                fontFamily: 'Poppins',
+                                color: Colors.black,
+                                fontSize: 20),
+                          ),
+                        ),
+                      ),
+                      Padding(
+                        padding: const EdgeInsetsDirectional.fromSTEB(
+                            15.0, 20.0, 10.0, 30.0),
+                        child: Text(
+                          widget.identifiedSnakeDetails[4],
+                          textAlign: TextAlign.justify,
+                          style: Theme.of(context).textTheme.bodyLarge!.copyWith(
+                              fontWeight: FontWeight.w500,
+                              fontFamily: 'Poppins',
+                              color: Colors.black,
+                              fontSize: 17),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
               ),
-            ),),
+            ),
+          ),
         ],
-      ),);
+      ),
+    );
   }
 }

@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:vipr_watch_mobile_application/screens/species_details/snake_details.dart';
 import '../../widgets/emergency_menu.dart';
@@ -22,7 +21,11 @@ class _SnakeSpeciesDetailsScreenState extends State<SnakeSpeciesDetailsScreen>
 
   @override
   void initState() {
-    tabController = TabController(length: 2, animationDuration: const Duration(milliseconds: 700), vsync: this,);
+    tabController = TabController(
+      length: 2,
+      animationDuration: const Duration(milliseconds: 700),
+      vsync: this,
+    );
     super.initState();
   }
 
@@ -56,7 +59,7 @@ class _SnakeSpeciesDetailsScreenState extends State<SnakeSpeciesDetailsScreen>
         ),
       ),
       body: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 20),
+        padding: const EdgeInsets.symmetric(horizontal: 14),
         child: SizedBox(
           height: MediaQuery.of(context).size.height,
           child: Column(
@@ -77,6 +80,11 @@ class _SnakeSpeciesDetailsScreenState extends State<SnakeSpeciesDetailsScreen>
                       child: TabBar(
                         indicatorSize: TabBarIndicatorSize.tab,
                         labelColor: Colors.black,
+                        labelStyle: const TextStyle(
+                          fontSize: 18,
+                          fontFamily: 'Poppins',
+                          fontWeight: FontWeight.w500,
+                        ),
                         unselectedLabelColor: Colors.black,
                         indicator: BoxDecoration(
                           borderRadius: BorderRadius.circular(5.0),
@@ -100,8 +108,12 @@ class _SnakeSpeciesDetailsScreenState extends State<SnakeSpeciesDetailsScreen>
                 child: TabBarView(
                   controller: tabController,
                   children: [
-                    SnakeDetailsTab(identifiedSnakeDetails: widget.identifiedSnakeDetails,),
-                    FirstAidDetailsTab(identifiedSnakeDetails: widget.identifiedSnakeDetails,),
+                    SnakeDetailsTab(
+                      identifiedSnakeDetails: widget.identifiedSnakeDetails,
+                    ),
+                    FirstAidDetailsTab(
+                      identifiedSnakeDetails: widget.identifiedSnakeDetails,
+                    ),
                   ],
                 ),
               ),

@@ -19,7 +19,7 @@ class ImageProcessScreen extends StatefulWidget {
 }
 
 class _ImageProcessScreenState extends State<ImageProcessScreen> {
-  List snakeDetails = [];
+  List snakeDetails = ['Indian Cobra', 99];
   late String snakeName;
   late int accuracy;
   List identifiedSnakeDetails = [];
@@ -98,7 +98,7 @@ class _ImageProcessScreenState extends State<ImageProcessScreen> {
   }
 
   Future<void> popUpDetails() async {
-    await getSnakeDetails();
+    // await getSnakeDetails();
     print(snakeDetails);
 
     snakeName = await snakeDetails[0];
@@ -225,7 +225,7 @@ class _ImageProcessScreenState extends State<ImageProcessScreen> {
   Future<void> getIdentifiedSnakeDetails() async {
     QuerySnapshot<Map<String, dynamic>> snap = await FirebaseFirestore.instance
         .collection('Snake details and treatments')
-        .where('Snake name', isEqualTo: snakeName)
+        .where('Snake Name', isEqualTo: snakeName)
         .get();
 
     List<QueryDocumentSnapshot<Map<String, dynamic>>> snakeInfo = snap.docs;
@@ -234,9 +234,9 @@ class _ImageProcessScreenState extends State<ImageProcessScreen> {
         var identifiedDetails = snakeInfo[0].data();
         identifiedSnakeDetails = [
           snakeName,
-          identifiedDetails['Scientific Name'] ?? '',
-          identifiedDetails['Sinhala Name'] ?? '',
-          identifiedDetails['Venom type'] ?? '',
+          identifiedDetails['Snake Scientific Name'] ?? '',
+          identifiedDetails['Snake Sinhala Name'] ?? '',
+          identifiedDetails['Venomous Type'] ?? '',
           identifiedDetails['Details'] ?? '',
           identifiedDetails['Medical Treatments'] ?? '',
         ];
