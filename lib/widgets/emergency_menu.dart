@@ -58,7 +58,7 @@ class _EmergencyMenuState extends State<EmergencyMenu> {
           animatedIcon: AnimatedIcons.menu_close,
           backgroundColor: Colors.green,
           overlayColor: Colors.black,
-          overlayOpacity: 0.4,
+          overlayOpacity: 0.8,
           spacing: 10,
           spaceBetweenChildren: 8,
           children: [

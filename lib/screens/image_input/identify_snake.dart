@@ -18,7 +18,9 @@ class IdentifySnake {
   Future sendImage(String imageFile) async {
     var result = null;
     // Pass the image path to the api endpoint Url
-    var request = http.MultipartRequest('POST', Uri.parse('http://13.53.168.135:8080/predict'));
+    // var request = http.MultipartRequest('POST', Uri.parse('http://13.53.168.135:8080/predict'));
+    var request = http.MultipartRequest(
+        'POST', Uri.parse('http://192.168.1.101:8080/predict'));
 
     var picture = await http.MultipartFile.fromPath('file', imageFile);
 

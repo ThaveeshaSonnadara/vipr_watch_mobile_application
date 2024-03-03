@@ -40,20 +40,51 @@ class _SnakeDetailsTabState extends State<SnakeDetailsTab> {
                   child: Column(
                     mainAxisSize: MainAxisSize.max,
                     children: [
+                      Padding (
+                          padding: const EdgeInsetsDirectional.fromSTEB(
+                              0.0, 5.0, 0.0, 0.0),
+                        child: ClipRRect(
+                          borderRadius: BorderRadius.circular(15.0),
+                          child: Image.network(
+                            widget.identifiedSnakeDetails[6],
+                            width: 300,
+                            height: 200,
+                            fit: BoxFit.cover,
+                            loadingBuilder: (BuildContext context, Widget child, ImageChunkEvent? loadingProgress) {
+                              if (loadingProgress == null) {
+                                return child;
+                              }
+                              return Center(
+                                child: CircularProgressIndicator(
+                                  color: Colors.green,
+                                  strokeWidth: 3.0,
+                                  value: loadingProgress.expectedTotalBytes != null ?
+                                  loadingProgress.cumulativeBytesLoaded /
+                                      loadingProgress.expectedTotalBytes!
+                                      : null,
+                                ),
+                              );
+                            }
+                          ),
+                        ),
+                      ),
                       Padding(
                         padding: const EdgeInsetsDirectional.fromSTEB(
-                            0.0, 10.0, 0.0, 0.0),
+                            0.0, 20.0, 0.0, 0.0),
                         child: Align(
                           alignment: Alignment.center,
                           child: Text(
                             widget.identifiedSnakeDetails[0],
                             textAlign: TextAlign.justify,
-                            style: Theme.of(context).textTheme.titleLarge!.copyWith(
-                                fontWeight: FontWeight.bold,
-                                decoration: TextDecoration.underline,
-                                fontFamily: 'Poppins',
-                                color: Colors.black,
-                                fontSize: 25),
+                            style: Theme.of(context)
+                                .textTheme
+                                .titleLarge!
+                                .copyWith(
+                                    fontWeight: FontWeight.bold,
+                                    decoration: TextDecoration.underline,
+                                    fontFamily: 'Poppins',
+                                    color: Colors.black,
+                                    fontSize: 25),
                           ),
                         ),
                       ),
@@ -62,13 +93,16 @@ class _SnakeDetailsTabState extends State<SnakeDetailsTab> {
                             0.0, 20.0, 0.0, 0.0),
                         child: Align(
                           alignment: Alignment.centerLeft,
-                          child: Text('Snake Scientific Name : \n' +
-                                widget.identifiedSnakeDetails[1],
-                            style: Theme.of(context).textTheme.bodyLarge!.copyWith(
-                                fontWeight: FontWeight.w500,
-                                fontFamily: 'Poppins',
-                                color: Colors.black,
-                                fontSize: 18),
+                          child: Text(
+                            'Snake Scientific Name : \n${widget.identifiedSnakeDetails[1]}',
+                            style: Theme.of(context)
+                                .textTheme
+                                .bodyLarge!
+                                .copyWith(
+                                    fontWeight: FontWeight.w500,
+                                    fontFamily: 'Poppins',
+                                    color: Colors.black,
+                                    fontSize: 18),
                           ),
                         ),
                       ),
@@ -77,13 +111,16 @@ class _SnakeDetailsTabState extends State<SnakeDetailsTab> {
                             0.0, 20.0, 0.0, 0.0),
                         child: Align(
                           alignment: Alignment.centerLeft,
-                          child: Text('Snake Sinhala Name : \n' +
-                              widget.identifiedSnakeDetails[2],
-                            style: Theme.of(context).textTheme.bodyLarge!.copyWith(
-                                fontWeight: FontWeight.w500,
-                                fontFamily: 'Poppins',
-                                color: Colors.black,
-                                fontSize: 18),
+                          child: Text(
+                            'Snake Sinhala Name : \n${widget.identifiedSnakeDetails[2]}',
+                            style: Theme.of(context)
+                                .textTheme
+                                .bodyLarge!
+                                .copyWith(
+                                    fontWeight: FontWeight.w500,
+                                    fontFamily: 'Poppins',
+                                    color: Colors.black,
+                                    fontSize: 18),
                           ),
                         ),
                       ),
@@ -92,13 +129,16 @@ class _SnakeDetailsTabState extends State<SnakeDetailsTab> {
                             0.0, 20.0, 0.0, 0.0),
                         child: Align(
                           alignment: Alignment.centerLeft,
-                          child: Text('Venomous Type : ' +
-                              widget.identifiedSnakeDetails[3],
-                            style: Theme.of(context).textTheme.bodyLarge!.copyWith(
-                                fontWeight: FontWeight.w500,
-                                fontFamily: 'Poppins',
-                                color: Colors.black,
-                                fontSize: 18),
+                          child: Text(
+                            'Venomous Type : ${widget.identifiedSnakeDetails[3]}',
+                            style: Theme.of(context)
+                                .textTheme
+                                .bodyLarge!
+                                .copyWith(
+                                    fontWeight: FontWeight.w500,
+                                    fontFamily: 'Poppins',
+                                    color: Colors.black,
+                                    fontSize: 18),
                           ),
                         ),
                       ),
@@ -109,11 +149,14 @@ class _SnakeDetailsTabState extends State<SnakeDetailsTab> {
                           alignment: Alignment.center,
                           child: Text(
                             'Snake Details',
-                            style: Theme.of(context).textTheme.titleLarge!.copyWith(
-                                fontWeight: FontWeight.w500,
-                                fontFamily: 'Poppins',
-                                color: Colors.black,
-                                fontSize: 20),
+                            style: Theme.of(context)
+                                .textTheme
+                                .titleLarge!
+                                .copyWith(
+                                    fontWeight: FontWeight.w500,
+                                    fontFamily: 'Poppins',
+                                    color: Colors.black,
+                                    fontSize: 20),
                           ),
                         ),
                       ),
@@ -123,11 +166,14 @@ class _SnakeDetailsTabState extends State<SnakeDetailsTab> {
                         child: Text(
                           widget.identifiedSnakeDetails[4],
                           textAlign: TextAlign.justify,
-                          style: Theme.of(context).textTheme.bodyLarge!.copyWith(
-                              fontWeight: FontWeight.w500,
-                              fontFamily: 'Poppins',
-                              color: Colors.black,
-                              fontSize: 17),
+                          style: Theme.of(context)
+                              .textTheme
+                              .bodyLarge!
+                              .copyWith(
+                                  fontWeight: FontWeight.w500,
+                                  fontFamily: 'Poppins',
+                                  color: Colors.black,
+                                  fontSize: 17),
                         ),
                       ),
                     ],
