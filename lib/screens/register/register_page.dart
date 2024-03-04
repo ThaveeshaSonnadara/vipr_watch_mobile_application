@@ -1,6 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:vipr_watch_mobile_application/screens/login/Login_page.dart';
 import 'package:vipr_watch_mobile_application/utills/helper_function.dart';
 import 'package:vipr_watch_mobile_application/widgets/MyTest_Field.dart';
 import 'package:vipr_watch_mobile_application/widgets/Mybutton.dart';
@@ -55,6 +56,15 @@ class _RegisterPageState extends State<RegisterPage> {
 
         ///pop loading circle
         if (context.mounted) Navigator.pop(context);
+
+        /// Navigate to login page after successful registration
+        Navigator.pushReplacement(
+          context,
+          MaterialPageRoute(
+            builder: (context) => Login_page(onTap: () {  },),
+          ),
+        );
+
       } on FirebaseAuthException catch (e) {
         ///pop loading circle
         Navigator.pop(context);

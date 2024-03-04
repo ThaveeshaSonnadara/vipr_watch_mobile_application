@@ -1,29 +1,48 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
 
-class snakeCatchers extends StatelessWidget {
-  const snakeCatchers({super.key});
+class Contact {
+  final String name;
+  final String phoneNumber;
+
+  Contact({required this.name, required this.phoneNumber});
+}
+
+class SnakeCatchers extends StatelessWidget {
+  final List<Contact> contacts = [
+    Contact(name: 'Lebron james from Colombo', phoneNumber: '0719523132'),
+    Contact(name: 'Anthony Davis from Matara', phoneNumber: '0710986217'),
+    Contact(name: 'Kyrie irving from Jaffna', phoneNumber: '0710741680'),
+    Contact(name: 'kobe brayant from Trinco ', phoneNumber: '0770806862'),
+    Contact(name: 'Stehen Curry from Kandy', phoneNumber: '0703534142'),
+  ];
 
   @override
   Widget build(BuildContext context) {
-    return  Scaffold(
-      backgroundColor: Colors.black,
+    return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.black,
+        title: Text(
+          'Snake Catchers Contact Details',
+          style: TextStyle(color: Colors.green),
+        ),
         centerTitle: true,
-        title: const Text('Contact Snake Catchers', style: TextStyle(color: Colors.green)),
       ),
-      body:Center(child:buildButton()),
+      backgroundColor: Colors.black,
+      body: ListView.builder(
+        itemCount: contacts.length,
+        itemBuilder: (context, index) {
+          return buildButton(context, contacts[index]);
+        },
+      ),
     );
   }
 
-  buildButton() {
-    final number1 = '0719523132';
-
+  Widget buildButton(BuildContext context, Contact contact) {
     return ListTile(
-      title: Text('LBJ'),
-      subtitle: Text(number1),
+      title: Text(contact.name, style: TextStyle(color: Colors.white),),
+      subtitle: Text(contact.phoneNumber),
+      subtitleTextStyle: TextStyle(color: Colors.green),
       trailing: TextButton(
         style: TextButton.styleFrom(
           padding: EdgeInsets.symmetric(horizontal: 32, vertical: 12),
@@ -33,7 +52,7 @@ class snakeCatchers extends StatelessWidget {
         ),
         child: Text('Call'),
         onPressed: () async {
-          ('tel:$number1');
+          launch('tel:${contact.phoneNumber}');
         },
       ),
     );
