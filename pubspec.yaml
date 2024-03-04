@@ -55,8 +55,15 @@ dependencies:
   get_storage: ^2.1.1
 
   #firebase
-  firebase_core: ^2.25.4
+  firebase_core: 2.24.2
 
+  #google maps packages
+  google_maps_flutter: ^2.5.3
+  geolocator: ^11.0.0
+  flutter_polyline_points: ^2.0.0
+
+  #api managing packages
+  http: ^1.2.1
 
 dev_dependencies:
   flutter_test:
