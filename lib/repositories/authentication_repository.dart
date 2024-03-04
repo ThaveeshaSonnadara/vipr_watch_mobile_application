@@ -1,6 +1,7 @@
 import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
+import 'package:vipr_watch_mobile_application/screens/hospital_location/map_screen.dart';
 
 import '../screens/hospital_location/nearby_hospitals_page.dart';
 

@@ -3,10 +3,13 @@ import 'dart:convert';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:geolocator/geolocator.dart';
+import 'package:get/get.dart';
+import 'package:get/get_utils/get_utils.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:http/http.dart' as http;
 import 'package:vipr_watch_mobile_application/models/nearby_response.dart';
 import 'package:vipr_watch_mobile_application/screens/hospital_location/map_screen.dart';
+import 'package:vipr_watch_mobile_application/screens/login/login.dart';
 
 class NearbyPlacesPage extends StatefulWidget {
   const NearbyPlacesPage({super.key});
@@ -98,16 +101,27 @@ class _NearbyPlacesPageState extends State<NearbyPlacesPage> {
 
   Widget nearbyPlacesWidget(Results results) {
     return Card(
-      elevation: 1.0,
+      color: Colors.black54,
       child: ListTile(
         title: Text(
           results.name!,
-          style: const TextStyle(
-            color: Colors.black,
-          ),
+          style: const TextStyle(color: Colors.white),
         ),
-        subtitle: Text(results.geometry?.location! as String),
-        trailing: const Icon(Icons.arrow_forward_ios),
+        subtitle: Text(
+          results.geometry?.location! as String,
+          style: const TextStyle(color: Colors.white70),
+        ),
+        trailing: IconButton(
+          highlightColor: Colors.white54,
+          icon: const Icon(
+            color: Colors.white70,
+            Icons.chevron_right,
+            size: 30,
+          ),
+          onPressed: () {
+            openMapPage(results);
+          },
+        ),
         leading: Icon(
           results.photos?[0] as IconData?,
           size: 30,
@@ -129,14 +143,51 @@ class _NearbyPlacesPageState extends State<NearbyPlacesPage> {
         title: const Text("Nearby Hospitals"),
         centerTitle: true,
       ),
-      body: SingleChildScrollView(
-        child: ListView(
-          children: [
-            if (nearbyPlacesResponse.results != null)
-              for (int i = 0; i < nearbyPlacesResponse.results!.length; i++)
-                nearbyPlacesWidget(nearbyPlacesResponse.results![i])
-          ],
-        ),
+      body: ListView(
+        scrollDirection: Axis.vertical,
+        padding: const EdgeInsets.only(left: 3.0, right: 3.0),
+        children: [
+          if (nearbyPlacesResponse.results != null)
+            for (int i = 0; i < nearbyPlacesResponse.results!.length; i++)
+              nearbyPlacesWidget(nearbyPlacesResponse.results![i]),
+          if (nearbyPlacesResponse.results == null)
+            const Padding(
+              padding: EdgeInsets.all(8.0),
+              child: Center(
+                child: Text("No nearby places found"),
+              ),
+            )
+
+          // for (int i = 0; i < 4; i++)
+          //   Card(
+          //     color: Colors.black54,
+          //     child: ListTile(
+          //       title: const Text(
+          //         "Hospital Name",
+          //         style: TextStyle(color: Colors.white),
+          //       ),
+          //       subtitle: const Text(
+          //         "Address",
+          //         style: TextStyle(color: Colors.white70),
+          //       ),
+          //       trailing: IconButton(
+          //         highlightColor: Colors.white54,
+          //         icon: const Icon(
+          //           color: Colors.white70,
+          //           Icons.chevron_right,
+          //           size: 30,
+          //         ),
+          //         onPressed: () {},
+          //       ),
+          //       leading: const Icon(
+          //         Icons.image_outlined,
+          //         size: 30,
+          //         color: Colors.white70,
+          //       ),
+          //       onTap: () {},
+          //     ),
+          //   )
+        ],
       ),
     );
   }
