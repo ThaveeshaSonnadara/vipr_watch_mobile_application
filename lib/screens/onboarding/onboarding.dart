@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:vipr_watch_mobile_application/screens/onboarding/image_strings.dart';
 import 'package:vipr_watch_mobile_application/screens/onboarding/text_strings.dart';
-
 import '../../controllers/onboarding_controller.dart';
 import '../../widgets/onboarding_dot_navigation.dart';
 import '../../widgets/onboarding_next.dart';

@@ -5,7 +5,6 @@ import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:vipr_watch_mobile_application/firebase_options.dart';
 import 'package:vipr_watch_mobile_application/repositories/authentication_repository.dart';
-
 import 'app.dart';
 
 Future<void> main() async {
