@@ -7,6 +7,7 @@ import 'navigation_menu.dart';
 
 class EmergencyMenu extends StatefulWidget {
   const EmergencyMenu({super.key, this.body});
+
   final Widget? body;
 
   @override
@@ -18,45 +19,46 @@ class _EmergencyMenuState extends State<EmergencyMenu> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Column(
-        children: [
-          Flexible(
-              flex: 8,
-              child: Container(
-                padding: const EdgeInsets.symmetric(
-                  vertical: 0,
-                  horizontal: 40.0,
-                ),
-                child: Center(
-                    child: RichText(
-                  textAlign: TextAlign.center,
-                  text: const TextSpan(children: [
-                    TextSpan(
-                        text: 'Welcome\n\n',
-                        style: TextStyle(
-                          fontSize: 55.0,
-                          color: Colors.green,
-                          fontWeight: FontWeight.w600,
-                        )),
-                    TextSpan(
-                        text: '\n\n\nViprWatch\n\n\n',
-                        style: TextStyle(
-                          fontSize: 40.0,
-                          color: Colors.green,
-                          fontWeight: FontWeight.w600,
-                        )),
-                  ]),
-                )),
-              )),
-        ],
-      ),
+    // return Scaffold(
+      //   body: Column(
+      //     children: [
+      //       Flexible(
+      //           flex: 8,
+      //           child: Container(
+      //             padding: const EdgeInsets.symmetric(
+      //               vertical: 0,
+      //               horizontal: 40.0,
+      //             ),
+      //             child: Center(
+      //                 child: RichText(
+      //               textAlign: TextAlign.center,
+      //               text: const TextSpan(children: [
+      //                 TextSpan(
+      //                     text: 'Welcome\n\n',
+      //                     style: TextStyle(
+      //                       fontSize: 55.0,
+      //                       color: Colors.green,
+      //                       fontWeight: FontWeight.w600,
+      //                     )),
+      //                 TextSpan(
+      //                     text: '\n\n\nViprWatch\n\n\n',
+      //                     style: TextStyle(
+      //                       fontSize: 40.0,
+      //                       color: Colors.green,
+      //                       fontWeight: FontWeight.w600,
+      //                     )),
+      //               ]),
+      //             )),
+      //           )),
+      //     ],
+      //   ),
       // backgroundColor: Colors.black,
-      floatingActionButton: SpeedDial(
+      // floatingActionButton: SpeedDial(
+    return SpeedDial(
           animatedIcon: AnimatedIcons.menu_close,
           backgroundColor: Colors.green,
-          overlayColor: Colors.green,
-          overlayOpacity: 0.4,
+          overlayColor: Colors.black,
+          overlayOpacity: 0.8,
           spacing: 10,
           spaceBetweenChildren: 8,
           children: [
@@ -129,8 +131,9 @@ class _EmergencyMenuState extends State<EmergencyMenu> {
               },
               // onTap: () => showToast('......'),
             )
-          ]),
+          ],
     );
+    // );
     //
     // Future showToast(String message) async {
     //   await Fluttertoast.cancel();

@@ -25,7 +25,6 @@ class _ImageInputScreenState extends State<ImageInputScreen> {
       imageTemporary = await cropImage(imageFile: imageTemporary);
       setState(() {
         _image = imageTemporary;
-
       });
     } on PlatformException catch (e) {
       if (kDebugMode) {
@@ -83,10 +82,11 @@ class _ImageInputScreenState extends State<ImageInputScreen> {
               const Spacer(),
               _image != null
                   ? ClipRRect(
-                      borderRadius: BorderRadius.circular(10.0),
+                      borderRadius: BorderRadius.circular(8.0),
                       child: Image.file(
                         _image!,
-                        width: 250,
+                        // width: 250,
+                        height: 200,
                       ),
                     )
                   : Image.asset(
@@ -157,7 +157,8 @@ class _ImageInputScreenState extends State<ImageInputScreen> {
                         Navigator.push(
                           context,
                           MaterialPageRoute(
-                            builder: (e) => ImageProcessScreen(path: _image!.path),
+                            builder: (e) =>
+                                ImageProcessScreen(path: _image!.path),
                           ),
                         );
                         print(_image!.path);
