@@ -1,10 +1,8 @@
 import 'dart:io';
-
 import 'package:flutter/material.dart';
 import 'package:vipr_watch_mobile_application/screens/HomeScreen/SearchSnake.dart';
 import 'AboutUs.dart';
 import 'LogOut.dart';
-import 'Profile.dart';
 
 class Home extends StatelessWidget{
   const Home({super.key});
@@ -15,11 +13,11 @@ class Home extends StatelessWidget{
       appBar: AppBar(
         backgroundColor: Colors.green[800],
         actions: [
-          // Add exit button to actions list
+          //  exit button
           IconButton(
             icon: Icon(Icons.exit_to_app, color: Colors.black), // Use exit icon and white color
             onPressed: () {
-              // Handle exit action
+              //  exit action
               showDialog(
                 context: context,
                 builder: (context) => AlertDialog(
@@ -54,17 +52,6 @@ class Home extends StatelessWidget{
                         style: TextStyle(fontSize: 35,fontWeight: FontWeight.bold),
                   )
                 ),
-              ),
-              ListTile(
-                leading: Icon(Icons.person),
-                title: Text(
-                  'Profile',
-                  style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold),
-                ),
-                onTap: (){
-                  Navigator.of(context).push(
-                      MaterialPageRoute(builder:(context)=>Profile()));
-                },
               ),
 
         ListTile(
