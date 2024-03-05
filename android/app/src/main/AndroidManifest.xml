@@ -1,6 +1,11 @@
 <manifest xmlns:tools="http://schemas.android.com/tools"
     xmlns:android="http://schemas.android.com/apk/res/android"
-    android:versionCode="TODO">
+    android:versionCode="TODO"
+    android:versionName="TODO">
+
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
+
     <application
         android:label="ViprWatch"
         android:name="${applicationName}"
@@ -36,5 +41,7 @@
         <meta-data
             android:name="flutterEmbedding"
             android:value="2" />
+        <meta-data android:name="com.google.android.geo.API_KEY"
+            android:value="YOUR KEY HERE"/>
     </application>
 </manifest>
