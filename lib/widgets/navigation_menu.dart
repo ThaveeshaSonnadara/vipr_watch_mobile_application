@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:icons_plus/icons_plus.dart';
 import '../screens/image_input/image_input.dart';
-import 'emergency_menu.dart';
 
 class NavigationMenu extends StatelessWidget {
   const NavigationMenu({super.key});
@@ -44,10 +43,10 @@ class NavigationMenu extends StatelessWidget {
                       Icon(Iconsax.search_favorite, color: Colors.black),
                   icon: Icon(Iconsax.search_favorite, color: Colors.green),
                   label: 'Search'),
-              NavigationDestination(
-                  selectedIcon: Icon(Iconsax.user, color: Colors.black),
-                  icon: Icon(Iconsax.user, color: Colors.green),
-                  label: 'Profile'),
+              // NavigationDestination(
+              //     selectedIcon: Icon(Iconsax.user, color: Colors.black),
+              //     icon: Icon(Iconsax.user, color: Colors.green),
+              //     label: 'Profile'),
             ],
           ),
         ),
@@ -68,6 +67,8 @@ class NavigationController extends GetxController {
     Container(
       color: Colors.blue,
     ),
-    const EmergencyMenu(),
+    // Container(
+    //   color: Colors.green,
+    // ),
   ];
 }

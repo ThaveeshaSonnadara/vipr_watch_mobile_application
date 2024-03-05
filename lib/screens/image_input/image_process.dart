@@ -1,9 +1,12 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:internet_connection_checker/internet_connection_checker.dart';
 import 'package:lottie/lottie.dart';
 import 'package:animated_snack_bar/animated_snack_bar.dart';
 import 'package:material_dialogs/widgets/buttons/icon_button.dart';
 import 'package:material_dialogs/widgets/buttons/icon_outline_button.dart';
 import '../../widgets/navigation_menu.dart';
+import '../species_details/species_details.dart';
 import 'identify_snake.dart';
 import 'package:material_dialogs/dialogs.dart';
 
@@ -18,8 +21,9 @@ class ImageProcessScreen extends StatefulWidget {
 
 class _ImageProcessScreenState extends State<ImageProcessScreen> {
   List snakeDetails = [];
-  late String snakeName = 'Buff-striped keel back';
-  late int accuracy = 90;
+  late String snakeName;
+  late int accuracy;
+  List identifiedSnakeDetails = [];
 
   @override
   void initState() {
@@ -33,6 +37,23 @@ class _ImageProcessScreenState extends State<ImageProcessScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        backgroundColor: Colors.transparent,
+        elevation: 0,
+        leading: IconButton(
+          icon: const Icon(
+            Icons.arrow_back,
+            color: Colors.green,
+          ),
+          onPressed: () {
+            Navigator.push(
+                context,
+                MaterialPageRoute(
+                    builder: (context) =>
+                        const NavigationMenu())); // Implement the back button functionality
+          },
+        ),
+      ),
       backgroundColor: Colors.black,
       body: SafeArea(
         child: Container(
@@ -45,7 +66,7 @@ class _ImageProcessScreenState extends State<ImageProcessScreen> {
             mainAxisSize: MainAxisSize.max,
             children: [
               const Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(0.0, 340.0, 0.0, 0.0),
+                padding: EdgeInsetsDirectional.fromSTEB(0.0, 300.0, 0.0, 0.0),
                 child: CircularProgressIndicator(
                   color: Colors.green,
                   strokeWidth: 6.0,
@@ -53,7 +74,7 @@ class _ImageProcessScreenState extends State<ImageProcessScreen> {
               ),
               Padding(
                   padding:
-                      const EdgeInsetsDirectional.fromSTEB(0.0, 60.0, 0.0, 0.0),
+                      const EdgeInsetsDirectional.fromSTEB(0.0, 50.0, 0.0, 0.0),
                   child: Text(
                     'Processing...',
                     style: Theme.of(context).textTheme.titleLarge!.copyWith(
@@ -71,32 +92,45 @@ class _ImageProcessScreenState extends State<ImageProcessScreen> {
 
   getSnakeDetails() async {
     try {
-      final String imagePath = widget.path;
-      snakeDetails = await IdentifySnake().sendImage(imagePath);
-      print(imagePath);
+      final hasInternet = await InternetConnectionChecker().hasConnection;
+      if (hasInternet) {
+        final String imagePath = widget.path;
+        snakeDetails = await IdentifySnake().sendImage(imagePath);
+        print(imagePath);
+      }
+      else {
+        errorPopUp();
+      }
     } catch (e) {
       accuracy = 0;
     }
   }
 
   Future<void> popUpDetails() async {
-    // await getSnakeDetails();
+    await getSnakeDetails();
+    print(snakeDetails);
 
-    // snakeName = await snakeDetails[0];
-    // accuracy = await snakeDetails[1];
-
-    if (accuracy > 70) {
-      AnimatedSnackBar.material(
-        'Result Found!',
-        type: AnimatedSnackBarType.success,)
-        .show(context);
-      snakeDetailsPopUp(snakeName, accuracy);
+    if (snakeDetails.isEmpty) {  // Not to show the processing long time
+      errorPopUp();
     } else {
-      AnimatedSnackBar.material(
-        'Result not Found!',
-        type: AnimatedSnackBarType.error,)
-          .show(context);
-      failIdentifyPopUp();
+      snakeName = await snakeDetails[0];
+      accuracy = await snakeDetails[1];
+
+      if (accuracy > 70) {
+        await getIdentifiedSnakeDetails();
+        print(identifiedSnakeDetails);
+        AnimatedSnackBar.material(
+          'Result Found!',
+          type: AnimatedSnackBarType.success,
+        ).show(context);
+        snakeDetailsPopUp(snakeName, accuracy);
+      } else {
+        AnimatedSnackBar.material(
+          'Result not Found!',
+          type: AnimatedSnackBarType.error,
+        ).show(context);
+        failIdentifyPopUp();
+      }
     }
   }
 
@@ -113,10 +147,10 @@ class _ImageProcessScreenState extends State<ImageProcessScreen> {
         color: Colors.green.shade100,
         msgAlign: TextAlign.center,
         titleStyle: Theme.of(context).textTheme.titleLarge!.copyWith(
-            fontWeight: FontWeight.w500,
+            fontWeight: FontWeight.w600,
             fontFamily: 'Poppins',
             color: Colors.black,
-            fontSize: 28),
+            fontSize: 26),
         msgStyle: Theme.of(context).textTheme.titleLarge!.copyWith(
             fontWeight: FontWeight.w500,
             fontFamily: 'Poppins',
@@ -141,12 +175,19 @@ class _ImageProcessScreenState extends State<ImageProcessScreen> {
           ),
           IconsButton(
             onPressed: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (e) => const NavigationMenu(), //Snake details
-                ),
-              );
+              if (identifiedSnakeDetails.length > 5) {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (e) =>
+                        SnakeSpeciesDetailsScreen(
+                          identifiedSnakeDetails: identifiedSnakeDetails,
+                        ), //Snake details
+                  ),
+                );
+              } else {
+                errorPopUp();
+              }
             },
             text: 'Yes',
             color: Colors.green,
@@ -164,9 +205,9 @@ class _ImageProcessScreenState extends State<ImageProcessScreen> {
         msg: 'Can not identify type of the Snake !',
         title: 'Identification Failed',
         lottieBuilder: Lottie.asset(
-      'assets/images/image_process/warning.json',
-      fit: BoxFit.contain,
-    ),
+          'assets/images/image_process/warning.json',
+          fit: BoxFit.contain,
+        ),
         titleAlign: TextAlign.center,
         color: Colors.green.shade100,
         msgAlign: TextAlign.center,
@@ -199,4 +240,84 @@ class _ImageProcessScreenState extends State<ImageProcessScreen> {
           ),
         ]);
   }
+
+  void errorPopUp() async {
+    final hasInternet = await InternetConnectionChecker().hasConnection;
+    late String msg;
+    late String title;
+    late String imgPath;
+    if (hasInternet) {
+      msg = 'An error occurred  on the system !';
+      title = 'System Error';
+      imgPath = 'assets/images/image_process/warning.json';
+    } else {
+      msg = 'Your internet connection is unstable !';
+      title = 'Network Connection Failed';
+      imgPath = 'assets/images/image_process/network error.json';
+    }
+    await Dialogs.materialDialog(
+        context: context,
+        msg: msg,
+        title: title,
+        lottieBuilder: Lottie.asset(
+          imgPath,
+          fit: BoxFit.contain,
+        ),
+        titleAlign: TextAlign.center,
+        color: Colors.green.shade100,
+        msgAlign: TextAlign.center,
+        titleStyle: Theme.of(context).textTheme.titleLarge!.copyWith(
+            fontWeight: FontWeight.w500,
+            fontFamily: 'Poppins',
+            color: Colors.red,
+            fontSize: 26),
+        msgStyle: Theme.of(context).textTheme.titleLarge!.copyWith(
+            fontWeight: FontWeight.w500,
+            fontFamily: 'Poppins',
+            color: Colors.black,
+            fontSize: 16),
+        actions: [
+          IconsOutlineButton(
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (e) => const NavigationMenu(),
+                ),
+              );
+            },
+            text: 'Cancel',
+            color: Colors.white,
+            iconData: Icons.cancel_rounded,
+            textStyle: const TextStyle(
+                color: Colors.black, fontWeight: FontWeight.w400, fontSize: 14),
+            iconColor: Colors.black,
+          ),
+        ]);
+  }
+
+// get the details of the identified snake from the data base.
+
+Future<void> getIdentifiedSnakeDetails() async {
+  QuerySnapshot<Map<String, dynamic>> snap = await FirebaseFirestore.instance
+      .collection('Snake details and treatments')
+      .where('Snake Name', isEqualTo: snakeName)
+      .get();
+
+  List<QueryDocumentSnapshot<Map<String, dynamic>>> snakeInfo = snap.docs;
+  if (snakeInfo.isNotEmpty) {
+    setState(() {
+      var identifiedDetails = snakeInfo[0].data();
+      identifiedSnakeDetails = [
+        snakeName,
+        identifiedDetails['Snake Scientific Name'] ?? 'on data',
+        identifiedDetails['Snake Sinhala Name'] ?? 'on data',
+        identifiedDetails['Venomous Type'] ?? 'on data',
+        identifiedDetails['Details'] ?? 'on data',
+        identifiedDetails['Medical Treatments'] ?? 'on data',
+        identifiedDetails['img_url'] ?? 'https://imageresizer.furnituredealer.net/img/remote/images.furnituredealer.net/img/commonimages%2Fitem-placeholder.jpg?width=480&scale=both&trim.threshold=80&trim.percentpadding=15',
+      ];
+    });
+  }
+}
 }
