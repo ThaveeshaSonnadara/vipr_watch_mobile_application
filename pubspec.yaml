@@ -80,6 +80,11 @@ dependencies:
   #network connection
   internet_connection_checker: ^1.0.0+1
 
+  #google maps packages
+  geolocator: ^11.0.0
+  google_maps_flutter: ^2.5.3
+  flutter_polyline_points: ^2.0.0
+
 dev_dependencies:
   flutter_test:
     sdk: flutter
