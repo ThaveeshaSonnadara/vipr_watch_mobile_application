@@ -175,7 +175,7 @@ class _ImageProcessScreenState extends State<ImageProcessScreen> {
           ),
           IconsButton(
             onPressed: () {
-              if (identifiedSnakeDetails.length == 7) {
+              if (identifiedSnakeDetails.length > 5) {
                 Navigator.push(
                   context,
                   MaterialPageRoute(
@@ -245,19 +245,22 @@ class _ImageProcessScreenState extends State<ImageProcessScreen> {
     final hasInternet = await InternetConnectionChecker().hasConnection;
     late String msg;
     late String title;
+    late String imgPath;
     if (hasInternet) {
       msg = 'An error occurred  on the system !';
       title = 'System Error';
+      imgPath = 'assets/images/image_process/warning.json';
     } else {
       msg = 'Your internet connection is unstable !';
-    title = 'Network Connection Failed';
+      title = 'Network Connection Failed';
+      imgPath = 'assets/images/image_process/network error.json';
     }
     await Dialogs.materialDialog(
         context: context,
         msg: msg,
         title: title,
         lottieBuilder: Lottie.asset(
-          'assets/images/image_process/warning.json',
+          imgPath,
           fit: BoxFit.contain,
         ),
         titleAlign: TextAlign.center,
@@ -312,7 +315,7 @@ Future<void> getIdentifiedSnakeDetails() async {
         identifiedDetails['Venomous Type'] ?? 'on data',
         identifiedDetails['Details'] ?? 'on data',
         identifiedDetails['Medical Treatments'] ?? 'on data',
-        identifiedDetails['img_url'],
+        identifiedDetails['img_url'] ?? 'https://imageresizer.furnituredealer.net/img/remote/images.furnituredealer.net/img/commonimages%2Fitem-placeholder.jpg?width=480&scale=both&trim.threshold=80&trim.percentpadding=15',
       ];
     });
   }

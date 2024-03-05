@@ -42,7 +42,7 @@ class _SnakeDetailsTabState extends State<SnakeDetailsTab> {
                     children: [
                       Padding (
                           padding: const EdgeInsetsDirectional.fromSTEB(
-                              0.0, 5.0, 0.0, 0.0),
+                              0.0, 0.0, 0.0, 0.0),
                         child: ClipRRect(
                           borderRadius: BorderRadius.circular(15.0),
                           child: Image.network(

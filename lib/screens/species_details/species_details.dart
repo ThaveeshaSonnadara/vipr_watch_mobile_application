@@ -49,7 +49,6 @@ class _SnakeSpeciesDetailsScreenState extends State<SnakeSpeciesDetailsScreen>
             color: Colors.green,
           ),
           onPressed: () {
-            print(widget.identifiedSnakeDetails);
             Navigator.push(
                 context,
                 MaterialPageRoute(

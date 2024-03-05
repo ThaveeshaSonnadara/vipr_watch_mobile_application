@@ -5,13 +5,13 @@ class IdentifySnake {
   final snakeSpeciesList = [
     "Common Krait",
     "Green Pit Viper",
-    "Green vine snake",
+    "Green Vine Snake",
     "Hump-nosed viper",
     "Indian Cobra",
     "Indian Rock Python",
     "Rat Snake",
     "Russell's Viper",
-    "Saw-Scaled Viper",
+    "Saw-scaled Viper",
     "Sri Lanka Cat Snake",
   ];
 
