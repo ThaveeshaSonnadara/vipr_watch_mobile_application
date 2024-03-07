@@ -18,12 +18,8 @@ class OnBoardingController extends GetxController {
   }
 
   void skipPage() {
-    // currentPageIndex.value = 3;
-    // pageController.jumpToPage(3);
-
-    final storage = GetStorage();
-    storage.write('isFirstTime', false);
-    Get.offAll(const LoginOrRegister());
+    currentPageIndex.value = 3;
+    pageController.jumpToPage(3);
   }
 
   void nextPage() {
