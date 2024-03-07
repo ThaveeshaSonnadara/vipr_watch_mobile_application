@@ -20,7 +20,7 @@ class IdentifySnake {
     // Pass the image path to the api endpoint Url
     // var request = http.MultipartRequest('POST', Uri.parse('http://13.53.168.135:8080/predict'));
     var request = http.MultipartRequest(
-        'POST', Uri.parse('http://54.221.155.78:8080/predict'));
+        'POST', Uri.parse('http://52.86.117.193:8080/predict'));
 
     var picture = await http.MultipartFile.fromPath('file', imageFile);
 
