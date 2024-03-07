@@ -2,6 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:vipr_watch_mobile_application/screens/species_details/species_details.dart';
 
+
 class SearchPage extends StatefulWidget {
   const SearchPage({super.key});
 
@@ -22,6 +23,7 @@ class _SearchPageState extends State<SearchPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+        backgroundColor: Colors.black54,
         appBar: AppBar(
             title: Card(
           child: TextField(
@@ -73,7 +75,7 @@ class _SearchPageState extends State<SearchPage> {
                                     maxLines: 1,
                                     overflow: TextOverflow.ellipsis,
                                     style: const TextStyle(
-                                        color: Colors.black54,
+                                        color: Colors.white54,
                                         fontSize: 16,
                                         fontWeight: FontWeight.bold),
                                   ),
@@ -82,7 +84,7 @@ class _SearchPageState extends State<SearchPage> {
                                     maxLines: 1,
                                     overflow: TextOverflow.ellipsis,
                                     style: const TextStyle(
-                                        color: Colors.black54,
+                                        color: Colors.white54,
                                         fontSize: 16,
                                         fontWeight: FontWeight.bold),
                                   ),
