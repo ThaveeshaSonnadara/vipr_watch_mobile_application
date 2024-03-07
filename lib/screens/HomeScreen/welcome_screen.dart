@@ -1,8 +1,8 @@
 import 'dart:io';
 import 'package:flutter/material.dart';
+import 'package:vipr_watch_mobile_application/screens/HomeScreen/AboutUs.dart';
+import 'package:vipr_watch_mobile_application/screens/HomeScreen/LogOut.dart';
 import 'package:vipr_watch_mobile_application/screens/HomeScreen/SearchSnake.dart';
-import 'AboutUs.dart';
-import 'LogOut.dart';
 
 class Home extends StatelessWidget{
   const Home({super.key});
@@ -15,22 +15,22 @@ class Home extends StatelessWidget{
         actions: [
           //  exit button
           IconButton(
-            icon: Icon(Icons.exit_to_app, color: Colors.black), // Use exit icon and white color
+            icon: const Icon(Icons.exit_to_app, color: Colors.black), // Use exit icon and white color
             onPressed: () {
               //  exit action
               showDialog(
                 context: context,
                 builder: (context) => AlertDialog(
-                  title: Text('Exit App?'),
-                  content: Text('Are you sure you want to exit ViprWatch?'),
+                  title: const Text('Exit App?'),
+                  content: const Text('Are you sure you want to exit ViprWatch?'),
                   actions: [
                     TextButton(
                       onPressed: () => Navigator.pop(context), // Cancel
-                      child: Text('No'),
+                      child: const Text('No'),
                     ),
                     TextButton(
                       onPressed: () => exit(0), // Exit app
-                      child: Text('Yes'),
+                      child: const Text('Yes'),
                     ),
                   ],
                 ),
@@ -45,7 +45,7 @@ class Home extends StatelessWidget{
           color: Colors.green[800],
           child: ListView(
             children: [
-              DrawerHeader(
+              const DrawerHeader(
                 child: Center(
                   child: Text(
                     'ViprWatch',
@@ -55,26 +55,26 @@ class Home extends StatelessWidget{
               ),
 
         ListTile(
-        leading: Icon(Icons.person),
-    title: Text(
+        leading: const Icon(Icons.person),
+    title: const Text(
     'About Us',
     style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold),
     ),
     onTap: () {
       Navigator.of(context).push(
-          MaterialPageRoute(builder: (context) => AboutUs()));
+          MaterialPageRoute(builder: (context) => const AboutUs()));
     },
         ),
 
         ListTile(
-        leading: Icon(Icons.person),
-    title: Text(
+        leading: const Icon(Icons.person),
+    title: const Text(
     'LogOut',
     style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold),
     ),
     onTap: () {
       Navigator.of(context).push(
-          MaterialPageRoute(builder: (context) => LogOut()));
+          MaterialPageRoute(builder: (context) => const LogOut()));
     }
     ),
       ]
@@ -108,7 +108,7 @@ class Home extends StatelessWidget{
                   borderRadius: BorderRadius.circular(10),
               child:InkWell(
                 onTap: (){
-                  Navigator.push(context,MaterialPageRoute(builder: (context) =>SearchSnake()));
+                  Navigator.push(context,MaterialPageRoute(builder: (context) =>const SearchPage()));
                 },
                 child: const Padding(
                   padding: EdgeInsets.symmetric(vertical: 20,horizontal: 10),
@@ -128,7 +128,7 @@ class Home extends StatelessWidget{
                   borderRadius: BorderRadius.circular(10),
                   child:InkWell(
                     onTap: (){
-                      Navigator.push(context,MaterialPageRoute(builder: (context) =>SearchSnake()));
+                      Navigator.push(context,MaterialPageRoute(builder: (context) =>const SearchPage()));
                     },
                     child: const Padding(
                       padding: EdgeInsets.symmetric(vertical: 20,horizontal: 10),

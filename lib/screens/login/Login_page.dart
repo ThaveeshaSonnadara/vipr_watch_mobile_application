@@ -5,7 +5,6 @@ import 'package:vipr_watch_mobile_application/utills/helper_function.dart';
 import 'package:vipr_watch_mobile_application/widgets/MyTest_Field.dart';
 import 'package:vipr_watch_mobile_application/widgets/Mybutton.dart';
 
-import '../../widgets/navigation_menu.dart';
 import 'forgetpassword/ForgetPassword.dart';
 
 class Login_page extends StatefulWidget {
@@ -112,12 +111,12 @@ class _Login_pageState extends State<Login_page> {
                           context,
                           MaterialPageRoute(
                             builder: (context) {
-                              return ForgetPassword();
+                              return const ForgetPassword();
                             },
                           ),
                         );
                       },
-                      child: Text(
+                      child: const Text(
                         'Forgot Password?',
                         style: TextStyle(
                           color: Colors.green,

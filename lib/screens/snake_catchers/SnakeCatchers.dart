@@ -17,12 +17,14 @@ class SnakeCatchers extends StatelessWidget {
     Contact(name: 'Stehen Curry from Kandy', phoneNumber: '0703534142'),
   ];
 
+  SnakeCatchers({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.black,
-        title: Text(
+        title: const Text(
           'Snake Catchers Contact Details',
           style: TextStyle(color: Colors.green),
         ),
@@ -40,17 +42,17 @@ class SnakeCatchers extends StatelessWidget {
 
   Widget buildButton(BuildContext context, Contact contact) {
     return ListTile(
-      title: Text(contact.name, style: TextStyle(color: Colors.white),),
+      title: Text(contact.name, style: const TextStyle(color: Colors.white),),
       subtitle: Text(contact.phoneNumber),
-      subtitleTextStyle: TextStyle(color: Colors.green),
+      subtitleTextStyle: const TextStyle(color: Colors.green),
       trailing: TextButton(
         style: TextButton.styleFrom(
-          padding: EdgeInsets.symmetric(horizontal: 32, vertical: 12),
-          shape: RoundedRectangleBorder(
+          padding: const EdgeInsets.symmetric(horizontal: 32, vertical: 12),
+          shape: const RoundedRectangleBorder(
             side: BorderSide(color: Colors.green),
           ),
         ),
-        child: Text('Call'),
+        child: const Text('Call'),
         onPressed: () async {
           launch('tel:${contact.phoneNumber}');
         },
