@@ -11,11 +11,11 @@ class AboutUs extends StatelessWidget{
       appBar: AppBar(
         backgroundColor: Colors.black,
         leading: IconButton(
-          icon: Icon(Icons.arrow_back,color: Colors.white,),
+          icon: const Icon(Icons.arrow_back,color: Colors.white,),
           onPressed: () => Navigator.pop(context),
         ),
       ),
-      body: Column(
+      body: const Column(
         children: [
           SizedBox(height: 20,),
           Center(
@@ -41,7 +41,7 @@ class AboutUs extends StatelessWidget{
                 padding: EdgeInsets.only(right: 10),
               ),
               CircleAvatar(
-                backgroundImage: AssetImage('assets/pics/thaveesha.jpg'),
+                backgroundImage: AssetImage('assets/images/pics/thaveesha.jpg'),
                 radius: 50,
               ),
               SizedBox(width: 20),
@@ -51,7 +51,7 @@ class AboutUs extends StatelessWidget{
               ),
               SizedBox(width: 20), // Increased spacing between items
               CircleAvatar(
-                backgroundImage: AssetImage('assets/pics/ronath.jpg'),
+                backgroundImage: AssetImage('assets/images/pics/ronath.jpg'),
                 radius: 50,
               ),
               SizedBox(width: 10),
@@ -70,7 +70,7 @@ class AboutUs extends StatelessWidget{
                 padding: EdgeInsets.only(right: 20),
               ),
               CircleAvatar(
-                backgroundImage: AssetImage('assets/pics/isanka.jpg'),
+                backgroundImage: AssetImage('assets/images/pics/isanka.jpg'),
                 radius: 50,
               ),
               SizedBox(width: 10),
@@ -83,7 +83,7 @@ class AboutUs extends StatelessWidget{
                 padding: EdgeInsets.only(right: 25),
               ),
               CircleAvatar(
-                backgroundImage: AssetImage('assets/pics/dinuka.jpg'),
+                backgroundImage: AssetImage('assets/images/pics/dinuka.jpg'),
                 radius: 50,
               ),
               SizedBox(width: 10),
@@ -102,7 +102,7 @@ class AboutUs extends StatelessWidget{
                 padding: EdgeInsets.only(right: 30),
               ),
               CircleAvatar(
-                backgroundImage: AssetImage('assets/pics/durangi.jpg'),
+                backgroundImage: AssetImage('assets/images/pics/durangi.jpg'),
                 radius: 50,
               ),
               SizedBox(width: 10),

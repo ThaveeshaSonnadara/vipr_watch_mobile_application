@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter_polyline_points/flutter_polyline_points.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
+import 'package:vipr_watch_mobile_application/widgets/navigation_menu.dart';
 
 class MapPage extends StatefulWidget {
   const MapPage({super.key});
@@ -88,11 +89,11 @@ class _MapPageState extends State<MapPage> {
             color: Colors.green,
           ),
           onPressed: () {
-            // Navigator.push(
-            //     context,
-            //     MaterialPageRoute(
-            //         builder: (context) =>
-            //             const NavigationMenu())); // Implement the back button functionality
+            Navigator.push(
+                context,
+                MaterialPageRoute(
+                    builder: (context) =>
+                        const NavigationMenu())); // Implement the back button functionality
           },
         ),
       ),
