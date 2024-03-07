@@ -5,6 +5,7 @@ import 'package:vipr_watch_mobile_application/screens/snake_catchers/SnakeCatche
 import 'package:vipr_watch_mobile_application/utills/helper_function.dart';
 import 'package:vipr_watch_mobile_application/widgets/MyTest_Field.dart';
 import 'package:vipr_watch_mobile_application/widgets/Mybutton.dart';
+import 'package:vipr_watch_mobile_application/widgets/navigation_menu.dart';
 
 import 'forgetpassword/ForgetPassword.dart';
 
@@ -70,7 +71,7 @@ class _Login_pageState extends State<Login_page> {
       Navigator.pushReplacement(
         context,
         MaterialPageRoute(
-          builder: (context) => SnakeCatchers(),
+          builder: (context) => const NavigationMenu(),
         ),
       );
     } on FirebaseAuthException catch (e) {
