@@ -7,6 +7,8 @@ import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:http/http.dart' as http;
 import 'package:vipr_watch_mobile_application/models/nearby_response.dart';
 import 'package:vipr_watch_mobile_application/screens/hospital_location/map_screen.dart';
+import 'package:vipr_watch_mobile_application/widgets/emergency_menu.dart';
+import 'package:vipr_watch_mobile_application/widgets/navigation_menu.dart';
 
 class NearbyPlacesPage extends StatefulWidget {
   const NearbyPlacesPage({super.key});
@@ -145,14 +147,14 @@ class _NearbyPlacesPageState extends State<NearbyPlacesPage> {
             color: Colors.green,
           ),
           onPressed: () {
-            // Navigator.push(
-            //     context,
-            //     MaterialPageRoute(
-            //         builder: (context) => ();
-            //             const NavigationMenu())); // Implement the back button functionality
+            Navigator.push(
+                context,
+                MaterialPageRoute(
+                    builder: (context) => const NavigationMenu())); // Implement the back button functionality
           },
         ),
       ),
+      floatingActionButton: const EmergencyMenu(),
       body: ListView(
         scrollDirection: Axis.vertical,
         padding: const EdgeInsets.only(left: 3.0, right: 3.0),
@@ -161,42 +163,42 @@ class _NearbyPlacesPageState extends State<NearbyPlacesPage> {
             for (int i = 0; i < nearbyPlacesResponse.results!.length; i++)
               nearbyPlacesWidget(nearbyPlacesResponse.results![i]),
           if (nearbyPlacesResponse.results == null)
-            // const Padding(
-            //   padding: EdgeInsets.all(8.0),
-            //   child: Center(
-            //     child: Text("No nearby places found"),
-            //   ),
-            // )
-
-          for (int i = 0; i < 4; i++)
-            Card(
-              color: Colors.black54,
-              child: ListTile(
-                title: const Text(
-                  "Hospital Name",
-                  style: TextStyle(color: Colors.white),
-                ),
-                subtitle: const Text(
-                  "Address",
-                  style: TextStyle(color: Colors.white70),
-                ),
-                trailing: IconButton(
-                  highlightColor: Colors.white54,
-                  icon: const Icon(
-                    color: Colors.white70,
-                    Icons.chevron_right,
-                    size: 30,
-                  ),
-                  onPressed: () {},
-                ),
-                leading: const Icon(
-                  Icons.image_outlined,
-                  size: 30,
-                  color: Colors.white70,
-                ),
-                onTap: () {},
+            const Padding(
+              padding: EdgeInsets.all(8.0),
+              child: Center(
+                child: Text("No nearby places found"),
               ),
             )
+
+          // for (int i = 0; i < 4; i++)
+          //   Card(
+          //     color: Colors.black54,
+          //     child: ListTile(
+          //       title: const Text(
+          //         "Hospital Name",
+          //         style: TextStyle(color: Colors.white),
+          //       ),
+          //       subtitle: const Text(
+          //         "Address",
+          //         style: TextStyle(color: Colors.white70),
+          //       ),
+          //       trailing: IconButton(
+          //         highlightColor: Colors.white54,
+          //         icon: const Icon(
+          //           color: Colors.white70,
+          //           Icons.chevron_right,
+          //           size: 30,
+          //         ),
+          //         onPressed: () {},
+          //       ),
+          //       leading: const Icon(
+          //         Icons.image_outlined,
+          //         size: 30,
+          //         color: Colors.white70,
+          //       ),
+          //       onTap: () {},
+          //     ),
+          //   )
         ],
       ),
     );
