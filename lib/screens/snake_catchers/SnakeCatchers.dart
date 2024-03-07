@@ -23,6 +23,7 @@ class SnakeCatchers extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        leading: BackButton(color: Colors.green),
         backgroundColor: Colors.black,
         title: const Text(
           'Snake Catchers Contact Details',

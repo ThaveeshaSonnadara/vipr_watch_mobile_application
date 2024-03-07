@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_speed_dial/flutter_speed_dial.dart';
 import 'package:url_launcher/url_launcher.dart';
+import 'package:vipr_watch_mobile_application/screens/hospital_location/nearby_hospitals_page.dart';
+import 'package:vipr_watch_mobile_application/screens/snake_catchers/SnakeCatchers.dart';
 import '../screens/emergency_contact/contact_animalcontrol.dart';
 import 'navigation_menu.dart';
 
@@ -77,7 +79,7 @@ class _EmergencyMenuState extends State<EmergencyMenu> {
                 Navigator.push(
                   context,
                   MaterialPageRoute(
-                    builder: (e) => const ContactAnimalControlScreen(),
+                    builder: (e) => SnakeCatchers(),
                   ),
                 );
               },
@@ -99,7 +101,7 @@ class _EmergencyMenuState extends State<EmergencyMenu> {
                 Navigator.push(
                   context,
                   MaterialPageRoute(
-                    builder: (e) => const NavigationMenu(), //map page
+                    builder: (e) => const NearbyPlacesPage(), //map page
                   ),
                 );
               },
