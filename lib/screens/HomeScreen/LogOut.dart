@@ -1,10 +1,8 @@
-import 'package:flutter/cupertino.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
 class LogOut extends StatelessWidget{
   const
-  LogOut({Key? key}) : super(key: key);
+  LogOut({super.key});
 
   @override
   Widget build(BuildContext context){
@@ -13,7 +11,7 @@ class LogOut extends StatelessWidget{
       appBar: AppBar(
         backgroundColor: Colors.black,
         leading: IconButton(
-          icon: Icon(Icons.arrow_back,color: Colors.white,),
+          icon: const Icon(Icons.arrow_back,color: Colors.white,),
           onPressed: () => Navigator.pop(context),
         ),
       ),

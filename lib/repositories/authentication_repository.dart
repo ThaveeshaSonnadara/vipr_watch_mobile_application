@@ -1,7 +1,7 @@
 import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
-import 'package:vipr_watch_mobile_application/screens/search_page/SearchSnake.dart';
+import 'package:vipr_watch_mobile_application/utills/login_or_register.dart';
 import '../screens/onboarding/onboarding.dart';
 
 class AuthenticationRepository extends GetxController {
@@ -18,11 +18,8 @@ class AuthenticationRepository extends GetxController {
   screenRedirect() async {
     deviceStorage.erase();
     deviceStorage.writeIfNull('isFirstTime', true);
-    // deviceStorage.read('isFirstTime') != true
-    //     ? Get.offAll(() => const LoginScreen())
-    //     : Get.offAll(const OnBoardingScreen());
     deviceStorage.read('isFirstTime') != true
-        ? Get.offAll(() => const SearchPage())
-        : Get.offAll(const SearchPage());
+        ? Get.offAll(() => const LoginOrRegister())
+        : Get.offAll(const OnBoardingScreen());
   }
 }
