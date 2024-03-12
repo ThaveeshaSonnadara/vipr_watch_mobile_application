@@ -69,8 +69,8 @@ class _ForgetPasswordState extends State<ForgetPassword> {
           const SizedBox(height: 20),
           MaterialButton(
             onPressed: _resetPassword,
-            child: Text('Send Email'),
             color: Colors.green,
+            child: const Text('Send Email'),
           ),
         ],
       ),

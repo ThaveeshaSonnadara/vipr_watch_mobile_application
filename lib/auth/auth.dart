@@ -1,6 +1,5 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:vipr_watch_mobile_application/screens/snake_catchers/SnakeCatchers.dart';
 import 'package:vipr_watch_mobile_application/utills/login_or_register.dart';
 import 'package:vipr_watch_mobile_application/widgets/navigation_menu.dart';
 
@@ -15,7 +14,7 @@ class AuthPage extends StatelessWidget {
         builder: (context, snapshot){
           /// user is logged in
           if (snapshot.hasData){
-            return  SnakeCatchers(); //put home page here
+            return const NavigationMenu(); //put home page here
           }
           /// user is not logged in
           else{
