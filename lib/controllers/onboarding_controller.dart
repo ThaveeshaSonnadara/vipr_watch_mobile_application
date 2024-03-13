@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:vipr_watch_mobile_application/utills/login_or_register.dart';
-import '../widgets/navigation_menu.dart';
 
 class OnBoardingController extends GetxController {
   static OnBoardingController get instance => Get.find();

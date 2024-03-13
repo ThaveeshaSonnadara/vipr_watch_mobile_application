@@ -21,10 +21,10 @@ class MyTestField extends StatelessWidget {
           borderRadius: BorderRadius.circular(10),
         ),
         hintText: hintText,
-        hintStyle: TextStyle(color: Colors.white54),
+        hintStyle: const TextStyle(color: Colors.white54),
       ),
       obscureText: obscureText,
-      style: TextStyle(color: Colors.white),
+      style: const TextStyle(color: Colors.white),
     );
   }
 }

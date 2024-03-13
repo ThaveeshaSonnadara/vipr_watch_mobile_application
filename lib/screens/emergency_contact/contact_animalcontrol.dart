@@ -26,13 +26,13 @@ class _ContactAnimalControlScreenState
   }
 
   Widget buildButton() {
-    final catcherContact01 = '+947701234567';
-    final catcherContact02 = '+947743214567';
-    final catcherContact03 = '+947700987654';
+    const catcherContact01 = '+947701234567';
+    const catcherContact02 = '+947743214567';
+    const catcherContact03 = '+947700987654';
 
     return ListTile(
       title: const Text('Ronath Tharana'),
-      subtitle: Text(catcherContact01),
+      subtitle: const Text(catcherContact01),
       leading: const CircleAvatar(
         backgroundImage: NetworkImage(''),
       ),

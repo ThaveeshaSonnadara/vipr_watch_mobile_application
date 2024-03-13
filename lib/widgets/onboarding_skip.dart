@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:vipr_watch_mobile_application/utills/login_or_register.dart';
 import '../controllers/onboarding_controller.dart';
 
 class OnBoardingSkip extends StatelessWidget {
