@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:vipr_watch_mobile_application/screens/snake_catchers/SnakeCatchers.dart';
 import 'package:vipr_watch_mobile_application/utills/helper_function.dart';
 import 'package:vipr_watch_mobile_application/widgets/MyTest_Field.dart';
 import 'package:vipr_watch_mobile_application/widgets/Mybutton.dart';
@@ -129,7 +128,7 @@ class _Login_pageState extends State<Login_page> {
                             });
                           },
                         ),
-                        const Text('Remember Me'),
+                        const Text('Remember Me',style: TextStyle(color: Colors.green),),
                       ],
                     ),
                     GestureDetector(

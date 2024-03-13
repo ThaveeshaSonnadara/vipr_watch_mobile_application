@@ -9,12 +9,13 @@ class Contact {
 }
 
 class SnakeCatchers extends StatelessWidget {
+
   final List<Contact> contacts = [
-    Contact(name: 'Lebron james from Colombo', phoneNumber: '0719523132'),
-    Contact(name: 'Anthony Davis from Matara', phoneNumber: '0710986217'),
-    Contact(name: 'Kyrie irving from Jaffna', phoneNumber: '0710741680'),
-    Contact(name: 'kobe brayant from Trinco ', phoneNumber: '0770806862'),
-    Contact(name: 'Stehen Curry from Kandy', phoneNumber: '0703534142'),
+    Contact(name: 'Ranidu Thushara from Colombo', phoneNumber: '0719523132'),
+    Contact(name: 'Ramin Randinu from Matara', phoneNumber: '0710986217'),
+    Contact(name: 'Tharusha perera from Jaffna', phoneNumber: '0710741680'),
+    Contact(name: 'Lochana Silva from Trinco ', phoneNumber: '0770806862'),
+    Contact(name: 'Lahiru perera from Kandy', phoneNumber: '0703534142'),
   ];
 
   SnakeCatchers({super.key});
@@ -23,7 +24,7 @@ class SnakeCatchers extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        leading: BackButton(color: Colors.green),
+        leading: const BackButton(color: Colors.green),
         backgroundColor: Colors.black,
         title: const Text(
           'Snake Catchers Contact Details',
@@ -43,6 +44,7 @@ class SnakeCatchers extends StatelessWidget {
 
   Widget buildButton(BuildContext context, Contact contact) {
     return ListTile(
+      leading: const Icon(Icons.person, color: Colors.green),
       title: Text(contact.name, style: const TextStyle(color: Colors.white),),
       subtitle: Text(contact.phoneNumber),
       subtitleTextStyle: const TextStyle(color: Colors.green),
