@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class AboutUs extends StatelessWidget {
-  const AboutUs({Key? key}) : super(key: key);
+  const AboutUs({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -73,10 +73,10 @@ class AboutUs extends StatelessWidget {
           backgroundImage: AssetImage(imagePath),
           radius: screenWidth * 0.1,
         ),
-        SizedBox(height: 10),
+        const SizedBox(height: 10),
         Text(
           name,
-          style: TextStyle(color: Colors.white),
+          style: const TextStyle(color: Colors.white),
         ),
       ],
     );

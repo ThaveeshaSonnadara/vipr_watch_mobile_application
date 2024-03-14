@@ -18,7 +18,7 @@ class NearbyPlacesPage extends StatefulWidget {
 }
 
 class _NearbyPlacesPageState extends State<NearbyPlacesPage> {
-  String apiKey = ""; // API key
+  String apiKey = "AIzaSyDCWvjFyHN4XdfEAYadLNJEfmBhfEn6ti4"; // API key
   String radius = "500"; // Radius in meters
 
   //user's current location values
@@ -29,7 +29,7 @@ class _NearbyPlacesPageState extends State<NearbyPlacesPage> {
 
   NearbyPlacesResponse nearbyPlacesResponse = NearbyPlacesResponse();
 
-  void setUserLocationLatLng() {
+  void setUserLocationLatLng() async {
     Position userPosition = getCurrentLocation() as Position;
     latitude = userPosition.latitude;
     longitude = userPosition.longitude;
@@ -57,8 +57,8 @@ class _NearbyPlacesPageState extends State<NearbyPlacesPage> {
     Navigator.push(
       context,
       CupertinoPageRoute(builder: (context) {
-        MapPage.setTargetLocation(targetPositionLatLng);
-        MapPage.setUsersCurrentLocation(userPositionLatLng);
+        // MapPage.setTargetLocation(targetPositionLatLng);
+        // MapPage.setUsersCurrentLocation(userPositionLatLng);
         return const MapPage();
       }),
     );
@@ -136,8 +136,12 @@ class _NearbyPlacesPageState extends State<NearbyPlacesPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.black54,
       appBar: AppBar(
-        title: const Text("Nearby Hospitals"),
+        title: const Text(
+          "Nearby Hospitals",
+          style: TextStyle(color: Colors.white),
+        ),
         centerTitle: true,
         backgroundColor: Colors.transparent,
         elevation: 0,
@@ -150,7 +154,8 @@ class _NearbyPlacesPageState extends State<NearbyPlacesPage> {
             Navigator.push(
                 context,
                 MaterialPageRoute(
-                    builder: (context) => const NavigationMenu())); // Implement the back button functionality
+                    builder: (context) =>
+                        const NavigationMenu())); // Implement the back button functionality
           },
         ),
       ),
@@ -166,39 +171,12 @@ class _NearbyPlacesPageState extends State<NearbyPlacesPage> {
             const Padding(
               padding: EdgeInsets.all(8.0),
               child: Center(
-                child: Text("No nearby places found"),
+                child: Text(
+                  "No nearby places found",
+                  style: TextStyle(color: Colors.white),
+                ),
               ),
             )
-
-          // for (int i = 0; i < 4; i++)
-          //   Card(
-          //     color: Colors.black54,
-          //     child: ListTile(
-          //       title: const Text(
-          //         "Hospital Name",
-          //         style: TextStyle(color: Colors.white),
-          //       ),
-          //       subtitle: const Text(
-          //         "Address",
-          //         style: TextStyle(color: Colors.white70),
-          //       ),
-          //       trailing: IconButton(
-          //         highlightColor: Colors.white54,
-          //         icon: const Icon(
-          //           color: Colors.white70,
-          //           Icons.chevron_right,
-          //           size: 30,
-          //         ),
-          //         onPressed: () {},
-          //       ),
-          //       leading: const Icon(
-          //         Icons.image_outlined,
-          //         size: 30,
-          //         color: Colors.white70,
-          //       ),
-          //       onTap: () {},
-          //     ),
-          //   )
         ],
       ),
     );
