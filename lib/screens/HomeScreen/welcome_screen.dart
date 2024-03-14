@@ -6,20 +6,19 @@ import 'AboutUs.dart';
 import 'LogOut.dart';
 
 class Home extends StatelessWidget {
-  const Home({super.key});
+  const Home({Key? key});
 
   @override
   Widget build(BuildContext context) {
+    final screenWidth = MediaQuery.of(context).size.width;
+
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.green[800],
         actions: [
-          //  exit button
           IconButton(
             icon: const Icon(Icons.exit_to_app, color: Colors.black),
-            // Use exit icon and white color
             onPressed: () {
-              //  exit action
               showDialog(
                 context: context,
                 builder: (context) => AlertDialog(
@@ -44,14 +43,16 @@ class Home extends StatelessWidget {
       drawer: Drawer(
         backgroundColor: Colors.white,
         child: Container(
-            color: Colors.green[800],
-            child: ListView(children: [
+          color: Colors.green[800],
+          child: ListView(
+            children: [
               const DrawerHeader(
                 child: Center(
-                    child: Text(
-                      'ViprWatch',
-                      style: TextStyle(fontSize: 35, fontWeight: FontWeight.bold),
-                    )),
+                  child: Text(
+                    'ViprWatch',
+                    style: TextStyle(fontSize: 35, fontWeight: FontWeight.bold),
+                  ),
+                ),
               ),
               ListTile(
                 leading: const Icon(Icons.person),
@@ -60,30 +61,32 @@ class Home extends StatelessWidget {
                   style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
                 ),
                 onTap: () {
-                  Navigator.of(context)
-                      .push(MaterialPageRoute(builder: (context) => const AboutUs()));
+                  Navigator.of(context).push(MaterialPageRoute(builder: (context) => const AboutUs()));
                 },
               ),
               ListTile(
-                  leading: const Icon(Icons.person),
-                  title: const Text(
-                    'LogOut',
-                    style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-                  ),
-                  onTap: () {
-                    Navigator.of(context).push(
-                        MaterialPageRoute(builder: (context) => const LogOut()));
-                  }),
-            ])),
+                leading: const Icon(Icons.person),
+                title: const Text(
+                  'LogOut',
+                  style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                ),
+                onTap: () {
+                  Navigator.of(context).push(MaterialPageRoute(builder: (context) => const LogOut()));
+                },
+              ),
+            ],
+          ),
+        ),
       ),
       drawerScrimColor: Colors.black,
       body: Container(
-        padding: const EdgeInsets.only(top: 150, bottom: 60),
+        padding: const EdgeInsets.only(top: 100, bottom: 60),
         decoration: const BoxDecoration(
-            color: Colors.black,
-            image: DecorationImage(
-              image: AssetImage('assets/images/logo/logo.png'),
-            )),
+          color: Colors.black,
+          image: DecorationImage(
+            image: AssetImage('assets/images/logo/logo.png'),
+          ),
+        ),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
@@ -94,49 +97,53 @@ class Home extends StatelessWidget {
                 color: Colors.white,
               ),
             ),
-            const SizedBox(height: 70),
+            const SizedBox(height: 60),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
-                Material(
-                  color: Colors.green[800],
-                  borderRadius: BorderRadius.circular(10),
-                  child: InkWell(
-                    onTap: () {
-                      final controller = Get.put(NavigationController());
-                      controller.selectedIndex.value = 1;
-                    },
-                    child: const Padding(
-                      padding:
-                      EdgeInsets.symmetric(vertical: 20, horizontal: 10),
-                      child: Text(
-                        "Detect Snake",
-                        style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 22,
-                          fontWeight: FontWeight.bold,
+                SizedBox(
+                  width: screenWidth * 0.4, // Adjust the fraction as needed
+                  child: Material(
+                    color: Colors.green[800],
+                    borderRadius: BorderRadius.circular(10),
+                    child: InkWell(
+                      onTap: () {
+                        final controller = Get.put(NavigationController());
+                        controller.selectedIndex.value = 1;
+                      },
+                      child: Padding(
+                        padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 10),
+                        child: Text(
+                          "Detect Snake",
+                          style: const TextStyle(
+                            color: Colors.white,
+                            fontSize: 22,
+                            fontWeight: FontWeight.bold,
+                          ),
                         ),
                       ),
                     ),
                   ),
                 ),
-                Material(
-                  color: Colors.green[800],
-                  borderRadius: BorderRadius.circular(10),
-                  child: InkWell(
-                    onTap: () {
-                      final controller = Get.put(NavigationController());
-                      controller.selectedIndex.value = 2;
-                    },
-                    child: const Padding(
-                      padding:
-                      EdgeInsets.symmetric(vertical: 20, horizontal: 10),
-                      child: Text(
-                        "Search Snake",
-                        style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 22,
-                          fontWeight: FontWeight.bold,
+                SizedBox(
+                  width: screenWidth * 0.4, // Adjust the fraction as needed
+                  child: Material(
+                    color: Colors.green[800],
+                    borderRadius: BorderRadius.circular(10),
+                    child: InkWell(
+                      onTap: () {
+                        final controller = Get.put(NavigationController());
+                        controller.selectedIndex.value = 2;
+                      },
+                      child: Padding(
+                        padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 10),
+                        child: Text(
+                          "Search Snake",
+                          style: const TextStyle(
+                            color: Colors.white,
+                            fontSize: 22,
+                            fontWeight: FontWeight.bold,
+                          ),
                         ),
                       ),
                     ),

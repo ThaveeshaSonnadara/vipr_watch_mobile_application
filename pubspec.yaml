@@ -118,6 +118,7 @@ flutter:
     - assets/images/input_image/
     - assets/images/image_process/
     - assets/videos/
+    - assets/images/pics/
   #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see
