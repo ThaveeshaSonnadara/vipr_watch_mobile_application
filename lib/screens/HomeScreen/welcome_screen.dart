@@ -6,7 +6,7 @@ import 'AboutUs.dart';
 import 'LogOut.dart';
 
 class Home extends StatelessWidget {
-  const Home({Key? key});
+  const Home({super.key, Key? key});
 
   @override
   Widget build(BuildContext context) {
@@ -111,11 +111,11 @@ class Home extends StatelessWidget {
                         final controller = Get.put(NavigationController());
                         controller.selectedIndex.value = 1;
                       },
-                      child: Padding(
-                        padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 10),
+                      child: const Padding(
+                        padding: EdgeInsets.symmetric(vertical: 20, horizontal: 10),
                         child: Text(
                           "Detect Snake",
-                          style: const TextStyle(
+                          style: TextStyle(
                             color: Colors.white,
                             fontSize: 22,
                             fontWeight: FontWeight.bold,
@@ -135,11 +135,11 @@ class Home extends StatelessWidget {
                         final controller = Get.put(NavigationController());
                         controller.selectedIndex.value = 2;
                       },
-                      child: Padding(
-                        padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 10),
+                      child: const Padding(
+                        padding: EdgeInsets.symmetric(vertical: 20, horizontal: 10),
                         child: Text(
                           "Search Snake",
-                          style: const TextStyle(
+                          style: TextStyle(
                             color: Colors.white,
                             fontSize: 22,
                             fontWeight: FontWeight.bold,
