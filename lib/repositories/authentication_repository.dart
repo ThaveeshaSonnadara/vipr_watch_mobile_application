@@ -19,7 +19,7 @@ class AuthenticationRepository extends GetxController {
     deviceStorage.erase();
     deviceStorage.writeIfNull('isFirstTime', true);
     deviceStorage.read('isFirstTime') != true
-        ? Get.offAll(() => const LoginOrRegister())
-        : Get.offAll(const OnBoardingScreen());
+        ? Get.offAll(() =>  const LoginOrRegister ())
+        : Get.offAll(  const OnBoardingScreen ());
   }
 }
