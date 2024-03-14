@@ -51,9 +51,9 @@ class Home extends StatelessWidget {
               const DrawerHeader(
                 child: Center(
                     child: Text(
-                  'ViprWatch',
-                  style: TextStyle(fontSize: 35, fontWeight: FontWeight.bold),
-                )),
+                      'ViprWatch',
+                      style: TextStyle(fontSize: 35, fontWeight: FontWeight.bold),
+                    )),
               ),
               ListTile(
                 leading: const Icon(Icons.person),
@@ -110,7 +110,7 @@ class Home extends StatelessWidget {
                     },
                     child: const Padding(
                       padding:
-                          EdgeInsets.symmetric(vertical: 20, horizontal: 10),
+                      EdgeInsets.symmetric(vertical: 20, horizontal: 10),
                       child: Text(
                         "Detect Snake",
                         style: TextStyle(
@@ -132,7 +132,7 @@ class Home extends StatelessWidget {
                     },
                     child: const Padding(
                       padding:
-                          EdgeInsets.symmetric(vertical: 20, horizontal: 10),
+                      EdgeInsets.symmetric(vertical: 20, horizontal: 10),
                       child: Text(
                         "Search Snake",
                         style: TextStyle(
