@@ -1,10 +1,7 @@
 import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:vipr_watch_mobile_application/screens/HomeScreen/DetectSnake.dart';
-import 'package:vipr_watch_mobile_application/screens/snake_catchers/SnakeCatchers.dart';
 import 'package:vipr_watch_mobile_application/widgets/navigation_menu.dart';
-import '../image_input/image_input.dart';
 import 'AboutUs.dart';
 import 'LogOut.dart';
 

@@ -11,7 +11,7 @@ import 'forgetpassword/ForgetPassword.dart';
 class Login_page extends StatefulWidget {
   final void Function()? onTap;
 
-  const Login_page({Key? key, required this.onTap}) : super(key: key);
+  const Login_page({super.key, required this.onTap});
 
   @override
   State<Login_page> createState() => _Login_pageState();

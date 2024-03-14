@@ -2,7 +2,6 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:vipr_watch_mobile_application/screens/login/Login_page.dart';
-import 'package:vipr_watch_mobile_application/screens/snake_catchers/SnakeCatchers.dart';
 import 'package:vipr_watch_mobile_application/utills/helper_function.dart';
 import 'package:vipr_watch_mobile_application/widgets/MyTest_Field.dart';
 import 'package:vipr_watch_mobile_application/widgets/Mybutton.dart';
