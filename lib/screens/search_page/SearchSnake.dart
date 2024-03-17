@@ -65,7 +65,6 @@ class _SearchPageState extends State<SearchPage> {
 
               return ListTile(
                 onTap: () async {
-                  print(snake[index]);
                   getIdentifiedSnakeDetails();
                   await Navigator.push(
                     context,
