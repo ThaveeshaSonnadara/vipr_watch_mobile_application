@@ -33,7 +33,6 @@ dependencies:
 
   shared_preferences: ^2.2.2
 
-
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.2
@@ -86,6 +85,8 @@ dependencies:
   geolocator: ^11.0.0
   google_maps_flutter: ^2.5.3
   flutter_polyline_points: ^2.0.0
+  location: ^5.0.3
+  geocoding: ^3.0.0
 
 dev_dependencies:
   flutter_test:
@@ -119,6 +120,7 @@ flutter:
     - assets/images/image_process/
     - assets/videos/
     - assets/images/pics/
+    - assets/images/map/
   #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see
