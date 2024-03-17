@@ -11,8 +11,6 @@ class SearchPage extends StatefulWidget {
 
 class _SearchPageState extends State<SearchPage> {
   String name = "";
-  String snakeName = "sri lanka cat snake";
-  List snakeDetail = [];
 
   @override
   Widget build(BuildContext context) {
@@ -54,7 +52,7 @@ class _SearchPageState extends State<SearchPage> {
           } else {
             filteredSnakes = snakes
                 .where((snake) =>
-                    snake['Snake Name'].toString().toLowerCase().contains(name))
+                snake['Snake Name'].toString().toLowerCase().contains(name))
                 .toList();
           }
 
@@ -65,9 +63,8 @@ class _SearchPageState extends State<SearchPage> {
 
               return ListTile(
                 onTap: () async {
-                  print(snake[index]);
-                  getIdentifiedSnakeDetails();
-                  await Navigator.push(
+                  await getIdentifiedSnakeDetails(snake);
+                  Navigator.push(
                     context,
                     MaterialPageRoute(
                       builder: (context) => SnakeSpeciesDetailsScreen(
@@ -108,10 +105,12 @@ class _SearchPageState extends State<SearchPage> {
     );
   }
 
-  Future<void> getIdentifiedSnakeDetails() async {
+  List<String> snakeDetail = [];
+
+  Future<void> getIdentifiedSnakeDetails(Map<String, dynamic> snake) async {
     QuerySnapshot<Map<String, dynamic>> snap = await FirebaseFirestore.instance
         .collection('Snake details and treatments')
-        .where('Snake Name', isEqualTo: snakeName)
+        .where('Snake Name', isEqualTo: snake['Snake Name'])
         .get();
 
     List<QueryDocumentSnapshot<Map<String, dynamic>>> snakeInfo = snap.docs;

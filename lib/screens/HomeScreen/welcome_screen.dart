@@ -1,12 +1,14 @@
 import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:vipr_watch_mobile_application/widgets/navigation_menu.dart';
 import 'AboutUs.dart';
-import 'LogOut.dart';
+import 'package:vipr_watch_mobile_application/screens/login/Login_page.dart'; // Import Login_page.dart
 
 class Home extends StatelessWidget {
-  const Home({Key? key});
+  Home({Key? key});
+  final FirebaseAuth _auth = FirebaseAuth.instance;
 
   @override
   Widget build(BuildContext context) {
@@ -23,7 +25,8 @@ class Home extends StatelessWidget {
                 context: context,
                 builder: (context) => AlertDialog(
                   title: const Text('Exit App?'),
-                  content: const Text('Are you sure you want to exit ViprWatch?'),
+                  content:
+                  const Text('Are you sure you want to exit ViprWatch?'),
                   actions: [
                     TextButton(
                       onPressed: () => Navigator.pop(context), // Cancel
@@ -61,17 +64,42 @@ class Home extends StatelessWidget {
                   style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
                 ),
                 onTap: () {
-                  Navigator.of(context).push(MaterialPageRoute(builder: (context) => const AboutUs()));
+                  Navigator.of(context).push(
+                      MaterialPageRoute(builder: (context) => const AboutUs()));
                 },
               ),
               ListTile(
-                leading: const Icon(Icons.person),
+                leading: const Icon(Icons.logout), // Changed icon to logout
                 title: const Text(
                   'LogOut',
                   style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
                 ),
-                onTap: () {
-                  Navigator.of(context).push(MaterialPageRoute(builder: (context) => const LogOut()));
+                onTap: () async {
+                  // Show LogOut dialog
+                  showDialog(
+                    context: context,
+                    builder: (context) => AlertDialog(
+                      title: const Text('Do you want to Logout?'),
+                      actions: [
+                        TextButton(
+                          onPressed: () => Navigator.pop(context), // Cancel LogOut
+                          child: const Text('Cancel'),
+                        ),
+                        TextButton(
+                          onPressed: () async {
+                            await _auth.signOut();
+                            Navigator.pushReplacement(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) =>  Login_page(onTap: () {}), // Pass required parameters to Login_page constructor
+                              ),
+                            );
+                          },
+                          child: const Text('Ok', style: TextStyle(color: Colors.red)), // Ok button with red text color
+                        ),
+                      ],
+                    ),
+                  );
                 },
               ),
             ],
@@ -111,11 +139,12 @@ class Home extends StatelessWidget {
                         final controller = Get.put(NavigationController());
                         controller.selectedIndex.value = 1;
                       },
-                      child: Padding(
-                        padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 10),
+                      child: const Padding(
+                        padding: EdgeInsets.symmetric(
+                            vertical: 20, horizontal: 10),
                         child: Text(
                           "Detect Snake",
-                          style: const TextStyle(
+                          style: TextStyle(
                             color: Colors.white,
                             fontSize: 22,
                             fontWeight: FontWeight.bold,
@@ -135,11 +164,12 @@ class Home extends StatelessWidget {
                         final controller = Get.put(NavigationController());
                         controller.selectedIndex.value = 2;
                       },
-                      child: Padding(
-                        padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 10),
+                      child: const Padding(
+                        padding: EdgeInsets.symmetric(
+                            vertical: 20, horizontal: 10),
                         child: Text(
                           "Search Snake",
-                          style: const TextStyle(
+                          style: TextStyle(
                             color: Colors.white,
                             fontSize: 22,
                             fontWeight: FontWeight.bold,
