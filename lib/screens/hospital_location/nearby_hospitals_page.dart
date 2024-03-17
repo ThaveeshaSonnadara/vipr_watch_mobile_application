@@ -2,7 +2,7 @@ import 'dart:convert';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:geolocator/geolocator.dart';
+import 'package:geolocator/geolocator.dart' as locator;
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:http/http.dart' as http;
 import 'package:vipr_watch_mobile_application/models/nearby_response.dart';
@@ -18,8 +18,15 @@ class NearbyPlacesPage extends StatefulWidget {
 }
 
 class _NearbyPlacesPageState extends State<NearbyPlacesPage> {
-  String apiKey = "AIzaSyDCWvjFyHN4XdfEAYadLNJEfmBhfEn6ti4"; // API key
-  String radius = "500"; // Radius in meters
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    getNearbyPlaces();
+  }
+
+  String apiKey = 'AIzaSyCOnURd0AZVkrXvMz8Iyk5nLcGx9GosHow'; // API key
+  String radius = "750"; // Radius in meters
 
   //user's current location values
   late double latitude;
@@ -29,25 +36,37 @@ class _NearbyPlacesPageState extends State<NearbyPlacesPage> {
 
   NearbyPlacesResponse nearbyPlacesResponse = NearbyPlacesResponse();
 
-  void setUserLocationLatLng() async {
-    Position userPosition = getCurrentLocation() as Position;
-    latitude = userPosition.latitude;
-    longitude = userPosition.longitude;
+  // late String locationAddress;
 
-    userPositionLatLng = LatLng(latitude, longitude);
+  Future<bool> setUserLocationLatLng() async {
+    locator.Position userPosition = await getCurrentLocation();
+
+    if (userPosition.runtimeType != Future.error.runtimeType) {
+
+      latitude = userPosition.latitude;
+      longitude = userPosition.longitude;
+
+      userPositionLatLng = LatLng(latitude, longitude);
+      return true;
+    } else {
+      return false;
+    }
   }
 
   void getNearbyPlaces() async {
-    setUserLocationLatLng();
+    bool isLocationSet = await setUserLocationLatLng();
+    if (isLocationSet) {
 
-    var url = Uri.parse(
-        'https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=$latitude,$longitude&radius=$radius&key=$apiKey');
+      var url = Uri.parse(
+          'https://maps.googleapis.com/maps/api/place/nearbysearch/json?keyword=health&location=$latitude%2C$longitude&radius=$radius&type=hospital&key=$apiKey');
 
-    var response = await http.post(url);
+      var response = await http.post(url);
 
-    nearbyPlacesResponse =
-        NearbyPlacesResponse.fromJson(jsonDecode(response.body));
+      nearbyPlacesResponse =
+          NearbyPlacesResponse.fromJson(jsonDecode(response.body));
 
+      setState(() {});
+    }
     setState(() {});
   }
 
@@ -57,45 +76,63 @@ class _NearbyPlacesPageState extends State<NearbyPlacesPage> {
     Navigator.push(
       context,
       CupertinoPageRoute(builder: (context) {
-        // MapPage.setTargetLocation(targetPositionLatLng);
-        // MapPage.setUsersCurrentLocation(userPositionLatLng);
+        MapPage.setTargetLocation(targetPositionLatLng);
+        MapPage.setUsersCurrentLocation(userPositionLatLng);
         return const MapPage();
       }),
     );
   }
 
   LatLng getLocationLatLang(Results results) {
-    double lat = results.geometry!.location!.lat!;
-    double lng = results.geometry!.location!.lng!;
+    double? lat = results.geometry!.location!.lat;
+    double? lng = results.geometry!.location!.lng;
 
-    return LatLng(lat, lng);
+    return LatLng(lat!, lng!);
   }
 
-  Future<Position> getCurrentLocation() async {
-    bool serviceEnabled;
-    LocationPermission permission;
+  Future<locator.Position> getCurrentLocation() async {
 
-    serviceEnabled = await Geolocator.isLocationServiceEnabled();
+    bool serviceEnabled;
+    locator.LocationPermission permission;
+
+    serviceEnabled = await locator.Geolocator.isLocationServiceEnabled();
 
     if (!serviceEnabled) {
       return Future.error("Location services are disabled");
     }
 
-    permission = await Geolocator.checkPermission();
+    permission = await locator.Geolocator.checkPermission();
 
-    if (permission == LocationPermission.denied) {
-      permission = await Geolocator.requestPermission();
+    if (permission == locator.LocationPermission.denied) {
+      permission = await locator.Geolocator.requestPermission();
 
-      if (permission == LocationPermission.denied) {
+      if (permission == locator.LocationPermission.denied) {
         return Future.error("Location permissions denied");
       }
     }
 
-    if (permission == LocationPermission.deniedForever) {
+    if (permission == locator.LocationPermission.deniedForever) {
       return Future.error("Location permissions are permanently denied");
     }
 
-    return await Geolocator.getCurrentPosition();
+
+    return await locator.Geolocator.getCurrentPosition();
+  }
+
+  ImageProvider<Object> getImage(Results results) {
+    String? photoReference = results.photos?[0].photoReference;
+
+    const baseUrl =
+        "https://maps.googleapis.com/maps/api/place/photo?parameters";
+    const maxWidth = "64";
+    const maxHeight = "64";
+    if (photoReference != null) {
+      final url =
+          "$baseUrl?maxwidth=$maxWidth&maxheight=$maxHeight&photoreference=$photoReference&key=$apiKey";
+      return NetworkImage(url);
+    } else {
+      return const AssetImage('assets/images/map/null-image.png');
+    }
   }
 
   Widget nearbyPlacesWidget(Results results) {
@@ -107,7 +144,7 @@ class _NearbyPlacesPageState extends State<NearbyPlacesPage> {
           style: const TextStyle(color: Colors.white),
         ),
         subtitle: Text(
-          results.geometry?.location! as String,
+          results.vicinity!,
           style: const TextStyle(color: Colors.white70),
         ),
         trailing: IconButton(
@@ -121,10 +158,9 @@ class _NearbyPlacesPageState extends State<NearbyPlacesPage> {
             openMapPage(results);
           },
         ),
-        leading: Icon(
-          results.photos?[0] as IconData?,
-          size: 30,
-          semanticLabel: "HospitalImageReference",
+        leading: CircleAvatar(
+          radius: 22,
+          backgroundImage: getImage(results),
         ),
         onTap: () {
           openMapPage(results);
@@ -146,9 +182,10 @@ class _NearbyPlacesPageState extends State<NearbyPlacesPage> {
         backgroundColor: Colors.transparent,
         elevation: 0,
         leading: IconButton(
+          style: ButtonStyle(backgroundColor: MaterialStateColor.resolveWith((states) => Colors.green)),
           icon: const Icon(
             Icons.arrow_back,
-            color: Colors.green,
+            color: Colors.black,
           ),
           onPressed: () {
             Navigator.push(
@@ -164,15 +201,27 @@ class _NearbyPlacesPageState extends State<NearbyPlacesPage> {
         scrollDirection: Axis.vertical,
         padding: const EdgeInsets.only(left: 3.0, right: 3.0),
         children: [
-          if (nearbyPlacesResponse.results != null)
+          if (nearbyPlacesResponse.results != null &&
+              nearbyPlacesResponse.results!.isNotEmpty)
             for (int i = 0; i < nearbyPlacesResponse.results!.length; i++)
               nearbyPlacesWidget(nearbyPlacesResponse.results![i]),
-          if (nearbyPlacesResponse.results == null)
+          if (nearbyPlacesResponse.results != null &&
+              nearbyPlacesResponse.results!.isEmpty)
             const Padding(
               padding: EdgeInsets.all(8.0),
               child: Center(
                 child: Text(
                   "No nearby places found",
+                  style: TextStyle(color: Colors.white),
+                ),
+              ),
+            ),
+          if (nearbyPlacesResponse.results == null)
+            const Padding(
+              padding: EdgeInsets.all(8.0),
+              child: Center(
+                child: Text(
+                  "No results found",
                   style: TextStyle(color: Colors.white),
                 ),
               ),
