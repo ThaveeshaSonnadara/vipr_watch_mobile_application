@@ -20,7 +20,6 @@ class NearbyPlacesPage extends StatefulWidget {
 class _NearbyPlacesPageState extends State<NearbyPlacesPage> {
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
     getNearbyPlaces();
   }
