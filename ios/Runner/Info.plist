@@ -53,5 +53,7 @@
 		<false/>
 		<key>NSLocationWhenInUseUsageDescription</key>
         <string>Reason why we need access to your location</string>
+        <key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
+        <string>Reason why we need access to your location</string>
 	</dict>
 </plist>
