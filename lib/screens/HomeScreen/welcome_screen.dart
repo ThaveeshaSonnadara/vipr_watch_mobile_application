@@ -9,7 +9,6 @@ import 'package:vipr_watch_mobile_application/screens/login/Login_page.dart';
 class Home extends StatelessWidget {
   const Home({super.key});
 
-
   @override
   Widget build(BuildContext context) {
     final screenWidth = MediaQuery.of(context).size.width;
@@ -17,10 +16,10 @@ class Home extends StatelessWidget {
 
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.green[800],
+        backgroundColor: Colors.black,
         actions: [
           IconButton(
-            icon: const Icon(Icons.exit_to_app, color: Colors.black),
+            icon: const Icon(Icons.exit_to_app, color: Colors.green),
             onPressed: () {
               showDialog(
                 context: context,
@@ -43,6 +42,7 @@ class Home extends StatelessWidget {
             },
           ),
         ],
+        iconTheme: const IconThemeData(color: Colors.green),
       ),
       drawer: Drawer(
         backgroundColor: Colors.white,
@@ -109,7 +109,10 @@ class Home extends StatelessWidget {
       ),
       drawerScrimColor: Colors.black,
       body: Container(
-        padding: const EdgeInsets.only(top: 100, bottom: 60),
+        padding: EdgeInsets.only(
+    top: screenWidth*0.2,
+        bottom: screenWidth*0.1,
+        ),
         decoration: const BoxDecoration(
           color: Colors.black,
           image: DecorationImage(
@@ -119,14 +122,14 @@ class Home extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            const Text(
+             Text(
               "ViprWatch",
               style: TextStyle(
-                fontSize: 50,
+                fontSize: screenWidth*0.1,
                 color: Colors.white,
               ),
             ),
-            const SizedBox(height: 60),
+            SizedBox(height: screenWidth*0.1),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
@@ -141,17 +144,19 @@ class Home extends StatelessWidget {
                         controller.selectedIndex.value = 1;
                       },
                       child: const Padding(
-                        padding: EdgeInsets.symmetric(
-                            vertical: 20, horizontal: 10),
-                        child: Text(
-                          "Detect Snake",
-                          style: TextStyle(
-                            color: Colors.white,
-                            fontSize: 22,
-                            fontWeight: FontWeight.bold,
+                        padding: EdgeInsets.symmetric(vertical: 18, horizontal: 10),
+                        child: Center(
+                          child: Text(
+                            "Detect Snake",
+                            style: TextStyle(
+                              color: Colors.white,
+                              fontSize: 22,
+                              fontWeight: FontWeight.bold,
+                            ),
                           ),
                         ),
                       ),
+
                     ),
                   ),
                 ),
@@ -166,17 +171,19 @@ class Home extends StatelessWidget {
                         controller.selectedIndex.value = 2;
                       },
                       child: const Padding(
-                        padding: EdgeInsets.symmetric(
-                            vertical: 20, horizontal: 10),
-                        child: Text(
-                          "Search Snake",
-                          style: TextStyle(
-                            color: Colors.white,
-                            fontSize: 22,
-                            fontWeight: FontWeight.bold,
+                        padding: EdgeInsets.symmetric(vertical: 18, horizontal: 10),
+                        child: Center(
+                          child: Text(
+                            "Search Snake",
+                            style: TextStyle(
+                              color: Colors.white,
+                              fontSize: 22,
+                              fontWeight: FontWeight.bold,
+                            ),
                           ),
                         ),
                       ),
+
                     ),
                   ),
                 ),
