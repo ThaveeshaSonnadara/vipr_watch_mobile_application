@@ -62,7 +62,7 @@ class NavigationController extends GetxController {
   final Rx<int> selectedIndex = 0.obs;
 
   final screens = [
-    Home(),
+    const Home(),
     const ImageInputScreen(),
     const SearchPage(),
     // Container(
