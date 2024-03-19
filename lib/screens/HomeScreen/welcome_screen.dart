@@ -7,12 +7,13 @@ import 'AboutUs.dart';
 import 'package:vipr_watch_mobile_application/screens/login/Login_page.dart';
 
 class Home extends StatelessWidget {
-  Home({Key? key});
-  final FirebaseAuth _auth = FirebaseAuth.instance;
+  const Home({super.key});
+
 
   @override
   Widget build(BuildContext context) {
     final screenWidth = MediaQuery.of(context).size.width;
+    final FirebaseAuth auth = FirebaseAuth.instance;
 
     return Scaffold(
       appBar: AppBar(
@@ -87,7 +88,7 @@ class Home extends StatelessWidget {
                         ),
                         TextButton(
                           onPressed: () async {
-                            await _auth.signOut();
+                            await auth.signOut();
                             Navigator.pushReplacement(
                               context,
                               MaterialPageRoute(
