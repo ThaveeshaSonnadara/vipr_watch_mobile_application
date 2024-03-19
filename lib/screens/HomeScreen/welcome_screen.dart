@@ -144,7 +144,7 @@ class Home extends StatelessWidget {
                         controller.selectedIndex.value = 1;
                       },
                       child: const Padding(
-                        padding: EdgeInsets.symmetric(vertical: 18, horizontal: 10),
+                        padding: EdgeInsets.symmetric(vertical: 20, horizontal: 10),
                         child: Center(
                           child: Text(
                             "Detect Snake",
@@ -171,7 +171,7 @@ class Home extends StatelessWidget {
                         controller.selectedIndex.value = 2;
                       },
                       child: const Padding(
-                        padding: EdgeInsets.symmetric(vertical: 18, horizontal: 10),
+                        padding: EdgeInsets.symmetric(vertical: 20, horizontal: 10),
                         child: Center(
                           child: Text(
                             "Search Snake",
