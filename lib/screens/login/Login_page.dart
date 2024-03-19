@@ -5,7 +5,6 @@ import 'package:vipr_watch_mobile_application/utills/helper_function.dart';
 import 'package:vipr_watch_mobile_application/widgets/MyTest_Field.dart';
 import 'package:vipr_watch_mobile_application/widgets/Mybutton.dart';
 import 'package:vipr_watch_mobile_application/widgets/navigation_menu.dart';
-
 import 'forgetpassword/ForgetPassword.dart';
 
 class Login_page extends StatefulWidget {
@@ -18,6 +17,7 @@ class Login_page extends StatefulWidget {
 }
 
 class _Login_pageState extends State<Login_page> {
+  bool isHiddenPassword = true;
   final TextEditingController emailController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
   late bool rememberMe = false;
@@ -104,16 +104,38 @@ class _Login_pageState extends State<Login_page> {
                   ),
                 ),
                 const SizedBox(height: 50),
+
                 MyTestField(
-                    hintText: "Email",
-                    obscureText: false,
-                    controller: emailController),
-                const SizedBox(height: 10),
-                MyTestField(
-                  hintText: "Password",
-                  obscureText: true,
-                  controller: passwordController,
+                  obscureText: false,
+                  controller: emailController,
+                  hintText: 'Email',
                 ),
+                const SizedBox(height: 10),
+
+                TextField(
+                  controller: passwordController,
+                  decoration: InputDecoration(
+                    suffixIcon: InkWell(
+                      onTap: () {
+                        setState(() {
+                          isHiddenPassword = !isHiddenPassword;
+                        });
+                      },
+                      child: const Icon(
+                        Icons.visibility,
+                        color: Colors.green,
+                      ),
+                    ),
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(10),
+                    ),
+                    hintText: 'Password',
+                    hintStyle: const TextStyle(color: Colors.white54),
+                  ),
+                  obscureText: isHiddenPassword,
+                  style: const TextStyle(color: Colors.white),
+                ),
+
                 const SizedBox(height: 10),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -128,7 +150,10 @@ class _Login_pageState extends State<Login_page> {
                             });
                           },
                         ),
-                        const Text('Remember Me',style: TextStyle(color: Colors.green),),
+                        const Text(
+                          'Remember Me',
+                          style: TextStyle(color: Colors.green),
+                        ),
                       ],
                     ),
                     GestureDetector(
