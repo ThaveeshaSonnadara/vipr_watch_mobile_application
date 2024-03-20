@@ -6,12 +6,12 @@ class IdentifySnake {
     "Common Krait",
     "Green Pit Viper",
     "Green Vine Snake",
-    "Hump-nosed viper",
+    "Hump nosed viper",
     "Indian Cobra",
     "Indian Rock Python",
     "Rat Snake",
     "Russell's Viper",
-    "Saw-scaled Viper",
+    "Saw scaled Viper",
     "Sri Lanka Cat Snake",
   ];
 
@@ -20,7 +20,7 @@ class IdentifySnake {
     // Pass the image path to the api endpoint Url
     // var request = http.MultipartRequest('POST', Uri.parse('http://13.53.168.135:8080/predict'));
     var request = http.MultipartRequest(
-        'POST', Uri.parse('http://192.168.1.101:8080/predict'));
+        'POST', Uri.parse('http://192.168.96.219:8080/predict'));
 
     var picture = await http.MultipartFile.fromPath('file', imageFile);
 

@@ -97,8 +97,7 @@ class _ImageProcessScreenState extends State<ImageProcessScreen> {
         final String imagePath = widget.path;
         snakeDetails = await IdentifySnake().sendImage(imagePath);
         print(imagePath);
-      }
-      else {
+      } else {
         errorPopUp();
       }
     } catch (e) {
@@ -110,13 +109,14 @@ class _ImageProcessScreenState extends State<ImageProcessScreen> {
     await getSnakeDetails();
     print(snakeDetails);
 
-    if (snakeDetails.isEmpty) {  // Not to show the processing long time
+    if (snakeDetails.isEmpty) {
+      // Not to show the processing long time
       errorPopUp();
     } else {
       snakeName = await snakeDetails[0];
       accuracy = await snakeDetails[1];
 
-      if (accuracy > 70) {
+      if (accuracy > 84) {
         await getIdentifiedSnakeDetails();
         print(identifiedSnakeDetails);
         AnimatedSnackBar.material(
@@ -179,10 +179,9 @@ class _ImageProcessScreenState extends State<ImageProcessScreen> {
                 Navigator.push(
                   context,
                   MaterialPageRoute(
-                    builder: (e) =>
-                        SnakeSpeciesDetailsScreen(
-                          identifiedSnakeDetails: identifiedSnakeDetails,
-                        ), //Snake details
+                    builder: (e) => SnakeSpeciesDetailsScreen(
+                      identifiedSnakeDetails: identifiedSnakeDetails,
+                    ), //Snake details
                   ),
                 );
               } else {
@@ -298,26 +297,27 @@ class _ImageProcessScreenState extends State<ImageProcessScreen> {
 
 // get the details of the identified snake from the data base.
 
-Future<void> getIdentifiedSnakeDetails() async {
-  QuerySnapshot<Map<String, dynamic>> snap = await FirebaseFirestore.instance
-      .collection('Snake details and treatments')
-      .where('Snake Name', isEqualTo: snakeName)
-      .get();
+  Future<void> getIdentifiedSnakeDetails() async {
+    QuerySnapshot<Map<String, dynamic>> snap = await FirebaseFirestore.instance
+        .collection('Snake details and treatments')
+        .where('Snake Name', isEqualTo: snakeName.toLowerCase())
+        .get();
 
-  List<QueryDocumentSnapshot<Map<String, dynamic>>> snakeInfo = snap.docs;
-  if (snakeInfo.isNotEmpty) {
-    setState(() {
-      var identifiedDetails = snakeInfo[0].data();
-      identifiedSnakeDetails = [
-        snakeName,
-        identifiedDetails['Snake Scientific Name'] ?? 'on data',
-        identifiedDetails['Snake Sinhala Name'] ?? 'on data',
-        identifiedDetails['Venomous Type'] ?? 'on data',
-        identifiedDetails['Details'] ?? 'on data',
-        identifiedDetails['Medical Treatments'] ?? 'on data',
-        identifiedDetails['img_url'] ?? 'https://imageresizer.furnituredealer.net/img/remote/images.furnituredealer.net/img/commonimages%2Fitem-placeholder.jpg?width=480&scale=both&trim.threshold=80&trim.percentpadding=15',
-      ];
-    });
+    List<QueryDocumentSnapshot<Map<String, dynamic>>> snakeInfo = snap.docs;
+    if (snakeInfo.isNotEmpty) {
+      setState(() {
+        var identifiedDetails = snakeInfo[0].data();
+        identifiedSnakeDetails = [
+          snakeName,
+          identifiedDetails['Snake Scientific Name'] ?? 'no data',
+          identifiedDetails['Snake Sinhala Name'] ?? 'no data',
+          identifiedDetails['Venomous Type'] ?? 'no data',
+          identifiedDetails['Details'] ?? 'no data',
+          identifiedDetails['Medical Treatments'] ?? 'no data',
+          identifiedDetails['img_url'] ??
+              'https://imageresizer.furnituredealer.net/img/remote/images.furnituredealer.net/img/commonimages%2Fitem-placeholder.jpg?width=480&scale=both&trim.threshold=80&trim.percentpadding=15',
+        ];
+      });
+    }
   }
-}
 }

@@ -16,6 +16,7 @@ class AuthenticationRepository extends GetxController {
   }
 
   screenRedirect() async {
+    deviceStorage.erase();
     deviceStorage.writeIfNull('isFirstTime', true);
     deviceStorage.read('isFirstTime') != true
         ? Get.offAll(() => const NavigationMenu())
