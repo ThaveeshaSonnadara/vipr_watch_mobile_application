@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:icons_plus/icons_plus.dart';
+import 'package:vipr_watch_mobile_application/screens/HomeScreen/welcome_screen.dart';
+import 'package:vipr_watch_mobile_application/screens/search_page/SearchSnake.dart';
 import '../screens/image_input/image_input.dart';
 
 class NavigationMenu extends StatelessWidget {
@@ -60,13 +62,9 @@ class NavigationController extends GetxController {
   final Rx<int> selectedIndex = 0.obs;
 
   final screens = [
-    Container(
-      color: Colors.black,
-    ),
+    const Home(),
     const ImageInputScreen(),
-    Container(
-      color: Colors.blue,
-    ),
+    const SearchPage(),
     // Container(
     //   color: Colors.green,
     // ),
