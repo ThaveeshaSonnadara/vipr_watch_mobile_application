@@ -10,7 +10,6 @@ class ImageInputScreen extends StatefulWidget {
   const ImageInputScreen({super.key});
 
   @override
-  // _ImageInputScreenState createState() => _ImageInputScreenState();
   State<ImageInputScreen> createState() => _ImageInputScreenState();
 }
 
@@ -19,7 +18,7 @@ class _ImageInputScreenState extends State<ImageInputScreen> {
 
   Future<void> pickImage(ImageSource source) async {
     try {
-      final image = await ImagePicker().pickImage(source: source);
+      final image = await ImagePicker().pickImage(source: source); // get the image file from the device
       if (image == null) return;
       File? imageTemporary = File(image.path);
       imageTemporary = await cropImage(imageFile: imageTemporary);
@@ -33,43 +32,13 @@ class _ImageInputScreenState extends State<ImageInputScreen> {
     }
   }
 
+  // edit the image as user preferred
   Future<File?> cropImage({required File imageFile}) async {
     CroppedFile? croppedImage =
         await ImageCropper().cropImage(sourcePath: imageFile.path);
     if (croppedImage == null) return null;
     return File(croppedImage.path);
   }
-
-  // void _showDialog() {
-  //   showDialog(
-  //       context: context,
-  //       builder: (contaxt) {
-  //         return CupertinoAlertDialog(
-  //
-  //           title: const Text('Cobra'),
-  //           content: const Text('Accuracy: 91%'),
-  //           actions: [
-  //             MaterialButton(
-  //               onPressed: () {
-  //                 Navigator.pop(context);
-  //               },
-  //               child: const Text('Back'),
-  //             ),
-  //             MaterialButton(
-  //               onPressed: () {
-  //                 Navigator.push(
-  //                   context,
-  //                   MaterialPageRoute(
-  //                     builder: (e) => const SignupPage(),
-  //                   ),
-  //                 );
-  //               },
-  //               child: const Text('Details'),
-  //             )
-  //           ],
-  //         );
-  //       });
-  // }
 
   @override
   Widget build(BuildContext context) {

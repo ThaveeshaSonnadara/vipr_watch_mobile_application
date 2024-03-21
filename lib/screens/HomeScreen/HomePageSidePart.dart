@@ -8,6 +8,7 @@ class WelcomeScreen extends StatefulWidget {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.green,
+
       ),
       body: Container(
         child: const Center(

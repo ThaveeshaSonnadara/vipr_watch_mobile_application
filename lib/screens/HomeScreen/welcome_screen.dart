@@ -47,7 +47,7 @@ class Home extends StatelessWidget {
       drawer: Drawer(
         backgroundColor: Colors.white,
         child: Container(
-          color: Colors.green[800],
+          color: Colors.green[700],
           child: ListView(
             children: [
               const DrawerHeader(
