@@ -13,7 +13,7 @@ class AboutUs extends StatelessWidget {
       appBar: AppBar(
         backgroundColor: Colors.black,
         leading: IconButton(
-          icon: const Icon(Icons.arrow_back, color: Colors.white),
+          icon: const Icon(Icons.arrow_back, color: Colors.green),
           onPressed: () => Navigator.pop(context),
         ),
       ),

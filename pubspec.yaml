@@ -46,6 +46,7 @@ dependencies:
   smooth_page_indicator: ^1.1.0
   lottie: ^2.7.0
   connectivity_plus: ^5.0.1
+  shared_preferences: ^2.2.2
 
   #image input
   image_picker: ^1.0.7
@@ -67,6 +68,7 @@ dependencies:
   #firebase
   firebase_core: ^2.25.4
   cloud_firestore: ^4.15.6
+  firebase_auth: ^4.17.9
 
   #API
   http: ^1.2.0
@@ -78,11 +80,14 @@ dependencies:
   #network connection
   internet_connection_checker: ^1.0.0+1
 
+  #google map
+  google_maps_flutter: ^2.6.0
+  flutter_polyline_points: ^2.0.0
+  geolocator: ^11.0.0
+
 dev_dependencies:
   flutter_test:
     sdk: flutter
-
-  flutter_launcher_icons: "^0.13.1"
 
   # The "flutter_lints" package below contains a set of recommended lints to
   # encourage good coding practices. The lint set provided by the package is
@@ -90,6 +95,8 @@ dev_dependencies:
   # package. See that file for information about deactivating specific lint
   # rules and activating additional ones.
   flutter_lints: ^3.0.1
+
+  flutter_launcher_icons: ^0.13.1
 
 flutter_launcher_icons:
   android: "launcher_icon"
@@ -114,8 +121,8 @@ flutter:
     - assets/images/onboarding/
     - assets/images/input_image/
     - assets/images/image_process/
-    - assets/videos/
-  #   - images/a_dot_ham.jpeg
+    - assets/images/map/
+    - assets/images/pics/
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

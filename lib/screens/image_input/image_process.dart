@@ -5,8 +5,8 @@ import 'package:lottie/lottie.dart';
 import 'package:animated_snack_bar/animated_snack_bar.dart';
 import 'package:material_dialogs/widgets/buttons/icon_button.dart';
 import 'package:material_dialogs/widgets/buttons/icon_outline_button.dart';
-import '../../widgets/navigation_menu.dart';
-import '../species_details/species_details.dart';
+import 'package:vipr_watch_mobile_application/screens/species_details/species_details.dart';
+import 'package:vipr_watch_mobile_application/widgets/navigation_menu.dart';
 import 'identify_snake.dart';
 import 'package:material_dialogs/dialogs.dart';
 
@@ -92,10 +92,11 @@ class _ImageProcessScreenState extends State<ImageProcessScreen> {
 
   getSnakeDetails() async {
     try {
+      // check that the device is connected to the internet or not
       final hasInternet = await InternetConnectionChecker().hasConnection;
       if (hasInternet) {
         final String imagePath = widget.path;
-        snakeDetails = await IdentifySnake().sendImage(imagePath);
+        snakeDetails = await IdentifySnake().sendImage(imagePath); // pass the image file to the API and get the return data and store in a list
         print(imagePath);
       } else {
         errorPopUp();
@@ -105,6 +106,7 @@ class _ImageProcessScreenState extends State<ImageProcessScreen> {
     }
   }
 
+  // method to check that the system should display the snake details or the error message
   Future<void> popUpDetails() async {
     await getSnakeDetails();
     print(snakeDetails);
@@ -116,7 +118,7 @@ class _ImageProcessScreenState extends State<ImageProcessScreen> {
       snakeName = await snakeDetails[0];
       accuracy = await snakeDetails[1];
 
-      if (accuracy > 84) {
+      if (accuracy > 80) {
         await getIdentifiedSnakeDetails();
         print(identifiedSnakeDetails);
         AnimatedSnackBar.material(
@@ -134,6 +136,7 @@ class _ImageProcessScreenState extends State<ImageProcessScreen> {
     }
   }
 
+  // method to pop out identified snake details
   void snakeDetailsPopUp(String snakeName, int accuracy) async {
     await Dialogs.materialDialog(
         context: context,
@@ -198,6 +201,7 @@ class _ImageProcessScreenState extends State<ImageProcessScreen> {
         ]);
   }
 
+  // method to pop out a message if the snake is not identified
   void failIdentifyPopUp() async {
     await Dialogs.materialDialog(
         context: context,
@@ -240,14 +244,17 @@ class _ImageProcessScreenState extends State<ImageProcessScreen> {
         ]);
   }
 
+  // method to pop out a error message if an error is occurred
   void errorPopUp() async {
     final hasInternet = await InternetConnectionChecker().hasConnection;
     late String msg;
     late String title;
     late String imgPath;
+
+    // check that the device is connected to the internet or not
     if (hasInternet) {
-      msg = 'An error occurred  on the system !';
-      title = 'System Error';
+      msg = 'An error occurred on the server !';
+      title = 'Server Error';
       imgPath = 'assets/images/image_process/warning.json';
     } else {
       msg = 'Your internet connection is unstable !';
@@ -295,8 +302,7 @@ class _ImageProcessScreenState extends State<ImageProcessScreen> {
         ]);
   }
 
-// get the details of the identified snake from the data base.
-
+  // get the details of the identified snake from the data base.
   Future<void> getIdentifiedSnakeDetails() async {
     QuerySnapshot<Map<String, dynamic>> snap = await FirebaseFirestore.instance
         .collection('Snake details and treatments')

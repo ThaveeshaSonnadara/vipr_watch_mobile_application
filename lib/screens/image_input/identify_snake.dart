@@ -17,10 +17,10 @@ class IdentifySnake {
 
   Future sendImage(String imageFile) async {
     var result = null;
+
     // Pass the image path to the api endpoint Url
-    // var request = http.MultipartRequest('POST', Uri.parse('http://13.53.168.135:8080/predict'));
     var request = http.MultipartRequest(
-        'POST', Uri.parse('http://192.168.96.219:8080/predict'));
+        'POST', Uri.parse('http://172.27.65.110:8080/predict'));
 
     var picture = await http.MultipartFile.fromPath('file', imageFile);
 
@@ -29,14 +29,16 @@ class IdentifySnake {
     http.StreamedResponse response = await request.send();
 
     if (response.statusCode == 200) {
+
+      // return the data to the application
       result = await response.stream.bytesToString();
       return getSnakeDetailList(result);
     } else {
       print(response.reasonPhrase);
     }
-    // return result;
   }
 
+  // get the data return by the api and store that data in a list
   List<Object> getSnakeDetailList(result) {
     Map<String, dynamic> jsonResult = json.decode(result);
     String snakeName = snakeSpeciesList[jsonResult['predicted_class']];
