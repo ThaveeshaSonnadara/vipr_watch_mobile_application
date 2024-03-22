@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 import 'package:vipr_watch_mobile_application/widgets/navigation_menu.dart';
 import 'AboutUs.dart';
 import 'package:vipr_watch_mobile_application/screens/login/Login_page.dart';
