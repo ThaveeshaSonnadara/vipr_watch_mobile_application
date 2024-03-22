@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:vipr_watch_mobile_application/screens/species_details/snake_details.dart';
-import '../../widgets/emergency_menu.dart';
-import '../../widgets/navigation_menu.dart';
+import 'package:vipr_watch_mobile_application/widgets/emergency_menu.dart';
+import 'package:vipr_watch_mobile_application/widgets/navigation_menu.dart';
 import 'firstaid_details.dart';
 
 class SnakeSpeciesDetailsScreen extends StatefulWidget {

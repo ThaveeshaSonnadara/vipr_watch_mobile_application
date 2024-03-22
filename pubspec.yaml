@@ -31,8 +31,6 @@ dependencies:
   flutter:
     sdk: flutter
 
-  shared_preferences: ^2.2.2
-
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.2
@@ -48,6 +46,7 @@ dependencies:
   smooth_page_indicator: ^1.1.0
   lottie: ^2.7.0
   connectivity_plus: ^5.0.1
+  shared_preferences: ^2.2.2
 
   #image input
   image_picker: ^1.0.7
@@ -69,7 +68,7 @@ dependencies:
   #firebase
   firebase_core: ^2.25.4
   cloud_firestore: ^4.15.6
-  firebase_auth: ^4.17.6
+  firebase_auth: ^4.17.9
 
   #API
   http: ^1.2.0
@@ -81,18 +80,20 @@ dependencies:
   #network connection
   internet_connection_checker: ^1.0.0+1
 
-  #google maps packages
-  geolocator: ^11.0.0
+  #google map
   google_maps_flutter: ^2.5.3
   flutter_polyline_points: ^2.0.0
   location: ^5.0.3
   geocoding: ^3.0.0
   permission_handler: ^11.3.0
+  geolocator: ^11.0.0
+
+  # google fonts
+  google_fonts: ^6.2.0
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
-
 
   # The "flutter_lints" package below contains a set of recommended lints to
   # encourage good coding practices. The lint set provided by the package is
@@ -100,6 +101,13 @@ dev_dependencies:
   # package. See that file for information about deactivating specific lint
   # rules and activating additional ones.
   flutter_lints: ^3.0.1
+
+  flutter_launcher_icons: ^0.13.1
+
+flutter_launcher_icons:
+  android: "launcher_icon"
+  ios: true
+  image_path: "assets/images/logo/app logo.png"
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
@@ -119,10 +127,8 @@ flutter:
     - assets/images/onboarding/
     - assets/images/input_image/
     - assets/images/image_process/
-    - assets/videos/
-    - assets/images/pics/
     - assets/images/map/
-  #   - images/a_dot_ham.jpeg
+    - assets/images/pics/
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

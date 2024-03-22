@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:icons_plus/icons_plus.dart';
 import 'package:vipr_watch_mobile_application/screens/HomeScreen/welcome_screen.dart';
+import 'package:vipr_watch_mobile_application/screens/image_input/image_input.dart';
 import 'package:vipr_watch_mobile_application/screens/search_page/SearchSnake.dart';
-import '../screens/image_input/image_input.dart';
 
 class NavigationMenu extends StatelessWidget {
   const NavigationMenu({super.key});
@@ -45,10 +45,6 @@ class NavigationMenu extends StatelessWidget {
                       Icon(Iconsax.search_favorite, color: Colors.black),
                   icon: Icon(Iconsax.search_favorite, color: Colors.green),
                   label: 'Search'),
-              // NavigationDestination(
-              //     selectedIcon: Icon(Iconsax.user, color: Colors.black),
-              //     icon: Icon(Iconsax.user, color: Colors.green),
-              //     label: 'Profile'),
             ],
           ),
         ),
@@ -65,8 +61,5 @@ class NavigationController extends GetxController {
     const Home(),
     const ImageInputScreen(),
     const SearchPage(),
-    // Container(
-    //   color: Colors.green,
-    // ),
   ];
 }

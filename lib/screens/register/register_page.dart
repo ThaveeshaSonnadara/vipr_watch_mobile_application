@@ -16,6 +16,8 @@ class RegisterPage extends StatefulWidget {
 }
 
 class _RegisterPageState extends State<RegisterPage> {
+
+  bool isHiddenPassword = true;
   ///TextEditingController
   final TextEditingController userNameController = TextEditingController();
 
@@ -110,7 +112,7 @@ class _RegisterPageState extends State<RegisterPage> {
 
                 ///app name
                 const Text(
-                  'Vipr Watch',
+                  'ViprWatch',
                   style: TextStyle(
                     fontSize: 30,
                     color: Colors.green,
@@ -132,19 +134,56 @@ class _RegisterPageState extends State<RegisterPage> {
                     controller: emailController),
                 const SizedBox(height: 10),
 
-                ///password
-                MyTestField(
-                    hintText: "Password",
-                    obscureText: true,
-                    controller: passwordController),
+                TextField(
+                  controller: passwordController,
+                  decoration: InputDecoration(
+                    suffixIcon: InkWell(
+                      onTap: () {
+                        setState(() {
+                          isHiddenPassword = !isHiddenPassword;
+                        });
+                      },
+                      child: const Icon(
+                        Icons.visibility,
+                        color: Colors.green,
+                      ),
+                    ),
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(10),
+                    ),
+                    hintText: 'Password',
+                    hintStyle: const TextStyle(color: Colors.white54),
+                  ),
+                  obscureText: isHiddenPassword,
+                  style: const TextStyle(color: Colors.white),
+                ),
+
                 const SizedBox(height: 10),
 
-                ///confirm password
-                MyTestField(
-                    hintText: "Confirm Password",
-                    obscureText: true,
-                    controller: confirmPwController),
-                const SizedBox(height: 25),
+                TextField(
+                  controller: confirmPwController,
+                  decoration: InputDecoration(
+                    suffixIcon: InkWell(
+                      onTap: () {
+                        setState(() {
+                          isHiddenPassword = !isHiddenPassword;
+                        });
+                      },
+                      child: const Icon(
+                        Icons.visibility,
+                        color: Colors.green,
+                      ),
+                    ),
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(10),
+                    ),
+                    hintText: 'Confirm Password',
+                    hintStyle: const TextStyle(color: Colors.white54),
+                  ),
+                  obscureText: isHiddenPassword,
+                  style: const TextStyle(color: Colors.white),
+                ),
+                const SizedBox(height: 10),
 
                 ///register button
                 MyButton(
@@ -166,7 +205,7 @@ class _RegisterPageState extends State<RegisterPage> {
                     GestureDetector(
                       onTap: widget.onTap,
                       child: const Text(
-                        'login here',
+                        ' login here',
                         style: TextStyle(
                           color: Colors.green,
                           fontWeight: FontWeight.bold,

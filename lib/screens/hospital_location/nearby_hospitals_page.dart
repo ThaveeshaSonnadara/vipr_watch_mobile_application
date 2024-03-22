@@ -214,13 +214,7 @@ class _NearbyPlacesPageState extends State<NearbyPlacesPage> {
             Icons.arrow_back,
             color: Colors.black,
           ),
-          onPressed: () {
-            Navigator.push(
-                context,
-                MaterialPageRoute(
-                    builder: (context) =>
-                        const NavigationMenu())); // Implement the back button functionality
-          },
+          onPressed: () => Navigator.pop(context),// Implement the back button functionality
         ),
       ),
       floatingActionButton: const EmergencyMenu(),

@@ -5,7 +5,6 @@ import 'package:vipr_watch_mobile_application/utills/helper_function.dart';
 import 'package:vipr_watch_mobile_application/widgets/MyTest_Field.dart';
 import 'package:vipr_watch_mobile_application/widgets/Mybutton.dart';
 import 'package:vipr_watch_mobile_application/widgets/navigation_menu.dart';
-
 import 'forgetpassword/ForgetPassword.dart';
 
 class Login_page extends StatefulWidget {
@@ -18,6 +17,7 @@ class Login_page extends StatefulWidget {
 }
 
 class _Login_pageState extends State<Login_page> {
+  bool isHiddenPassword = true;
   final TextEditingController emailController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
   late bool rememberMe = false;
@@ -35,6 +35,16 @@ class _Login_pageState extends State<Login_page> {
       if (rememberMe) {
         emailController.text = prefs.getString('email') ?? '';
         passwordController.text = prefs.getString('password') ?? '';
+        //NEW
+        // if (emailController.text.isNotEmpty && passwordController.text.isNotEmpty) {
+        //   Navigator.pushReplacement(
+        //     context,
+        //     MaterialPageRoute(
+        //       builder: (context) => const NavigationMenu(),
+        //     ),
+        //   );
+        // }
+        // new
       }
     });
   }
@@ -43,7 +53,9 @@ class _Login_pageState extends State<Login_page> {
     showDialog(
       context: context,
       builder: (context) => const Center(
-        child: CircularProgressIndicator(),
+        child: CircularProgressIndicator(
+          color: Colors.green,
+        ),
       ),
     );
 
@@ -101,18 +113,38 @@ class _Login_pageState extends State<Login_page> {
                   style: TextStyle(
                     fontSize: 30,
                     color: Colors.green,
+                    fontWeight: FontWeight.w500
                   ),
                 ),
                 const SizedBox(height: 50),
                 MyTestField(
-                    hintText: "Email",
-                    obscureText: false,
-                    controller: emailController),
+                  obscureText: false,
+                  controller: emailController,
+                  hintText: 'Email',
+                ),
                 const SizedBox(height: 10),
-                MyTestField(
-                  hintText: "Password",
-                  obscureText: true,
+                TextField(
                   controller: passwordController,
+                  decoration: InputDecoration(
+                    suffixIcon: InkWell(
+                      onTap: () {
+                        setState(() {
+                          isHiddenPassword = !isHiddenPassword;
+                        });
+                      },
+                      child: const Icon(
+                        Icons.visibility,
+                        color: Colors.green,
+                      ),
+                    ),
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(10),
+                    ),
+                    hintText: 'Password',
+                    hintStyle: const TextStyle(color: Colors.white54),
+                  ),
+                  obscureText: isHiddenPassword,
+                  style: const TextStyle(color: Colors.white),
                 ),
                 const SizedBox(height: 10),
                 Row(
@@ -128,7 +160,10 @@ class _Login_pageState extends State<Login_page> {
                             });
                           },
                         ),
-                        const Text('Remember Me',style: TextStyle(color: Colors.green),),
+                        const Text(
+                          'Remember Me',
+                          style: TextStyle(color: Colors.green),
+                        ),
                       ],
                     ),
                     GestureDetector(
@@ -170,7 +205,7 @@ class _Login_pageState extends State<Login_page> {
                     GestureDetector(
                       onTap: widget.onTap,
                       child: const Text(
-                        'Register here',
+                        ' Register here',
                         style: TextStyle(
                           color: Colors.green,
                           fontWeight: FontWeight.bold,

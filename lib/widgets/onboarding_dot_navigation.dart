@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
-import '../controllers/onboarding_controller.dart';
+import 'package:vipr_watch_mobile_application/controllers/onboarding_controller.dart';
 
 class OnBoardingDotNavigation extends StatelessWidget {
   const OnBoardingDotNavigation({
@@ -11,6 +11,7 @@ class OnBoardingDotNavigation extends StatelessWidget {
   Widget build(BuildContext context) {
     final controller = OnBoardingController.instance;
 
+    // navigation dots are changing according to the boarding pages
     return Positioned(
       bottom: kBottomNavigationBarHeight + 25,
       left: 24.0,

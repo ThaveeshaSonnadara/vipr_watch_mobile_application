@@ -1,9 +1,12 @@
 import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:vipr_watch_mobile_application/widgets/navigation_menu.dart';
 import 'AboutUs.dart';
-import 'LogOut.dart';
+import 'package:vipr_watch_mobile_application/screens/login/Login_page.dart';
 
 class Home extends StatelessWidget {
   const Home({super.key});
@@ -11,19 +14,21 @@ class Home extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final screenWidth = MediaQuery.of(context).size.width;
+    final FirebaseAuth auth = FirebaseAuth.instance;
 
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.green[800],
+        backgroundColor: Colors.black,
         actions: [
           IconButton(
-            icon: const Icon(Icons.exit_to_app, color: Colors.black),
+            icon: const Icon(Icons.exit_to_app, color: Colors.green),
             onPressed: () {
               showDialog(
                 context: context,
                 builder: (context) => AlertDialog(
                   title: const Text('Exit App?'),
-                  content: const Text('Are you sure you want to exit ViprWatch?'),
+                  content:
+                      const Text('Are you sure you want to exit ViprWatch?'),
                   actions: [
                     TextButton(
                       onPressed: () => Navigator.pop(context), // Cancel
@@ -39,11 +44,12 @@ class Home extends StatelessWidget {
             },
           ),
         ],
+        iconTheme: const IconThemeData(color: Colors.green),
       ),
       drawer: Drawer(
         backgroundColor: Colors.white,
         child: Container(
-          color: Colors.green[800],
+          color: Colors.green[700],
           child: ListView(
             children: [
               const DrawerHeader(
@@ -61,17 +67,56 @@ class Home extends StatelessWidget {
                   style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
                 ),
                 onTap: () {
-                  Navigator.of(context).push(MaterialPageRoute(builder: (context) => const AboutUs()));
+                  Navigator.of(context).push(
+                      MaterialPageRoute(builder: (context) => const AboutUs()));
                 },
               ),
               ListTile(
-                leading: const Icon(Icons.person),
+                leading: const Icon(Icons.logout), // Changed icon to logout
                 title: const Text(
-                  'LogOut',
+                  'Logout',
                   style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
                 ),
-                onTap: () {
-                  Navigator.of(context).push(MaterialPageRoute(builder: (context) => const LogOut()));
+                onTap: () async {
+                  // Show LogOut dialog
+                  showDialog(
+                    context: context,
+                    builder: (context) => AlertDialog(
+                      title: const Text('Do you want to Logout?'),
+                      actions: [
+                        TextButton(
+                          onPressed: () => Navigator.pop(context),
+                          // Cancel LogOut
+                          child: const Text('Cancel'),
+                        ),
+                        TextButton(
+                          onPressed: () async {
+                            // New
+                            // Store email and password before signing out
+                            // SharedPreferences prefs = await SharedPreferences.getInstance();
+                            // prefs.remove('email');
+                            // prefs.remove('password');
+                            // prefs.remove('rememberMe');
+                            //new
+
+                            await auth.signOut();
+                            Navigator.pushReplacement(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => Login_page(
+                                    onTap:
+                                        () {}), // Pass required parameters to Login_page constructor
+                              ),
+                            );
+                          },
+                          child: const Text('Ok',
+                              style: TextStyle(
+                                  color: Colors
+                                      .red)), // Ok button with red text color
+                        ),
+                      ],
+                    ),
+                  );
                 },
               ),
             ],
@@ -80,7 +125,10 @@ class Home extends StatelessWidget {
       ),
       drawerScrimColor: Colors.black,
       body: Container(
-        padding: const EdgeInsets.only(top: 100, bottom: 60),
+        padding: EdgeInsets.only(
+          top: screenWidth * 0.2,
+          bottom: screenWidth * 0.1,
+        ),
         decoration: const BoxDecoration(
           color: Colors.black,
           image: DecorationImage(
@@ -90,14 +138,15 @@ class Home extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            const Text(
+            Text(
               "ViprWatch",
-              style: TextStyle(
-                fontSize: 50,
+              style: GoogleFonts.oleoScript(
+                fontSize: screenWidth * 0.1,
+                fontWeight: FontWeight.w500,
                 color: Colors.white,
               ),
             ),
-            const SizedBox(height: 60),
+            SizedBox(height: screenWidth * 0.1),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
@@ -112,13 +161,18 @@ class Home extends StatelessWidget {
                         controller.selectedIndex.value = 1;
                       },
                       child: const Padding(
-                        padding: EdgeInsets.symmetric(vertical: 20, horizontal: 10),
-                        child: Text(
-                          "Detect Snake",
-                          style: TextStyle(
-                            color: Colors.white,
-                            fontSize: 22,
-                            fontWeight: FontWeight.bold,
+                        padding: EdgeInsets.symmetric(
+                          vertical: 25,
+                        ),
+                        child: Center(
+                          child: Text(
+                            "Detect Snake",
+                            textAlign: TextAlign.center,
+                            style: TextStyle(
+                              color: Colors.white,
+                              fontSize: 20,
+                              fontWeight: FontWeight.bold,
+                            ),
                           ),
                         ),
                       ),
@@ -136,13 +190,18 @@ class Home extends StatelessWidget {
                         controller.selectedIndex.value = 2;
                       },
                       child: const Padding(
-                        padding: EdgeInsets.symmetric(vertical: 20, horizontal: 10),
-                        child: Text(
-                          "Search Snake",
-                          style: TextStyle(
-                            color: Colors.white,
-                            fontSize: 22,
-                            fontWeight: FontWeight.bold,
+                        padding: EdgeInsets.symmetric(
+                          vertical: 25,
+                        ),
+                        child: Center(
+                          child: Text(
+                            "Search Snake",
+                            textAlign: TextAlign.center,
+                            style: TextStyle(
+                              color: Colors.white,
+                              fontSize: 20,
+                              fontWeight: FontWeight.bold,
+                            ),
                           ),
                         ),
                       ),
