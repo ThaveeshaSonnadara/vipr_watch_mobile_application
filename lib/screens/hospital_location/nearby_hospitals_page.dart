@@ -1,14 +1,17 @@
 import 'dart:convert';
+import 'dart:ui';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:geolocator/geolocator.dart' as locator;
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:http/http.dart' as http;
+import 'package:url_launcher/url_launcher.dart';
 import 'package:vipr_watch_mobile_application/models/nearby_response.dart';
 import 'package:vipr_watch_mobile_application/screens/hospital_location/map_screen.dart';
 import 'package:vipr_watch_mobile_application/widgets/emergency_menu.dart';
 import 'package:vipr_watch_mobile_application/widgets/navigation_menu.dart';
+import 'package:permission_handler/permission_handler.dart';
 
 class NearbyPlacesPage extends StatefulWidget {
   const NearbyPlacesPage({super.key});
@@ -38,7 +41,7 @@ class _NearbyPlacesPageState extends State<NearbyPlacesPage> {
   // late String locationAddress;
 
   Future<bool> setUserLocationLatLng() async {
-    locator.Position userPosition = await getCurrentLocation();
+    locator.Position userPosition = await turnOnLocation();
 
     if (userPosition.runtimeType != Future.error.runtimeType) {
 
@@ -116,6 +119,31 @@ class _NearbyPlacesPageState extends State<NearbyPlacesPage> {
 
 
     return await locator.Geolocator.getCurrentPosition();
+  }
+
+  Future<locator.Position> turnOnLocation() async {
+    var locationStatus = await Permission.locationWhenInUse.request();
+    if (locationStatus.isGranted) {
+      // Location is already enabled, proceed with your location access logic
+      return getCurrentLocation();
+    } else {
+      // If permission denied, open device settings to enable location
+      if (await openLocationSettings()) {
+        return getCurrentLocation();
+      } return Future.error("Couldn't open location settings");
+    }
+  }
+
+  Future<bool> openLocationSettings() async {
+    final url = Uri.parse('platform://settings/location');
+    if (await canLaunchUrl(url)) {
+      await launchUrl(url);
+      return true;
+    } else {
+      // Handle case where opening settings fails
+      print("Couldn't open location settings");
+      return false;
+    }
   }
 
   ImageProvider<Object> getImage(Results results) {
