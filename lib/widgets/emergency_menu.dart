@@ -14,7 +14,7 @@ class EmergencyMenu extends StatefulWidget {
 }
 
 class _EmergencyMenuState extends State<EmergencyMenu> {
-  final ambulanceNumber = '+1990';
+  final ambulanceNumber = '1990';
 
   @override
   Widget build(BuildContext context) {

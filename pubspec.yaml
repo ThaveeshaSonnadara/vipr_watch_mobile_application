@@ -85,6 +85,9 @@ dependencies:
   flutter_polyline_points: ^2.0.0
   geolocator: ^11.0.0
 
+  # google fonts
+  google_fonts: ^6.2.1
+
 dev_dependencies:
   flutter_test:
     sdk: flutter

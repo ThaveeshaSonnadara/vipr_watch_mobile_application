@@ -162,7 +162,7 @@ class _SnakeDetailsTabState extends State<SnakeDetailsTab> {
                       ),
                       Padding(
                         padding: const EdgeInsetsDirectional.fromSTEB(
-                            15.0, 20.0, 10.0, 30.0),
+                            15.0, 20.0, 10.0, 50.0),
                         child: Text(
                           widget.identifiedSnakeDetails[4],
                           textAlign: TextAlign.justify,

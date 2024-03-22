@@ -2,6 +2,8 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:vipr_watch_mobile_application/widgets/navigation_menu.dart';
 import 'AboutUs.dart';
 import 'package:vipr_watch_mobile_application/screens/login/Login_page.dart';
@@ -26,7 +28,7 @@ class Home extends StatelessWidget {
                 builder: (context) => AlertDialog(
                   title: const Text('Exit App?'),
                   content:
-                  const Text('Are you sure you want to exit ViprWatch?'),
+                      const Text('Are you sure you want to exit ViprWatch?'),
                   actions: [
                     TextButton(
                       onPressed: () => Navigator.pop(context), // Cancel
@@ -83,20 +85,34 @@ class Home extends StatelessWidget {
                       title: const Text('Do you want to Logout?'),
                       actions: [
                         TextButton(
-                          onPressed: () => Navigator.pop(context), // Cancel LogOut
+                          onPressed: () => Navigator.pop(context),
+                          // Cancel LogOut
                           child: const Text('Cancel'),
                         ),
                         TextButton(
                           onPressed: () async {
+                            // New
+                            // Store email and password before signing out
+                            // SharedPreferences prefs = await SharedPreferences.getInstance();
+                            // prefs.remove('email');
+                            // prefs.remove('password');
+                            // prefs.remove('rememberMe');
+                            //new
+
                             await auth.signOut();
                             Navigator.pushReplacement(
                               context,
                               MaterialPageRoute(
-                                builder: (context) =>  Login_page(onTap: () {}), // Pass required parameters to Login_page constructor
+                                builder: (context) => Login_page(
+                                    onTap:
+                                        () {}), // Pass required parameters to Login_page constructor
                               ),
                             );
                           },
-                          child: const Text('Ok', style: TextStyle(color: Colors.red)), // Ok button with red text color
+                          child: const Text('Ok',
+                              style: TextStyle(
+                                  color: Colors
+                                      .red)), // Ok button with red text color
                         ),
                       ],
                     ),
@@ -110,8 +126,8 @@ class Home extends StatelessWidget {
       drawerScrimColor: Colors.black,
       body: Container(
         padding: EdgeInsets.only(
-    top: screenWidth*0.2,
-        bottom: screenWidth*0.1,
+          top: screenWidth * 0.2,
+          bottom: screenWidth * 0.1,
         ),
         decoration: const BoxDecoration(
           color: Colors.black,
@@ -122,14 +138,15 @@ class Home extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-             Text(
+            Text(
               "ViprWatch",
-              style: TextStyle(
-                fontSize: screenWidth*0.1,
+              style: GoogleFonts.oleoScript(
+                fontSize: screenWidth * 0.1,
+                fontWeight: FontWeight.w500,
                 color: Colors.white,
               ),
             ),
-            SizedBox(height: screenWidth*0.1),
+            SizedBox(height: screenWidth * 0.1),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
@@ -144,19 +161,21 @@ class Home extends StatelessWidget {
                         controller.selectedIndex.value = 1;
                       },
                       child: const Padding(
-                        padding: EdgeInsets.symmetric(vertical: 20, horizontal: 10),
+                        padding: EdgeInsets.symmetric(
+                          vertical: 25,
+                        ),
                         child: Center(
                           child: Text(
                             "Detect Snake",
+                            textAlign: TextAlign.center,
                             style: TextStyle(
                               color: Colors.white,
-                              fontSize: 22,
+                              fontSize: 20,
                               fontWeight: FontWeight.bold,
                             ),
                           ),
                         ),
                       ),
-
                     ),
                   ),
                 ),
@@ -171,19 +190,21 @@ class Home extends StatelessWidget {
                         controller.selectedIndex.value = 2;
                       },
                       child: const Padding(
-                        padding: EdgeInsets.symmetric(vertical: 20, horizontal: 10),
+                        padding: EdgeInsets.symmetric(
+                          vertical: 25,
+                        ),
                         child: Center(
                           child: Text(
                             "Search Snake",
+                            textAlign: TextAlign.center,
                             style: TextStyle(
                               color: Colors.white,
-                              fontSize: 22,
+                              fontSize: 20,
                               fontWeight: FontWeight.bold,
                             ),
                           ),
                         ),
                       ),
-
                     ),
                   ),
                 ),
