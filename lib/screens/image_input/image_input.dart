@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'dart:io';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/services.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:image_cropper/image_cropper.dart';
 import 'package:image_picker/image_picker.dart';
 import 'image_process.dart';
@@ -170,15 +171,15 @@ class _ImageInputScreenState extends State<ImageInputScreen> {
                       child: Center(
                           child: RichText(
                       textAlign: TextAlign.center,
-                      text: const TextSpan(children: [
+                      text: TextSpan(children: [
                         TextSpan(
                             text: 'ViprWatch\n\n',
-                            style: TextStyle(
+                            style: GoogleFonts.oleoScript(
                               fontSize: 25.0,
                               color: Colors.green,
-                              fontWeight: FontWeight.w600,
+                              fontWeight: FontWeight.w400,
                             )),
-                        TextSpan(
+                        const TextSpan(
                             text: 'Stay Alert, Stay Safe',
                             style: TextStyle(
                               fontSize: 20.0,

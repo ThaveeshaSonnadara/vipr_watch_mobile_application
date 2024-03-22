@@ -11,11 +11,11 @@ class Contact {
 class SnakeCatchers extends StatelessWidget {
 
   final List<Contact> contacts = [
-    Contact(name: 'Ranidu Thushara from Colombo', phoneNumber: '0719523132'),
-    Contact(name: 'Ramin Randinu from Matara', phoneNumber: '0710986217'),
-    Contact(name: 'Tharusha perera from Jaffna', phoneNumber: '0710741680'),
-    Contact(name: 'Lochana Silva from Trinco ', phoneNumber: '0770806862'),
-    Contact(name: 'Lahiru perera from Kandy', phoneNumber: '0703534142'),
+    Contact(name: 'Ranidu Thushara\nFrom Colombo', phoneNumber: '0719523132'),
+    Contact(name: 'Ramin Randinu\nFrom Matara', phoneNumber: '0710986217'),
+    Contact(name: 'Tharusha perera\nFrom Jaffna', phoneNumber: '0710741680'),
+    Contact(name: 'Lochana Silva\nFrom trinco ', phoneNumber: '0770806862'),
+    Contact(name: 'Lahiru perera\nFrom Kandy', phoneNumber: '0703534142'),
   ];
 
   SnakeCatchers({super.key});
@@ -27,8 +27,8 @@ class SnakeCatchers extends StatelessWidget {
         leading: const BackButton(color: Colors.green),
         backgroundColor: Colors.black,
         title: const Text(
-          'Snake Catchers Contact Details',
-          style: TextStyle(color: Colors.green),
+          'Snake Catchers Contacts',
+          style: TextStyle(color: Colors.white),
         ),
         centerTitle: true,
       ),
@@ -52,7 +52,7 @@ class SnakeCatchers extends StatelessWidget {
         style: TextButton.styleFrom(
           padding: const EdgeInsets.symmetric(horizontal: 32, vertical: 12),
           shape: const RoundedRectangleBorder(
-            side: BorderSide(color: Colors.green),
+            side: BorderSide(color: Colors.green),borderRadius: BorderRadius.all(Radius.circular(10)),
           ),
         ),
         child: const Text('Call'),

@@ -35,6 +35,16 @@ class _Login_pageState extends State<Login_page> {
       if (rememberMe) {
         emailController.text = prefs.getString('email') ?? '';
         passwordController.text = prefs.getString('password') ?? '';
+        //NEW
+        // if (emailController.text.isNotEmpty && passwordController.text.isNotEmpty) {
+        //   Navigator.pushReplacement(
+        //     context,
+        //     MaterialPageRoute(
+        //       builder: (context) => const NavigationMenu(),
+        //     ),
+        //   );
+        // }
+        // new
       }
     });
   }
@@ -43,7 +53,9 @@ class _Login_pageState extends State<Login_page> {
     showDialog(
       context: context,
       builder: (context) => const Center(
-        child: CircularProgressIndicator(),
+        child: CircularProgressIndicator(
+          color: Colors.green,
+        ),
       ),
     );
 
@@ -101,17 +113,16 @@ class _Login_pageState extends State<Login_page> {
                   style: TextStyle(
                     fontSize: 30,
                     color: Colors.green,
+                    fontWeight: FontWeight.w500
                   ),
                 ),
                 const SizedBox(height: 50),
-
                 MyTestField(
                   obscureText: false,
                   controller: emailController,
                   hintText: 'Email',
                 ),
                 const SizedBox(height: 10),
-
                 TextField(
                   controller: passwordController,
                   decoration: InputDecoration(
@@ -135,7 +146,6 @@ class _Login_pageState extends State<Login_page> {
                   obscureText: isHiddenPassword,
                   style: const TextStyle(color: Colors.white),
                 ),
-
                 const SizedBox(height: 10),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -195,7 +205,7 @@ class _Login_pageState extends State<Login_page> {
                     GestureDetector(
                       onTap: widget.onTap,
                       child: const Text(
-                        'Register here',
+                        ' Register here',
                         style: TextStyle(
                           color: Colors.green,
                           fontWeight: FontWeight.bold,

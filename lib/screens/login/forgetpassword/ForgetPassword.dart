@@ -1,7 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-
-import '../../../widgets/MyTest_Field.dart';
+import 'package:vipr_watch_mobile_application/widgets/MyTest_Field.dart';
 
 class ForgetPassword extends StatefulWidget {
   const ForgetPassword({super.key});
