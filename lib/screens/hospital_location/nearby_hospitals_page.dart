@@ -1,5 +1,4 @@
 import 'dart:convert';
-import 'dart:ui';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -10,7 +9,6 @@ import 'package:url_launcher/url_launcher.dart';
 import 'package:vipr_watch_mobile_application/models/nearby_response.dart';
 import 'package:vipr_watch_mobile_application/screens/hospital_location/map_screen.dart';
 import 'package:vipr_watch_mobile_application/widgets/emergency_menu.dart';
-import 'package:vipr_watch_mobile_application/widgets/navigation_menu.dart';
 import 'package:permission_handler/permission_handler.dart';
 
 class NearbyPlacesPage extends StatefulWidget {
