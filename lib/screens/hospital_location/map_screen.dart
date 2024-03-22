@@ -78,12 +78,12 @@ class _MapPageState extends State<MapPage> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.black,
-        elevation: 1,
+        elevation: 0,
         leading: IconButton(
           // style: ButtonStyle(backgroundColor: MaterialStateColor.resolveWith((states) => Colors.green)),
           icon: const Icon(
             Icons.arrow_back,
-            color: Colors.white,
+            color: Colors.green,
           ),
           onPressed: () {
             Navigator.push(
@@ -97,11 +97,8 @@ class _MapPageState extends State<MapPage> {
       body: GoogleMap(
           initialCameraPosition: initialPosition,
           markers: markers,
-          zoomControlsEnabled: false,
-          compassEnabled: true,
           myLocationEnabled: true,
           myLocationButtonEnabled: true,
-          liteModeEnabled: true,
           mapType: MapType.terrain,
           onMapCreated: (GoogleMapController controller) {
             _controller.complete(controller);
