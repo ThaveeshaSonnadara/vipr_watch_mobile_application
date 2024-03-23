@@ -35,16 +35,14 @@ class _Login_pageState extends State<Login_page> {
       if (rememberMe) {
         emailController.text = prefs.getString('email') ?? '';
         passwordController.text = prefs.getString('password') ?? '';
-        //NEW
-        // if (emailController.text.isNotEmpty && passwordController.text.isNotEmpty) {
-        //   Navigator.pushReplacement(
-        //     context,
-        //     MaterialPageRoute(
-        //       builder: (context) => const NavigationMenu(),
-        //     ),
-        //   );
-        // }
-        // new
+        if (emailController.text.isNotEmpty && passwordController.text.isNotEmpty) {
+          Navigator.pushReplacement(
+            context,
+            MaterialPageRoute(
+              builder: (context) => const NavigationMenu(),
+            ),
+          );
+        }
       }
     });
   }
