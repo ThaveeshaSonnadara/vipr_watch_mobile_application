@@ -19,7 +19,7 @@ class AuthenticationRepository extends GetxController {
   }
 
   screenRedirect() async {
-    
+
     // check whether that the device is connected to the internet or not
     final hasInternet = await InternetConnectionChecker().hasConnection;
     if (hasInternet) {

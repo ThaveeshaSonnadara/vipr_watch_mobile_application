@@ -35,13 +35,16 @@ class _Login_pageState extends State<Login_page> {
       if (rememberMe) {
         emailController.text = prefs.getString('email') ?? '';
         passwordController.text = prefs.getString('password') ?? '';
-        if (emailController.text.isNotEmpty && passwordController.text.isNotEmpty) {
-          Navigator.pushReplacement(
-            context,
-            MaterialPageRoute(
-              builder: (context) => const NavigationMenu(),
-            ),
-          );
+        if (emailController.text.isNotEmpty &&
+            passwordController.text.isNotEmpty) {
+          Future.delayed(const Duration(milliseconds: 200), () {
+            Navigator.pushReplacement(
+              context,
+              MaterialPageRoute(
+                builder: (context) => const NavigationMenu(),
+              ),
+            );
+          });
         }
       }
     });
@@ -109,10 +112,9 @@ class _Login_pageState extends State<Login_page> {
                 const Text(
                   'ViprWatch',
                   style: TextStyle(
-                    fontSize: 30,
-                    color: Colors.green,
-                    fontWeight: FontWeight.w500
-                  ),
+                      fontSize: 30,
+                      color: Colors.green,
+                      fontWeight: FontWeight.w500),
                 ),
                 const SizedBox(height: 50),
                 MyTestField(
