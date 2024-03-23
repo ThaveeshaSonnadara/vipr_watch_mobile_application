@@ -91,13 +91,9 @@ class Home extends StatelessWidget {
                         ),
                         TextButton(
                           onPressed: () async {
-                            // New
                             // Store email and password before signing out
-                            // SharedPreferences prefs = await SharedPreferences.getInstance();
-                            // prefs.remove('email');
-                            // prefs.remove('password');
-                            // prefs.remove('rememberMe');
-                            //new
+                            SharedPreferences prefs = await SharedPreferences.getInstance();
+                            prefs.remove('rememberMe');
 
                             await auth.signOut();
                             Navigator.pushReplacement(

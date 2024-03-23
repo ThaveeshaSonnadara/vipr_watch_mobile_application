@@ -81,8 +81,11 @@ dependencies:
   internet_connection_checker: ^1.0.0+1
 
   #google map
-  google_maps_flutter: ^2.6.0
+  google_maps_flutter: ^2.5.3
   flutter_polyline_points: ^2.0.0
+  location: ^5.0.3
+  geocoding: ^3.0.0
+  permission_handler: ^11.3.0
   geolocator: ^11.0.0
 
   # google fonts

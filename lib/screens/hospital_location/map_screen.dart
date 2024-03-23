@@ -2,6 +2,7 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter_polyline_points/flutter_polyline_points.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
+import 'package:vipr_watch_mobile_application/screens/hospital_location/nearby_hospitals_page.dart';
 
 class MapPage extends StatefulWidget {
   const MapPage({super.key});
@@ -42,11 +43,11 @@ class _MapPageState extends State<MapPage> {
   Set<Marker> markers = {};
   Map<PolylineId, Polyline> polylines = {};
 
-  static CameraPosition initialPosition =
-      CameraPosition(target: currentLocation, zoom: 15.0);
+  CameraPosition initialPosition =
+      CameraPosition(target: currentLocation, zoom: 16.0);
 
-  static CameraPosition targetPosition = CameraPosition(
-      target: targetLocation, zoom: 15.0, bearing: 192.0, tilt: 60);
+  CameraPosition targetPosition = CameraPosition(
+      target: targetLocation, zoom: 16.0, bearing: 192.0, tilt: 60);
 
   PolylinePoints polylinePoints = PolylinePoints();
 
@@ -56,20 +57,16 @@ class _MapPageState extends State<MapPage> {
 
     controller.animateCamera(CameraUpdate.newCameraPosition(CameraPosition(
         target: LatLng(targetPosition.latitude, targetPosition.longitude),
-        zoom: 15.0)));
+        zoom: 16.0)));
 
     markers.clear();
 
-    markers.add(Marker(
+    markers.add( Marker(
         markerId: const MarkerId("currentLocation"),
-        icon: BitmapDescriptor.fromAssetImage(
-            const ImageConfiguration(
-              size: Size(30, 30),
-            ),
-            "current_location.png") as BitmapDescriptor,
         position: LatLng(currentPosition.latitude, currentPosition.longitude)));
     markers.add(Marker(
         markerId: const MarkerId("targetLocation"),
+        icon: BitmapDescriptor.defaultMarker,
         position: LatLng(targetPosition.latitude, targetPosition.longitude)));
 
     setState(() {});
@@ -87,14 +84,21 @@ class _MapPageState extends State<MapPage> {
             Icons.arrow_back,
             color: Colors.green,
           ),
-          onPressed: () => Navigator.pop(context),// Implement the back button functionality
+          onPressed: () {
+            Navigator.push(
+                context,
+                MaterialPageRoute(
+                    builder: (context) =>
+                        const NearbyPlacesPage())); // Implement the back button functionality
+          },
         ),
       ),
       body: GoogleMap(
           initialCameraPosition: initialPosition,
           markers: markers,
-          zoomControlsEnabled: false,
-          mapType: MapType.normal,
+          myLocationEnabled: true,
+          myLocationButtonEnabled: true,
+          mapType: MapType.terrain,
           onMapCreated: (GoogleMapController controller) {
             _controller.complete(controller);
           },
