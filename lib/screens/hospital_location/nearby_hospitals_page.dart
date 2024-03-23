@@ -10,6 +10,7 @@ import 'package:vipr_watch_mobile_application/models/nearby_response.dart';
 import 'package:vipr_watch_mobile_application/screens/hospital_location/map_screen.dart';
 import 'package:vipr_watch_mobile_application/widgets/emergency_menu.dart';
 import 'package:permission_handler/permission_handler.dart';
+import 'package:vipr_watch_mobile_application/widgets/navigation_menu.dart';
 
 class NearbyPlacesPage extends StatefulWidget {
   const NearbyPlacesPage({super.key});
@@ -211,7 +212,13 @@ class _NearbyPlacesPageState extends State<NearbyPlacesPage> {
             Icons.arrow_back,
             color: Colors.green,
           ),
-          onPressed: () => Navigator.pop(context),// Implement the back button functionality
+          onPressed: () {
+            Navigator.push(
+                context,
+                MaterialPageRoute(
+                    builder: (context) =>
+                    const NavigationMenu())); // Implement the back button functionality
+          },// Implement the back button functionality
         ),
       ),
       floatingActionButton: const EmergencyMenu(),
