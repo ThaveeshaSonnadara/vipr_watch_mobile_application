@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:vipr_watch_mobile_application/widgets/navigation_menu.dart';
 import 'AboutUs.dart';
 import 'package:vipr_watch_mobile_application/screens/login/Login_page.dart';
@@ -90,13 +91,9 @@ class Home extends StatelessWidget {
                         ),
                         TextButton(
                           onPressed: () async {
-                            // New
                             // Store email and password before signing out
-                            // SharedPreferences prefs = await SharedPreferences.getInstance();
-                            // prefs.remove('email');
-                            // prefs.remove('password');
-                            // prefs.remove('rememberMe');
-                            //new
+                            SharedPreferences prefs = await SharedPreferences.getInstance();
+                            prefs.remove('rememberMe');
 
                             await auth.signOut();
                             Navigator.pushReplacement(
