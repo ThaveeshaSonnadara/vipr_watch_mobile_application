@@ -75,11 +75,11 @@ class _MapPageState extends State<MapPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.black54,
       appBar: AppBar(
-        backgroundColor: Colors.black,
+        backgroundColor: Colors.transparent,
         elevation: 0,
         leading: IconButton(
-          // style: ButtonStyle(backgroundColor: MaterialStateColor.resolveWith((states) => Colors.green)),
           icon: const Icon(
             Icons.arrow_back,
             color: Colors.green,

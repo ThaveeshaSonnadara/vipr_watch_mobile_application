@@ -207,10 +207,9 @@ class _NearbyPlacesPageState extends State<NearbyPlacesPage> {
         backgroundColor: Colors.transparent,
         elevation: 0,
         leading: IconButton(
-          style: ButtonStyle(backgroundColor: MaterialStateColor.resolveWith((states) => Colors.green)),
           icon: const Icon(
             Icons.arrow_back,
-            color: Colors.black,
+            color: Colors.green,
           ),
           onPressed: () => Navigator.pop(context),// Implement the back button functionality
         ),
