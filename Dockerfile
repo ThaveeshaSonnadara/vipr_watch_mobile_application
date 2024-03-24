@@ -8,34 +8,23 @@ ARG build_rev=0
 ENV FLUTTER_HOME=/usr/local/flutter \
     FLUTTER_VERSION=${flutter_ver} \
     PATH=$PATH:/usr/local/flutter/bin:/usr/local/flutter/bin/cache/dart-sdk/bin
-RUN apt-get update \
- && apt-get upgrade -y \
- && apt-get install -y --no-install-recommends --no-install-suggests \
-            ca-certificates \
- && update-ca-certificates \
-    \
- # Install dependencies for Linux toolchain
- && apt-get install -y --no-install-recommends --no-install-suggests \
-            build-essential \
-            clang cmake \
-            lcov \
-            libgtk-3-dev liblzma-dev \
-            ninja-build \
-            pkg-config \
-    \
- # Install Flutter itself
- && curl -fL -o /tmp/flutter.tar.xz \
-         https://storage.googleapis.com/flutter_infra_release/releases/stable/linux/flutter_linux_${flutter_ver}-stable.tar.xz \
- && tar -xf /tmp/flutter.tar.xz -C /usr/local/ \
- && git config --global --add safe.directory /usr/local/flutter \
- && flutter config --enable-android \
- && flutter precache --universal --linux --web --no-ios \
- && (yes | flutter doctor --android-licenses) \
- && flutter --version \
-    \
- # Install Firebase and GetX dependencies
- && flutter pub add firebase_core \
- && flutter pub add get \
-    \
- && rm -rf /var/lib/apt/lists/* \
-           /tmp/*
+
+RUN apt-get update
+RUN apt-get upgrade -y
+RUN apt-get install -y --no-install-recommends --no-install-suggests ca-certificates
+RUN update-ca-certificates
+
+RUN apt-get install -y --no-install-recommends --no-install-suggests build-essential clang cmake lcov libgtk-3-dev liblzma-dev ninja-build pkg-config
+
+RUN curl -fL -o /tmp/flutter.tar.xz https://storage.googleapis.com/flutter_infra_release/releases/stable/linux/flutter_linux_${flutter_ver}-stable.tar.xz
+RUN tar -xf /tmp/flutter.tar.xz -C /usr/local/
+RUN git config --global --add safe.directory /usr/local/flutter
+RUN flutter config --enable-android
+RUN flutter precache --universal --linux --web --no-ios
+RUN yes | flutter doctor --android-licenses
+RUN flutter --version
+
+RUN flutter pub add firebase_core
+RUN flutter pub add get
+
+RUN rm -rf /var/lib/apt/lists/* /tmp/*
