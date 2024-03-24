@@ -45,7 +45,7 @@ class _ImageInputScreenState extends State<ImageInputScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
-        padding: const EdgeInsets.all(32),
+        padding: const EdgeInsets.fromLTRB(32, 32, 32, 0),
         child: Center(
           child: Column(
             children: [
@@ -55,7 +55,6 @@ class _ImageInputScreenState extends State<ImageInputScreen> {
                       borderRadius: BorderRadius.circular(8.0),
                       child: Image.file(
                         _image!,
-                        // width: 250,
                         height: 200,
                       ),
                     )
@@ -166,21 +165,20 @@ class _ImageInputScreenState extends State<ImageInputScreen> {
                         ],
                       ),
                     )
-                  // : const Text("data"),
                   : Flexible(
                       child: Center(
                           child: RichText(
                       textAlign: TextAlign.center,
                       text: TextSpan(children: [
                         TextSpan(
-                            text: 'ViprWatch\n\n',
+                            text: 'ViprWatch\n',
                             style: GoogleFonts.oleoScript(
                               fontSize: 25.0,
                               color: Colors.green,
                               fontWeight: FontWeight.w400,
                             )),
                         const TextSpan(
-                            text: 'Stay Alert, Stay Safe',
+                            text: 'Stay Alert, Stay Safe\n\n',
                             style: TextStyle(
                               fontSize: 20.0,
                               color: Colors.green,
