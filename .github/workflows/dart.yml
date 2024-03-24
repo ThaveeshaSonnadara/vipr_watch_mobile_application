@@ -27,29 +27,28 @@ jobs:
       - name: Run tests
         run: flutter test
 
-# <<<<<<< RonathTharana
-# #      - name: Build Docker image
-# #        uses: docker/build-push-action@v2
-# #        with:
-# #          context: .
-# #          dockerfile: Dockerfile
-# #          push: false
-# #          tags: ${{ secrets.DOCKER_HUB_USERNAME }}/vipr_watch_mobile_application:latest
-# #
-# #      - name: Login to DockerHub
-# #        uses: docker/login-action@v1
-# #        with:
-# #          username: ${{ secrets.DOCKERHUB_USERNAME }}
-# #          password: ${{ secrets.DOCKERHUB_ACCESS_TOKEN }}
-# #
-# #      - name: Push to  Docker Hub
-# #        uses: docker/build-push-action@v2
-# #        with:
-# #          context: .
-# #          dockerfile: Dockerfile
-# #          push: true
-# #          tags: ${{ secrets.DOCKER_HUB_USERNAME }}/vipr_watch_mobile_application:latest
-# =======
-#       - name: Build the app
-#         run: flutter build appbundle
-# >>>>>>> main
+      - name: Build the app
+        run: flutter build appbundle
+
+      - name: Build Docker image
+        uses: docker/build-push-action@v2
+        with:
+         context: .
+         dockerfile: Dockerfile
+         push: false
+         tags: ${{ secrets.DOCKER_HUB_USERNAME }}/vipr_watch_mobile_application:latest
+
+      - name: Login to DockerHub
+        uses: docker/login-action@v1
+        with:
+         username: ${{ secrets.DOCKERHUB_USERNAME }}
+         password: ${{ secrets.DOCKERHUB_ACCESS_TOKEN }}
+
+      - name: Push to  Docker Hub
+        uses: docker/build-push-action@v2
+        with:
+         context: .
+         dockerfile: Dockerfile
+         push: true
+         tags: ${{ secrets.DOCKER_HUB_USERNAME }}/vipr_watch_mobile_application:latest
+
