@@ -6,6 +6,7 @@ import 'package:get_storage/get_storage.dart';
 import 'package:vipr_watch_mobile_application/firebase_options.dart';
 import 'package:vipr_watch_mobile_application/repositories/authentication_repository.dart';
 import 'app.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 
 Future<void> main() async {
   // Widgets Binding
@@ -14,6 +15,9 @@ Future<void> main() async {
 
   // GetX local storage
   await GetStorage.init();
+
+  // To load the .env file contents into dotenv.
+  await dotenv.load(fileName: ".env");
 
   // Await splash until other items load
   FlutterNativeSplash.preserve(widgetsBinding: widgetsBinding);

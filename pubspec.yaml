@@ -91,6 +91,13 @@ dependencies:
   # google fonts
   google_fonts: ^6.2.0
 
+  #testing
+  mockito: ^5.4.4
+
+  #managing environment
+  dotenv: ^4.2.0
+  flutter_dotenv: ^5.1.0
+
 dev_dependencies:
   flutter_test:
     sdk: flutter
@@ -103,6 +110,7 @@ dev_dependencies:
   flutter_lints: ^3.0.1
 
   flutter_launcher_icons: ^0.13.1
+  test: ^1.24.9
 
 flutter_launcher_icons:
   android: "launcher_icon"
@@ -129,6 +137,7 @@ flutter:
     - assets/images/image_process/
     - assets/images/map/
     - assets/images/pics/
+    - .env
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

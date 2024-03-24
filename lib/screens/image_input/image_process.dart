@@ -5,9 +5,9 @@ import 'package:lottie/lottie.dart';
 import 'package:animated_snack_bar/animated_snack_bar.dart';
 import 'package:material_dialogs/widgets/buttons/icon_button.dart';
 import 'package:material_dialogs/widgets/buttons/icon_outline_button.dart';
+import 'package:vipr_watch_mobile_application/screens/image_input/identify_snake.dart';
 import 'package:vipr_watch_mobile_application/screens/species_details/species_details.dart';
 import 'package:vipr_watch_mobile_application/widgets/navigation_menu.dart';
-import 'identify_snake.dart';
 import 'package:material_dialogs/dialogs.dart';
 
 class ImageProcessScreen extends StatefulWidget {

@@ -81,8 +81,8 @@ class _ForgetPasswordState extends State<ForgetPassword> {
           MaterialButton(
               onPressed: _resetPassword,
               color: Colors.green,
-              child: const Text('Send Email'),
-              textColor: Colors.white),
+              textColor: Colors.white,
+              child: const Text('Send Email')),
         ],
       ),
     );
