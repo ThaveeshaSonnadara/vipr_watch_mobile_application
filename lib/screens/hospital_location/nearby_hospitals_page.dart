@@ -11,6 +11,7 @@ import 'package:vipr_watch_mobile_application/screens/hospital_location/map_scre
 import 'package:vipr_watch_mobile_application/widgets/emergency_menu.dart';
 import 'package:permission_handler/permission_handler.dart';
 import 'package:vipr_watch_mobile_application/widgets/navigation_menu.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 
 class NearbyPlacesPage extends StatefulWidget {
   const NearbyPlacesPage({super.key});
@@ -26,8 +27,8 @@ class _NearbyPlacesPageState extends State<NearbyPlacesPage> {
     getNearbyPlaces();
   }
 
-  String apiKey = 'AIzaSyCOnURd0AZVkrXvMz8Iyk5nLcGx9GosHow'; // API key
-  String radius = "750"; // Radius in meters
+  String? apiKey = dotenv.env['API_KEY']; // API key
+  String? radius = dotenv.env['RADIUS']; // Radius in meters
 
   //user's current location values
   late double latitude;
@@ -250,7 +251,7 @@ class _NearbyPlacesPageState extends State<NearbyPlacesPage> {
                   style: TextStyle(color: Colors.white),
                 ),
               ),
-            )
+            ),
         ],
       ),
     );
