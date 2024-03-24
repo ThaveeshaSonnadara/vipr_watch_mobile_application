@@ -26,5 +26,6 @@ RUN flutter --version
 
 RUN flutter pub add firebase_core
 RUN flutter pub add get
+RUN flutter pub get
 
 RUN rm -rf /var/lib/apt/lists/* /tmp/*
