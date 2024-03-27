@@ -22,6 +22,7 @@ class _NearbyPlacesPageState extends State<NearbyPlacesPage> {
   @override
   void initState() {
     super.initState();
+    setUserLocationLatLng();
     getNearbyPlaces();
   }
 
@@ -95,16 +96,25 @@ class _NearbyPlacesPageState extends State<NearbyPlacesPage> {
     loc.Location location = loc.Location();
     location.enableBackgroundMode(enable: true);
     Future<bool> serviceEnabled;
+
     loc.PermissionStatus permissionGranted = await location.hasPermission();
-    if (permissionGranted == loc.PermissionStatus.denied) {
+
+    if (permissionGranted == loc.PermissionStatus.granted) {
+      serviceEnabled = checkLocationServiceStatus(location);
+      if (await serviceEnabled) {
+        return await location.getLocation();
+      } return getCurrentLocation();
+    } else {
       permissionGranted = await location.requestPermission();
       if (permissionGranted == loc.PermissionStatus.granted) {
         serviceEnabled = checkLocationServiceStatus(location);
         if (await serviceEnabled) {
           return await location.getLocation();
-        }
+        } return getCurrentLocation();
+      } else {
+        return false;
       }
-    } return false;
+    }
   }
 
   Future<bool> checkLocationServiceStatus(loc.Location location) async {
@@ -220,7 +230,7 @@ class _NearbyPlacesPageState extends State<NearbyPlacesPage> {
               padding: EdgeInsets.all(8.0),
               child: Center(
                 child: Text(
-                  "Make sure to turn on your location and reload the page",
+                  "Using your location...",
                   style: TextStyle(color: Colors.white),
                   softWrap: true,
                 ),
