@@ -83,10 +83,8 @@ dependencies:
   #google map
   google_maps_flutter: ^2.5.3
   flutter_polyline_points: ^2.0.0
-  location: ^5.0.3
+  location: ^5.0.0
   geocoding: ^3.0.0
-  permission_handler: ^11.3.0
-  geolocator: ^11.0.0
 
   # google fonts
   google_fonts: ^6.2.0
