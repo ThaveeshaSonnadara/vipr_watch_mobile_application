@@ -6,7 +6,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:vipr_watch_mobile_application/utills/login_or_register.dart';
 import 'package:vipr_watch_mobile_application/widgets/navigation_menu.dart';
-import 'AboutUs.dart';
+import 'about_us.dart';
 
 class Home extends StatelessWidget {
   const Home({super.key});

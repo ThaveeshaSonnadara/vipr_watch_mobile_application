@@ -1,22 +1,22 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:vipr_watch_mobile_application/screens/login/forgetpassword/ForgetPassword.dart';
+import 'package:vipr_watch_mobile_application/screens/login/forgetpassword/forget_password.dart';
 import 'package:vipr_watch_mobile_application/utills/helper_function.dart';
-import 'package:vipr_watch_mobile_application/widgets/MyTest_Field.dart';
-import 'package:vipr_watch_mobile_application/widgets/Mybutton.dart';
+import 'package:vipr_watch_mobile_application/widgets/my_textfield.dart';
+import 'package:vipr_watch_mobile_application/widgets/my_button.dart';
 import 'package:vipr_watch_mobile_application/widgets/navigation_menu.dart';
 
-class Login_page extends StatefulWidget {
+class LoginPage extends StatefulWidget {
   final void Function()? onTap;
 
-  const Login_page({super.key, required this.onTap});
+  const LoginPage({super.key, required this.onTap});
 
   @override
-  State<Login_page> createState() => _Login_pageState();
+  State<LoginPage> createState() => _LoginPageState();
 }
 
-class _Login_pageState extends State<Login_page> {
+class _LoginPageState extends State<LoginPage> {
   bool isHiddenPassword = true;
   final TextEditingController emailController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();

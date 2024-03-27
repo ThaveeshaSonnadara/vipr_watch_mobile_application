@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:vipr_watch_mobile_application/screens/login/Login_page.dart';
+import 'package:vipr_watch_mobile_application/screens/login/login_page.dart';
 import 'package:vipr_watch_mobile_application/screens/register/register_page.dart';
 
 class LoginOrRegister extends StatefulWidget {
@@ -24,7 +24,7 @@ class _LoginOrRegisterState extends State<LoginOrRegister> {
   @override
   Widget build(BuildContext context) {
     if(showLoginpage){
-      return  Login_page(onTap: togglePages);
+      return  LoginPage(onTap: togglePages);
     }else{
       return  RegisterPage(onTap: togglePages);
     }

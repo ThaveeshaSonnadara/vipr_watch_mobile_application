@@ -31,8 +31,22 @@ jobs:
       - name: Create env file
         run: |
           touch .env
-          echo API_KEY=${{ secrets.API_KEY }} >> .env
-          echo RADIUS=${{ secrets.RADIUS }} >> .env
+          echo API_KEY=${API_KEY} >> .env
+          echo RADIUS=${RADIUS} >> .env
+          source .env
+          export $(xargs < .env)
+        env:
+          API_KEY: ${{ secrets.API_KEY }}
+          RADIUS: ${{ secrets.RADIUS }}
+
+      - name: Update AndroidManifest.xml
+        uses: jacinlowe/update-android-manifest-package-action@v1.0.1
+        with:
+          android-manifest-path: './android/app/src/main/AndroidManifest.xml'
+          metadata-key: 'com.google.android.geo.API_KEY'
+          metadata-value: ${API_KEY}
+        env:
+          API_KEY: ${{ secrets.API_KEY }}
 
       - name: Install dependencies
         run: flutter pub get
@@ -45,7 +59,7 @@ jobs:
 
       - name: Build the app
         run: flutter build appbundle
-            
+
       - name: Upload Artifacts
         uses: actions/upload-artifact@v4
         with:

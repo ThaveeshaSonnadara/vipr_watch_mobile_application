@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:vipr_watch_mobile_application/screens/HomeScreen/my_drawer.dart';
+import 'package:vipr_watch_mobile_application/screens/home_screen/my_drawer.dart';
 
 class WelcomeScreen extends StatefulWidget {
   const WelcomeScreen({super.key});
@@ -10,26 +10,22 @@ class WelcomeScreen extends StatefulWidget {
         backgroundColor: Colors.green,
 
       ),
-      body: Container(
-        child: const Center(
-        ),
+      body: const Center(
       ),
       drawer: Drawer(
         child: SingleChildScrollView(
-          child: Container(
-            child: Column(
-              children: [
-                const MyHeaderDrawer(),
-                MyDrawerList(),
-              ],
-            ),
+          child: Column(
+            children: [
+              const MyHeaderDrawer(),
+              myDrawerList(),
+            ],
           ),
         ),
       ),
     );
   }
 
-  Widget MyDrawerList() {
+  Widget myDrawerList() {
     return Container(
         padding: const EdgeInsets.only(
           top: 15,

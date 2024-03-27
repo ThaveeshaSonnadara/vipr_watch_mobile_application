@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:icons_plus/icons_plus.dart';
-import 'package:vipr_watch_mobile_application/screens/HomeScreen/welcome_screen.dart';
+import 'package:vipr_watch_mobile_application/screens/home_screen/welcome_screen.dart';
 import 'package:vipr_watch_mobile_application/screens/image_input/image_input.dart';
-import 'package:vipr_watch_mobile_application/screens/search_page/SearchSnake.dart';
+import 'package:vipr_watch_mobile_application/screens/search_page/search_snake.dart';
 
 class NavigationMenu extends StatelessWidget {
   const NavigationMenu({super.key});
