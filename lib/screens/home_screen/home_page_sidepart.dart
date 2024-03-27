@@ -10,26 +10,22 @@ class WelcomeScreen extends StatefulWidget {
         backgroundColor: Colors.green,
 
       ),
-      body: Container(
-        child: const Center(
-        ),
+      body: const Center(
       ),
       drawer: Drawer(
         child: SingleChildScrollView(
-          child: Container(
-            child: Column(
-              children: [
-                const MyHeaderDrawer(),
-                MyDrawerList(),
-              ],
-            ),
+          child: Column(
+            children: [
+              const MyHeaderDrawer(),
+              myDrawerList(),
+            ],
           ),
         ),
       ),
     );
   }
 
-  Widget MyDrawerList() {
+  Widget myDrawerList() {
     return Container(
         padding: const EdgeInsets.only(
           top: 15,
