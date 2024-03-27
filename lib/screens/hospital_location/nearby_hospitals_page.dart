@@ -2,16 +2,14 @@ import 'dart:convert';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:geolocator/geolocator.dart' as locator;
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:http/http.dart' as http;
-import 'package:url_launcher/url_launcher.dart';
 import 'package:vipr_watch_mobile_application/models/nearby_response.dart';
 import 'package:vipr_watch_mobile_application/screens/hospital_location/map_screen.dart';
 import 'package:vipr_watch_mobile_application/widgets/emergency_menu.dart';
-import 'package:permission_handler/permission_handler.dart';
 import 'package:vipr_watch_mobile_application/widgets/navigation_menu.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
+import 'package:location/location.dart' as loc;
 
 class NearbyPlacesPage extends StatefulWidget {
   const NearbyPlacesPage({super.key});
@@ -41,12 +39,13 @@ class _NearbyPlacesPageState extends State<NearbyPlacesPage> {
   // late String locationAddress;
 
   Future<bool> setUserLocationLatLng() async {
-    locator.Position userPosition = await turnOnLocation();
+    Object userPosition = await getCurrentLocation();
 
-    if (userPosition.runtimeType != Future.error.runtimeType) {
+    if (userPosition != false) {
+      userPosition = userPosition as loc.LocationData;
 
-      latitude = userPosition.latitude;
-      longitude = userPosition.longitude;
+      latitude = userPosition.latitude!;
+      longitude = userPosition.longitude!;
 
       userPositionLatLng = LatLng(latitude, longitude);
       return true;
@@ -92,58 +91,31 @@ class _NearbyPlacesPageState extends State<NearbyPlacesPage> {
     return LatLng(lat!, lng!);
   }
 
-  Future<locator.Position> getCurrentLocation() async {
-
-    bool serviceEnabled;
-    locator.LocationPermission permission;
-
-    serviceEnabled = await locator.Geolocator.isLocationServiceEnabled();
-
-    if (!serviceEnabled) {
-      return Future.error("Location services are disabled");
-    }
-
-    permission = await locator.Geolocator.checkPermission();
-
-    if (permission == locator.LocationPermission.denied) {
-      permission = await locator.Geolocator.requestPermission();
-
-      if (permission == locator.LocationPermission.denied) {
-        return Future.error("Location permissions denied");
+  Future<Object> getCurrentLocation() async {
+    loc.Location location = loc.Location();
+    location.enableBackgroundMode(enable: true);
+    Future<bool> serviceEnabled;
+    loc.PermissionStatus permissionGranted = await location.hasPermission();
+    if (permissionGranted == loc.PermissionStatus.denied) {
+      permissionGranted = await location.requestPermission();
+      if (permissionGranted == loc.PermissionStatus.granted) {
+        serviceEnabled = checkLocationServiceStatus(location);
+        if (await serviceEnabled) {
+          return await location.getLocation();
+        }
       }
-    }
-
-    if (permission == locator.LocationPermission.deniedForever) {
-      return Future.error("Location permissions are permanently denied");
-    }
-
-
-    return await locator.Geolocator.getCurrentPosition();
+    } return false;
   }
 
-  Future<locator.Position> turnOnLocation() async {
-    var locationStatus = await Permission.locationWhenInUse.request();
-    if (locationStatus.isGranted) {
-      // Location is already enabled, proceed with your location access logic
-      return getCurrentLocation();
-    } else {
-      // If permission denied, open device settings to enable location
-      if (await openLocationSettings()) {
-        return getCurrentLocation();
-      } return Future.error("Couldn't open location settings");
-    }
-  }
-
-  Future<bool> openLocationSettings() async {
-    final url = Uri.parse('platform://settings/location');
-    if (await canLaunchUrl(url)) {
-      await launchUrl(url);
-      return true;
-    } else {
-      // Handle case where opening settings fails
-      print("Couldn't open location settings");
-      return false;
-    }
+  Future<bool> checkLocationServiceStatus(loc.Location location) async {
+    bool serviceEnabled = await location.serviceEnabled();
+    if (!serviceEnabled) {
+      serviceEnabled = await location.requestService();
+      if (!serviceEnabled) {
+        serviceEnabled = false;
+        return serviceEnabled;
+      }
+    } return serviceEnabled;
   }
 
   ImageProvider<Object> getImage(Results results) {
@@ -237,8 +209,9 @@ class _NearbyPlacesPageState extends State<NearbyPlacesPage> {
               padding: EdgeInsets.all(8.0),
               child: Center(
                 child: Text(
-                  "No nearby places found",
+                  "No hospitals or medical centers found nearby (750m)",
                   style: TextStyle(color: Colors.white),
+                  softWrap: true,
                 ),
               ),
             ),
@@ -247,8 +220,9 @@ class _NearbyPlacesPageState extends State<NearbyPlacesPage> {
               padding: EdgeInsets.all(8.0),
               child: Center(
                 child: Text(
-                  "No results found",
+                  "Make sure to turn on your location and reload the page",
                   style: TextStyle(color: Colors.white),
+                  softWrap: true,
                 ),
               ),
             ),
