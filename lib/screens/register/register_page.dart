@@ -1,10 +1,10 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:vipr_watch_mobile_application/screens/login/Login_page.dart';
+import 'package:vipr_watch_mobile_application/screens/login/login_page.dart';
 import 'package:vipr_watch_mobile_application/utills/helper_function.dart';
-import 'package:vipr_watch_mobile_application/widgets/MyTest_Field.dart';
-import 'package:vipr_watch_mobile_application/widgets/Mybutton.dart';
+import 'package:vipr_watch_mobile_application/widgets/my_textfield.dart';
+import 'package:vipr_watch_mobile_application/widgets/my_button.dart';
 
 class RegisterPage extends StatefulWidget {
   final void Function()? onTap;
@@ -63,7 +63,7 @@ class _RegisterPageState extends State<RegisterPage> {
         Navigator.pushReplacement(
           context,
           MaterialPageRoute(
-            builder: (context) => Login_page(onTap: () {  },),
+            builder: (context) => LoginPage(onTap: () {  },),
           ),
         );
 

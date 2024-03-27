@@ -22,9 +22,10 @@ Future<void> main() async {
   // Await splash until other items load
   FlutterNativeSplash.preserve(widgetsBinding: widgetsBinding);
 
+  runApp(const App());
+
   // Initialize firebase
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform)
       .then((FirebaseApp value) => Get.put(AuthenticationRepository()));
 
-  runApp(const App());
 }

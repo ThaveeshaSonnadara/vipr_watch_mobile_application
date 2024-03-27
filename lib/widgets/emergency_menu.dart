@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_speed_dial/flutter_speed_dial.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:vipr_watch_mobile_application/screens/hospital_location/nearby_hospitals_page.dart';
-import 'package:vipr_watch_mobile_application/screens/snake_catchers/SnakeCatchers.dart';
+import 'package:vipr_watch_mobile_application/screens/snake_catchers/snake_catchers.dart';
 
 class EmergencyMenu extends StatefulWidget {
   const EmergencyMenu({super.key, this.body});

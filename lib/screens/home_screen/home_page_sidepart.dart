@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:vipr_watch_mobile_application/screens/HomeScreen/my_drawer.dart';
+import 'package:vipr_watch_mobile_application/screens/home_screen/my_drawer.dart';
 
 class WelcomeScreen extends StatefulWidget {
   const WelcomeScreen({super.key});
