@@ -33,6 +33,7 @@ jobs:
           touch .env
           echo API_KEY=${{ secrets.API_KEY }} >> .env
           echo RADIUS=${{ secrets.RADIUS }} >> .env
+          cat .env
 
       - name: Install dependencies
         run: flutter pub get
