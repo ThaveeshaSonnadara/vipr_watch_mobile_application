@@ -5,9 +5,9 @@ import 'package:lottie/lottie.dart';
 import 'package:animated_snack_bar/animated_snack_bar.dart';
 import 'package:material_dialogs/widgets/buttons/icon_button.dart';
 import 'package:material_dialogs/widgets/buttons/icon_outline_button.dart';
-import '../../widgets/navigation_menu.dart';
-import '../species_details/species_details.dart';
-import 'identify_snake.dart';
+import 'package:vipr_watch_mobile_application/screens/image_input/identify_snake.dart';
+import 'package:vipr_watch_mobile_application/screens/species_details/species_details.dart';
+import 'package:vipr_watch_mobile_application/widgets/navigation_menu.dart';
 import 'package:material_dialogs/dialogs.dart';
 
 class ImageProcessScreen extends StatefulWidget {
@@ -92,13 +92,13 @@ class _ImageProcessScreenState extends State<ImageProcessScreen> {
 
   getSnakeDetails() async {
     try {
+      // check that the device is connected to the internet or not
       final hasInternet = await InternetConnectionChecker().hasConnection;
       if (hasInternet) {
         final String imagePath = widget.path;
-        snakeDetails = await IdentifySnake().sendImage(imagePath);
+        snakeDetails = await IdentifySnake().sendImage(imagePath); // pass the image file to the API and get the return data and store in a list
         print(imagePath);
-      }
-      else {
+      } else {
         errorPopUp();
       }
     } catch (e) {
@@ -106,17 +106,19 @@ class _ImageProcessScreenState extends State<ImageProcessScreen> {
     }
   }
 
+  // method to check that the system should display the snake details or the error message
   Future<void> popUpDetails() async {
     await getSnakeDetails();
     print(snakeDetails);
 
-    if (snakeDetails.isEmpty) {  // Not to show the processing long time
+    if (snakeDetails.isEmpty) {
+      // Not to show the processing long time
       errorPopUp();
     } else {
       snakeName = await snakeDetails[0];
       accuracy = await snakeDetails[1];
 
-      if (accuracy > 70) {
+      if (accuracy > 80) {
         await getIdentifiedSnakeDetails();
         print(identifiedSnakeDetails);
         AnimatedSnackBar.material(
@@ -134,6 +136,7 @@ class _ImageProcessScreenState extends State<ImageProcessScreen> {
     }
   }
 
+  // method to pop out identified snake details
   void snakeDetailsPopUp(String snakeName, int accuracy) async {
     await Dialogs.materialDialog(
         context: context,
@@ -179,10 +182,9 @@ class _ImageProcessScreenState extends State<ImageProcessScreen> {
                 Navigator.push(
                   context,
                   MaterialPageRoute(
-                    builder: (e) =>
-                        SnakeSpeciesDetailsScreen(
-                          identifiedSnakeDetails: identifiedSnakeDetails,
-                        ), //Snake details
+                    builder: (e) => SnakeSpeciesDetailsScreen(
+                      identifiedSnakeDetails: identifiedSnakeDetails,
+                    ), //Snake details
                   ),
                 );
               } else {
@@ -199,6 +201,7 @@ class _ImageProcessScreenState extends State<ImageProcessScreen> {
         ]);
   }
 
+  // method to pop out a message if the snake is not identified
   void failIdentifyPopUp() async {
     await Dialogs.materialDialog(
         context: context,
@@ -241,14 +244,17 @@ class _ImageProcessScreenState extends State<ImageProcessScreen> {
         ]);
   }
 
+  // method to pop out a error message if an error is occurred
   void errorPopUp() async {
     final hasInternet = await InternetConnectionChecker().hasConnection;
     late String msg;
     late String title;
     late String imgPath;
+
+    // check that the device is connected to the internet or not
     if (hasInternet) {
-      msg = 'An error occurred  on the system !';
-      title = 'System Error';
+      msg = 'An error occurred on the server !';
+      title = 'Server Error';
       imgPath = 'assets/images/image_process/warning.json';
     } else {
       msg = 'Your internet connection is unstable !';
@@ -296,28 +302,28 @@ class _ImageProcessScreenState extends State<ImageProcessScreen> {
         ]);
   }
 
-// get the details of the identified snake from the data base.
+  // get the details of the identified snake from the data base.
+  Future<void> getIdentifiedSnakeDetails() async {
+    QuerySnapshot<Map<String, dynamic>> snap = await FirebaseFirestore.instance
+        .collection('Snake details and treatments')
+        .where('Snake Name', isEqualTo: snakeName.toLowerCase())
+        .get();
 
-Future<void> getIdentifiedSnakeDetails() async {
-  QuerySnapshot<Map<String, dynamic>> snap = await FirebaseFirestore.instance
-      .collection('Snake details and treatments')
-      .where('Snake Name', isEqualTo: snakeName)
-      .get();
-
-  List<QueryDocumentSnapshot<Map<String, dynamic>>> snakeInfo = snap.docs;
-  if (snakeInfo.isNotEmpty) {
-    setState(() {
-      var identifiedDetails = snakeInfo[0].data();
-      identifiedSnakeDetails = [
-        snakeName,
-        identifiedDetails['Snake Scientific Name'] ?? 'on data',
-        identifiedDetails['Snake Sinhala Name'] ?? 'on data',
-        identifiedDetails['Venomous Type'] ?? 'on data',
-        identifiedDetails['Details'] ?? 'on data',
-        identifiedDetails['Medical Treatments'] ?? 'on data',
-        identifiedDetails['img_url'] ?? 'https://imageresizer.furnituredealer.net/img/remote/images.furnituredealer.net/img/commonimages%2Fitem-placeholder.jpg?width=480&scale=both&trim.threshold=80&trim.percentpadding=15',
-      ];
-    });
+    List<QueryDocumentSnapshot<Map<String, dynamic>>> snakeInfo = snap.docs;
+    if (snakeInfo.isNotEmpty) {
+      setState(() {
+        var identifiedDetails = snakeInfo[0].data();
+        identifiedSnakeDetails = [
+          snakeName,
+          identifiedDetails['Snake Scientific Name'] ?? 'no data',
+          identifiedDetails['Snake Sinhala Name'] ?? 'no data',
+          identifiedDetails['Venomous Type'] ?? 'no data',
+          identifiedDetails['Details'] ?? 'no data',
+          identifiedDetails['Medical Treatments'] ?? 'no data',
+          identifiedDetails['img_url'] ??
+              'https://imageresizer.furnituredealer.net/img/remote/images.furnituredealer.net/img/commonimages%2Fitem-placeholder.jpg?width=480&scale=both&trim.threshold=80&trim.percentpadding=15',
+        ];
+      });
+    }
   }
-}
 }

@@ -17,11 +17,13 @@ class OnBoardingController extends GetxController {
         duration: const Duration(milliseconds: 400), curve: Curves.easeInOut);
   }
 
+  // skip the onboarding pages to the last onboarding page
   void skipPage() {
     currentPageIndex.value = 3;
     pageController.jumpToPage(3);
   }
 
+  // locate onboarding pages one by one
   void nextPage() {
     if (currentPageIndex.value == 3) {
       final storage = GetStorage();

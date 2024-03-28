@@ -1,0 +1,67 @@
+name: Build and deploy the ViprWatch application
+
+on:
+  push:
+    branches: [ "main" ]
+
+jobs:
+  build:
+    name: build & deploy
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out the code
+        uses: actions/checkout@v3
+
+      - name: Set UP Java
+        uses: actions/setup-java@v3
+        with:
+          distribution: 'oracle'
+          java-version: '19'
+
+      - name: Set up flutter
+        uses: subosito/flutter-action@v2
+        with:
+          flutter-version: '3.19.2'
+          channel: 'stable'
+
+      - name: Set up Dart
+        uses: dart-lang/setup-dart@9a04e6d73cca37bd455e0608d7e5092f881fd603
+
+      - name: Create env file
+        run: |
+          touch .env
+          echo API_KEY=${API_KEY} >> .env
+          echo RADIUS=${RADIUS} >> .env
+          source .env
+          export $(xargs < .env)
+        env:
+          API_KEY: ${{ secrets.API_KEY }}
+          RADIUS: ${{ secrets.RADIUS }}
+
+      - name: Install dependencies
+        run: flutter pub get
+
+      - name: Run tests
+        run: flutter test
+
+      - name: Build APK
+        run: flutter build apk --release
+
+      - name: Build the app
+        run: flutter build appbundle
+
+      - name: Upload Artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: Releases
+          path: |
+            build/app/outputs/flutter-apk/app-release.apk
+            build/app/outputs/bundle/release/app-release.abb
+
+      - name: Create Release
+        uses: ncipollo/release-action@v1
+        with:
+          artifacts: "build/app/outputs/flutter-apk/app-release.apk,build/app/outputs/bundle/release/app-release.aab"
+          tag: v1.0.${{ github.run_number }}
+          token: ${{ secrets.TOKEN }}

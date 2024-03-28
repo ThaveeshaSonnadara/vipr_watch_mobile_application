@@ -6,6 +6,7 @@ import 'package:get_storage/get_storage.dart';
 import 'package:vipr_watch_mobile_application/firebase_options.dart';
 import 'package:vipr_watch_mobile_application/repositories/authentication_repository.dart';
 import 'app.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 
 Future<void> main() async {
   // Widgets Binding
@@ -14,6 +15,9 @@ Future<void> main() async {
 
   // GetX local storage
   await GetStorage.init();
+
+  // To load the .env file contents into dotenv.
+  await dotenv.load(fileName: ".env");
 
   // Await splash until other items load
   FlutterNativeSplash.preserve(widgetsBinding: widgetsBinding);
@@ -24,30 +28,3 @@ Future<void> main() async {
 
   runApp(const App());
 }
-
-// class MyApp extends StatelessWidget {
-//   const MyApp({super.key});
-//
-//   // This widget is the root of your application.
-//   @override
-//   // Widget build(BuildContext context) {
-//   //   return MaterialApp(
-//   //     debugShowCheckedModeBanner: false,
-//   //     home: AnimatedSplashScreen(
-//   //       splash: Image.asset(
-//   //         'assets/images/logo.png',
-//   //       ),
-//   //       nextScreen: const WelcomeScreen(),
-//   //       splashIconSize: 600,
-//   //       splashTransition: SplashTransition.fadeTransition,
-//   //       backgroundColor: Colors.black,
-//   //       duration: 2000,
-//   //     ),
-//   //   );
-//   Widget build(BuildContext context) {
-//     return const MaterialApp(
-//       debugShowCheckedModeBanner: false,
-//       home:
-//     );
-//   }
-// }

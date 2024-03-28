@@ -1,10 +1,10 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:vipr_watch_mobile_application/screens/login/Login_page.dart';
+import 'package:vipr_watch_mobile_application/screens/login/login_page.dart';
 import 'package:vipr_watch_mobile_application/utills/helper_function.dart';
-import 'package:vipr_watch_mobile_application/widgets/MyTest_Field.dart';
-import 'package:vipr_watch_mobile_application/widgets/Mybutton.dart';
+import 'package:vipr_watch_mobile_application/widgets/my_textfield.dart';
+import 'package:vipr_watch_mobile_application/widgets/my_button.dart';
 
 class RegisterPage extends StatefulWidget {
   final void Function()? onTap;
@@ -16,6 +16,8 @@ class RegisterPage extends StatefulWidget {
 }
 
 class _RegisterPageState extends State<RegisterPage> {
+
+  bool isHiddenPassword = true;
   ///TextEditingController
   final TextEditingController userNameController = TextEditingController();
 
@@ -61,7 +63,7 @@ class _RegisterPageState extends State<RegisterPage> {
         Navigator.pushReplacement(
           context,
           MaterialPageRoute(
-            builder: (context) => Login_page(onTap: () {  },),
+            builder: (context) => LoginPage(onTap: () {  },),
           ),
         );
 
@@ -110,7 +112,7 @@ class _RegisterPageState extends State<RegisterPage> {
 
                 ///app name
                 const Text(
-                  'Vipr Watch',
+                  'ViprWatch',
                   style: TextStyle(
                     fontSize: 30,
                     color: Colors.green,
@@ -132,19 +134,56 @@ class _RegisterPageState extends State<RegisterPage> {
                     controller: emailController),
                 const SizedBox(height: 10),
 
-                ///password
-                MyTestField(
-                    hintText: "Password",
-                    obscureText: true,
-                    controller: passwordController),
+                TextField(
+                  controller: passwordController,
+                  decoration: InputDecoration(
+                    suffixIcon: InkWell(
+                      onTap: () {
+                        setState(() {
+                          isHiddenPassword = !isHiddenPassword;
+                        });
+                      },
+                      child: const Icon(
+                        Icons.visibility,
+                        color: Colors.green,
+                      ),
+                    ),
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(10),
+                    ),
+                    hintText: 'Password',
+                    hintStyle: const TextStyle(color: Colors.white54),
+                  ),
+                  obscureText: isHiddenPassword,
+                  style: const TextStyle(color: Colors.white),
+                ),
+
                 const SizedBox(height: 10),
 
-                ///confirm password
-                MyTestField(
-                    hintText: "Confirm Password",
-                    obscureText: true,
-                    controller: confirmPwController),
-                const SizedBox(height: 25),
+                TextField(
+                  controller: confirmPwController,
+                  decoration: InputDecoration(
+                    suffixIcon: InkWell(
+                      onTap: () {
+                        setState(() {
+                          isHiddenPassword = !isHiddenPassword;
+                        });
+                      },
+                      child: const Icon(
+                        Icons.visibility,
+                        color: Colors.green,
+                      ),
+                    ),
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(10),
+                    ),
+                    hintText: 'Confirm Password',
+                    hintStyle: const TextStyle(color: Colors.white54),
+                  ),
+                  obscureText: isHiddenPassword,
+                  style: const TextStyle(color: Colors.white),
+                ),
+                const SizedBox(height: 10),
 
                 ///register button
                 MyButton(
@@ -166,7 +205,7 @@ class _RegisterPageState extends State<RegisterPage> {
                     GestureDetector(
                       onTap: widget.onTap,
                       child: const Text(
-                        'login here',
+                        ' login here',
                         style: TextStyle(
                           color: Colors.green,
                           fontWeight: FontWeight.bold,

@@ -1,7 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-
-import '../../../widgets/MyTest_Field.dart';
+import 'package:vipr_watch_mobile_application/widgets/my_textfield.dart';
 
 class ForgetPassword extends StatefulWidget {
   const ForgetPassword({super.key});
@@ -54,24 +53,36 @@ class _ForgetPasswordState extends State<ForgetPassword> {
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           const Text(
+            'FORGET PASSWORD',
+            style: TextStyle(
+              fontSize: 30,
+              color: Colors.green,
+            ),
+          ),
+          const SizedBox(height: 25),
+
+          const Text(
             'Enter your Email and we will send you a link to reset your password',
             style: TextStyle(color: Colors.green),
             textAlign: TextAlign.center,
           ),
           const SizedBox(height: 25),
 
-          ///email field
-          MyTestField(
-            hintText: "Email",
-            obscureText: false,
-            controller: _emailController,
+
+          ///email
+          Padding(padding: const EdgeInsets.symmetric(horizontal: 25),
+            child: MyTestField(
+                hintText: "Email",
+                obscureText: false,
+                controller: _emailController),
           ),
-          const SizedBox(height: 20),
+          const SizedBox(height: 10),
+
           MaterialButton(
-            onPressed: _resetPassword,
-            color: Colors.green,
-            child: const Text('Send Email'),
-          ),
+              onPressed: _resetPassword,
+              color: Colors.green,
+              textColor: Colors.white,
+              child: const Text('Send Email')),
         ],
       ),
     );

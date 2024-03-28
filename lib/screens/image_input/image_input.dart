@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'dart:io';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/services.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:image_cropper/image_cropper.dart';
 import 'package:image_picker/image_picker.dart';
 import 'image_process.dart';
@@ -10,7 +11,6 @@ class ImageInputScreen extends StatefulWidget {
   const ImageInputScreen({super.key});
 
   @override
-  // _ImageInputScreenState createState() => _ImageInputScreenState();
   State<ImageInputScreen> createState() => _ImageInputScreenState();
 }
 
@@ -19,7 +19,7 @@ class _ImageInputScreenState extends State<ImageInputScreen> {
 
   Future<void> pickImage(ImageSource source) async {
     try {
-      final image = await ImagePicker().pickImage(source: source);
+      final image = await ImagePicker().pickImage(source: source); // get the image file from the device
       if (image == null) return;
       File? imageTemporary = File(image.path);
       imageTemporary = await cropImage(imageFile: imageTemporary);
@@ -33,6 +33,7 @@ class _ImageInputScreenState extends State<ImageInputScreen> {
     }
   }
 
+  // edit the image as user preferred
   Future<File?> cropImage({required File imageFile}) async {
     CroppedFile? croppedImage =
         await ImageCropper().cropImage(sourcePath: imageFile.path);
@@ -40,42 +41,11 @@ class _ImageInputScreenState extends State<ImageInputScreen> {
     return File(croppedImage.path);
   }
 
-  // void _showDialog() {
-  //   showDialog(
-  //       context: context,
-  //       builder: (contaxt) {
-  //         return CupertinoAlertDialog(
-  //
-  //           title: const Text('Cobra'),
-  //           content: const Text('Accuracy: 91%'),
-  //           actions: [
-  //             MaterialButton(
-  //               onPressed: () {
-  //                 Navigator.pop(context);
-  //               },
-  //               child: const Text('Back'),
-  //             ),
-  //             MaterialButton(
-  //               onPressed: () {
-  //                 Navigator.push(
-  //                   context,
-  //                   MaterialPageRoute(
-  //                     builder: (e) => const SignupPage(),
-  //                   ),
-  //                 );
-  //               },
-  //               child: const Text('Details'),
-  //             )
-  //           ],
-  //         );
-  //       });
-  // }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
-        padding: const EdgeInsets.all(32),
+        padding: const EdgeInsets.fromLTRB(32, 32, 32, 0),
         child: Center(
           child: Column(
             children: [
@@ -85,7 +55,6 @@ class _ImageInputScreenState extends State<ImageInputScreen> {
                       borderRadius: BorderRadius.circular(8.0),
                       child: Image.file(
                         _image!,
-                        // width: 250,
                         height: 200,
                       ),
                     )
@@ -196,21 +165,20 @@ class _ImageInputScreenState extends State<ImageInputScreen> {
                         ],
                       ),
                     )
-                  // : const Text("data"),
                   : Flexible(
                       child: Center(
                           child: RichText(
                       textAlign: TextAlign.center,
-                      text: const TextSpan(children: [
+                      text: TextSpan(children: [
                         TextSpan(
-                            text: 'ViprWatch\n\n',
-                            style: TextStyle(
+                            text: 'ViprWatch\n',
+                            style: GoogleFonts.oleoScript(
                               fontSize: 25.0,
                               color: Colors.green,
-                              fontWeight: FontWeight.w600,
+                              fontWeight: FontWeight.w400,
                             )),
-                        TextSpan(
-                            text: 'Stay Alert, Stay Safe',
+                        const TextSpan(
+                            text: 'Stay Alert, Stay Safe\n\n',
                             style: TextStyle(
                               fontSize: 20.0,
                               color: Colors.green,

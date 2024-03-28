@@ -9,6 +9,9 @@
 .history
 .svn/
 migrate_working_dir/
+macos/Flutter/GeneratedPluginRegistrant.swift
+windows/flutter/generated_plugin_registrant.cc
+windows/flutter/generated_plugins.cmake
 
 # IntelliJ related
 *.iml
@@ -30,6 +33,8 @@ migrate_working_dir/
 .pub-cache/
 .pub/
 /build/
+pubspec.lock
+*.env
 
 # Symbolication related
 app.*.symbols

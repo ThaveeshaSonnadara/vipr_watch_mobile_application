@@ -1,23 +1,23 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:vipr_watch_mobile_application/screens/login/forgetpassword/forget_password.dart';
 import 'package:vipr_watch_mobile_application/utills/helper_function.dart';
-import 'package:vipr_watch_mobile_application/widgets/MyTest_Field.dart';
-import 'package:vipr_watch_mobile_application/widgets/Mybutton.dart';
+import 'package:vipr_watch_mobile_application/widgets/my_textfield.dart';
+import 'package:vipr_watch_mobile_application/widgets/my_button.dart';
 import 'package:vipr_watch_mobile_application/widgets/navigation_menu.dart';
 
-import 'forgetpassword/ForgetPassword.dart';
-
-class Login_page extends StatefulWidget {
+class LoginPage extends StatefulWidget {
   final void Function()? onTap;
 
-  const Login_page({super.key, required this.onTap});
+  const LoginPage({super.key, required this.onTap});
 
   @override
-  State<Login_page> createState() => _Login_pageState();
+  State<LoginPage> createState() => _LoginPageState();
 }
 
-class _Login_pageState extends State<Login_page> {
+class _LoginPageState extends State<LoginPage> {
+  bool isHiddenPassword = true;
   final TextEditingController emailController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
   late bool rememberMe = false;
@@ -35,6 +35,17 @@ class _Login_pageState extends State<Login_page> {
       if (rememberMe) {
         emailController.text = prefs.getString('email') ?? '';
         passwordController.text = prefs.getString('password') ?? '';
+        if (emailController.text.isNotEmpty &&
+            passwordController.text.isNotEmpty) {
+          Future.delayed(const Duration(milliseconds: 200), () {
+            Navigator.pushReplacement(
+              context,
+              MaterialPageRoute(
+                builder: (context) => const NavigationMenu(),
+              ),
+            );
+          });
+        }
       }
     });
   }
@@ -43,7 +54,9 @@ class _Login_pageState extends State<Login_page> {
     showDialog(
       context: context,
       builder: (context) => const Center(
-        child: CircularProgressIndicator(),
+        child: CircularProgressIndicator(
+          color: Colors.green,
+        ),
       ),
     );
 
@@ -99,20 +112,39 @@ class _Login_pageState extends State<Login_page> {
                 const Text(
                   'ViprWatch',
                   style: TextStyle(
-                    fontSize: 30,
-                    color: Colors.green,
-                  ),
+                      fontSize: 30,
+                      color: Colors.green,
+                      fontWeight: FontWeight.w500),
                 ),
                 const SizedBox(height: 50),
                 MyTestField(
-                    hintText: "Email",
-                    obscureText: false,
-                    controller: emailController),
+                  obscureText: false,
+                  controller: emailController,
+                  hintText: 'Email',
+                ),
                 const SizedBox(height: 10),
-                MyTestField(
-                  hintText: "Password",
-                  obscureText: true,
+                TextField(
                   controller: passwordController,
+                  decoration: InputDecoration(
+                    suffixIcon: InkWell(
+                      onTap: () {
+                        setState(() {
+                          isHiddenPassword = !isHiddenPassword;
+                        });
+                      },
+                      child: const Icon(
+                        Icons.visibility,
+                        color: Colors.green,
+                      ),
+                    ),
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(10),
+                    ),
+                    hintText: 'Password',
+                    hintStyle: const TextStyle(color: Colors.white54),
+                  ),
+                  obscureText: isHiddenPassword,
+                  style: const TextStyle(color: Colors.white),
                 ),
                 const SizedBox(height: 10),
                 Row(
@@ -128,7 +160,10 @@ class _Login_pageState extends State<Login_page> {
                             });
                           },
                         ),
-                        const Text('Remember Me',style: TextStyle(color: Colors.green),),
+                        const Text(
+                          'Remember Me',
+                          style: TextStyle(color: Colors.green),
+                        ),
                       ],
                     ),
                     GestureDetector(
@@ -170,7 +205,7 @@ class _Login_pageState extends State<Login_page> {
                     GestureDetector(
                       onTap: widget.onTap,
                       child: const Text(
-                        'Register here',
+                        ' Register here',
                         style: TextStyle(
                           color: Colors.green,
                           fontWeight: FontWeight.bold,

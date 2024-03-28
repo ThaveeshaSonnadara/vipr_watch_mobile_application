@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get_utils/get_utils.dart';
 import 'package:vipr_watch_mobile_application/screens/species_details/species_details.dart';
 
 class SearchPage extends StatefulWidget {
@@ -40,7 +41,9 @@ class _SearchPageState extends State<SearchPage> {
         builder: (context, snapshot) {
           if (snapshot.connectionState == ConnectionState.waiting) {
             return const Center(
-              child: CircularProgressIndicator(),
+              child: CircularProgressIndicator(
+                color: Colors.green,
+              ),
             );
           }
           final snakes = snapshot.data!.docs
@@ -75,7 +78,7 @@ class _SearchPageState extends State<SearchPage> {
                   );
                 },
                 title: Text(
-                  snake['Snake Name'],
+                  snake['Snake Name'].toString().capitalize!,
                   maxLines: 1,
                   overflow: TextOverflow.ellipsis,
                   style: const TextStyle(
@@ -119,12 +122,12 @@ class _SearchPageState extends State<SearchPage> {
       setState(() {
         var identifiedDetails = snakeInfo[0].data();
         snakeDetail = [
-          identifiedDetails['Snake Name'] ?? 'no data',
-          identifiedDetails['Snake Scientific Name'] ?? 'no data',
-          identifiedDetails['Snake Sinhala Name'] ?? 'no data',
-          identifiedDetails['Venomous Type'] ?? 'no data',
-          identifiedDetails['Details'] ?? 'no data',
-          identifiedDetails['Medical Treatments'] ?? 'no data',
+          identifiedDetails['Snake Name'].toString().capitalize ?? 'on data',
+          identifiedDetails['Snake Scientific Name'] ?? 'on data',
+          identifiedDetails['Snake Sinhala Name'] ?? 'on data',
+          identifiedDetails['Venomous Type'] ?? 'on data',
+          identifiedDetails['Details'] ?? 'on data',
+          identifiedDetails['Medical Treatments'] ?? 'on data',
           identifiedDetails['img_url'] ??
               'https://imageresizer.furnituredealer.net/img/remote/images.furnituredealer.net/img/commonimages%2Fitem-placeholder.jpg?width=480&scale=both&trim.threshold=80&trim.percentpadding=15',
         ];
