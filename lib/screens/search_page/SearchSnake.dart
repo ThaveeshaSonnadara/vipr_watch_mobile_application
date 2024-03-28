@@ -119,12 +119,12 @@ class _SearchPageState extends State<SearchPage> {
       setState(() {
         var identifiedDetails = snakeInfo[0].data();
         snakeDetail = [
-          identifiedDetails['Snake Name'] ?? 'on data',
-          identifiedDetails['Snake Scientific Name'] ?? 'on data',
-          identifiedDetails['Snake Sinhala Name'] ?? 'on data',
-          identifiedDetails['Venomous Type'] ?? 'on data',
-          identifiedDetails['Details'] ?? 'on data',
-          identifiedDetails['Medical Treatments'] ?? 'on data',
+          identifiedDetails['Snake Name'] ?? 'no data',
+          identifiedDetails['Snake Scientific Name'] ?? 'no data',
+          identifiedDetails['Snake Sinhala Name'] ?? 'no data',
+          identifiedDetails['Venomous Type'] ?? 'no data',
+          identifiedDetails['Details'] ?? 'no data',
+          identifiedDetails['Medical Treatments'] ?? 'no data',
           identifiedDetails['img_url'] ??
               'https://imageresizer.furnituredealer.net/img/remote/images.furnituredealer.net/img/commonimages%2Fitem-placeholder.jpg?width=480&scale=both&trim.threshold=80&trim.percentpadding=15',
         ];
