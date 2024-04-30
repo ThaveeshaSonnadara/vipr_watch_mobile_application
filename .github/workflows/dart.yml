@@ -56,12 +56,12 @@ jobs:
         with:
           name: Releases
           path: |
-            build/app/outputs/flutter-apk/app-release.apk
-            build/app/outputs/bundle/release/app-release.abb
+            build/app/outputs/flutter-apk/ViprWatch.apk
+            build/app/outputs/bundle/release/ViprWatch.abb
 
       - name: Create Release
         uses: ncipollo/release-action@v1
         with:
-          artifacts: "build/app/outputs/flutter-apk/app-release.apk,build/app/outputs/bundle/release/app-release.aab"
+          artifacts: "build/app/outputs/flutter-apk/ViprWatch.apk,build/app/outputs/bundle/release/ViprWatch.aab"
           tag: v1.0.${{ github.run_number }}
           token: ${{ secrets.TOKEN }}
